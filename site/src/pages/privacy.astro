@@ -1,0 +1,118 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const pageTitle = 'プライバシーポリシー';
+const pageDescription = `${SITE_TITLE} のプライバシーポリシー。個人情報の取り扱いについて。`;
+const lastUpdated = '2026年5月3日';
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>プライバシーポリシー</h1>
+				<p class="updated">最終更新日：{lastUpdated}</p>
+			</header>
+
+			<div class="prose">
+				<p>
+					{SITE_TITLE}（以下「当サービス」）は、ユーザーの個人情報の重要性を認識し、その保護の徹底を図るため、本プライバシーポリシーを定めます。
+				</p>
+
+				<h2>1. 取得する個人情報</h2>
+				<p>当サービスは、以下の個人情報を取得することがあります。</p>
+				<ul>
+					<li>氏名、メールアドレス、電話番号</li>
+					<li>志望大学・学部、学年、志望理由書の内容</li>
+					<li>お問い合わせ内容</li>
+					<li>サイトのアクセスログ、Cookie情報</li>
+				</ul>
+
+				<h2>2. 利用目的</h2>
+				<p>取得した個人情報は以下の目的で利用します。</p>
+				<ul>
+					<li>志望理由書の添削・診断レポート作成</li>
+					<li>お問い合わせへの返信</li>
+					<li>サービスに関するご案内</li>
+					<li>サービスの改善・新機能の開発</li>
+					<li>統計データの作成（個人を特定しない形）</li>
+				</ul>
+
+				<h2>3. 第三者提供</h2>
+				<p>
+					当サービスは、法令に基づく場合を除き、ユーザーの同意なく個人情報を第三者に提供しません。
+				</p>
+
+				<h2>4. Cookie・アクセス解析</h2>
+				<p>
+					当サービスでは、サイトの利用状況を把握するため、Google Analytics 等のアクセス解析ツールを使用する場合があります。これらのツールはCookieを使用しますが、個人を特定する情報は含まれません。
+				</p>
+
+				<h2>5. 個人情報の開示・訂正・削除</h2>
+				<p>
+					ユーザーから個人情報の開示・訂正・削除のご請求があった場合、本人確認のうえ、合理的な期間内に対応します。
+				</p>
+
+				<h2>6. お問い合わせ窓口</h2>
+				<p>
+					本プライバシーポリシーに関するお問い合わせは、<a href="/contact">お問い合わせフォーム</a>よりご連絡ください。
+				</p>
+
+				<h2>7. 改定</h2>
+				<p>
+					本プライバシーポリシーは、必要に応じて改定することがあります。改定後の内容は当ページに掲載した時点で効力を生じます。
+				</p>
+			</div>
+		</main>
+		<Footer />
+
+		<style>
+			main {
+				max-width: 760px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			.page-header {
+				margin-bottom: 2rem;
+				padding-bottom: 1.5rem;
+				border-bottom: 1px solid #e5e7eb;
+			}
+			.page-header h1 {
+				font-size: 1.875rem;
+				margin: 0 0 0.5rem;
+				color: #0f172a;
+			}
+			.updated {
+				color: #94a3b8;
+				font-size: 0.85rem;
+				margin: 0;
+			}
+			.prose {
+				line-height: 1.85;
+				color: #1f2937;
+			}
+			.prose h2 {
+				font-size: 1.2rem;
+				margin: 2rem 0 0.75rem;
+				color: #0f172a;
+			}
+			.prose ul {
+				padding-left: 1.5rem;
+			}
+			.prose li {
+				margin: 0.4rem 0;
+			}
+			.prose a {
+				color: #1a4d8f;
+			}
+		</style>
+	</body>
+</html>

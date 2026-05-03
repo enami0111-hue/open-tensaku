@@ -1,0 +1,112 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const pageTitle = '利用規約';
+const pageDescription = `${SITE_TITLE} の利用規約。`;
+const lastUpdated = '2026年5月3日';
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>利用規約</h1>
+				<p class="updated">最終更新日：{lastUpdated}</p>
+			</header>
+
+			<div class="prose">
+				<p>
+					本利用規約（以下「本規約」）は、{SITE_TITLE}（以下「当サービス」）の利用条件を定めるものです。ユーザーは本規約に同意の上、当サービスをご利用いただくものとします。
+				</p>
+
+				<h2>第1条（適用）</h2>
+				<p>本規約は、ユーザーと当サービス運営者との間の当サービスの利用に関わる一切の関係に適用されます。</p>
+
+				<h2>第2条（提供サービス）</h2>
+				<p>当サービスは、以下を提供します。</p>
+				<ul>
+					<li>志望理由書の添削・診断</li>
+					<li>推薦・総合型選抜に関する情報提供記事</li>
+					<li>面接・スケジュール管理に関するアドバイス</li>
+				</ul>
+
+				<h2>第3条（禁止事項）</h2>
+				<p>ユーザーは以下の行為を行ってはなりません。</p>
+				<ul>
+					<li>法令または公序良俗に反する行為</li>
+					<li>当サービスの運営を妨害する行為</li>
+					<li>他のユーザーまたは第三者の権利を侵害する行為</li>
+					<li>当サービスのコンテンツを無断で転載・複製する行為</li>
+					<li>添削サンプルや指導内容を商用目的で二次利用する行為</li>
+				</ul>
+
+				<h2>第4条（免責事項）</h2>
+				<p>
+					当サービスは、添削や情報提供の内容について合格を保証するものではありません。最終的な合否は、各大学の選考結果によります。
+				</p>
+
+				<h2>第5条（著作権）</h2>
+				<p>
+					当サービスのコンテンツ（記事、添削メソッド、テンプレート等）の著作権は、当サービス運営者に帰属します。引用は出典明記の上、適切な範囲で行ってください。
+				</p>
+
+				<h2>第6条（規約の変更）</h2>
+				<p>
+					当サービスは、必要と判断した場合には、ユーザーに通知することなく本規約を変更できるものとします。変更後の規約は、当サービスに掲載した時点で効力を生じます。
+				</p>
+
+				<h2>第7条（準拠法・管轄）</h2>
+				<p>
+					本規約の解釈にあたっては、日本法を準拠法とします。当サービスに関して紛争が生じた場合には、運営者の所在地を管轄する裁判所を専属的合意管轄とします。
+				</p>
+			</div>
+		</main>
+		<Footer />
+
+		<style>
+			main {
+				max-width: 760px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			.page-header {
+				margin-bottom: 2rem;
+				padding-bottom: 1.5rem;
+				border-bottom: 1px solid #e5e7eb;
+			}
+			.page-header h1 {
+				font-size: 1.875rem;
+				margin: 0 0 0.5rem;
+				color: #0f172a;
+			}
+			.updated {
+				color: #94a3b8;
+				font-size: 0.85rem;
+				margin: 0;
+			}
+			.prose {
+				line-height: 1.85;
+				color: #1f2937;
+			}
+			.prose h2 {
+				font-size: 1.2rem;
+				margin: 2rem 0 0.75rem;
+				color: #0f172a;
+			}
+			.prose ul {
+				padding-left: 1.5rem;
+			}
+			.prose li {
+				margin: 0.4rem 0;
+			}
+		</style>
+	</body>
+</html>

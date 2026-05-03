@@ -1,0 +1,136 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import SupervisorBox from '../components/SupervisorBox.astro';
+import CTA from '../components/CTA.astro';
+import { SITE_TITLE } from '../consts';
+
+const pageTitle = '運営者情報';
+const pageDescription = `${SITE_TITLE} の運営方針、監修者プロフィール、サービス概要をご紹介します。採用人事10年×総合型選抜指導100名以上の講師が監修する志望理由書添削サービス。`;
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>運営者情報</h1>
+				<p>{SITE_TITLE} のサービス概要、監修者、運営方針について。</p>
+			</header>
+
+			<section>
+				<h2>サービス概要</h2>
+				<p>
+					<strong>{SITE_TITLE}</strong> は、推薦・総合型選抜（旧AO入試）で大学受験に挑む高校3年生・保護者向けの志望理由書添削サービスです。早慶上智MARCHを中心とした私立上位校を目指す受験生をサポートしています。
+				</p>
+				<p>
+					「合格して終わり」ではなく、入学後・卒業後に社会で通用する志望理由書づくりを理念に、採用人事の経験と総合型選抜の指導知見を組み合わせた独自のメソッドで添削を行います。
+				</p>
+			</section>
+
+			<section>
+				<h2>監修者プロフィール</h2>
+				<SupervisorBox variant="full" />
+			</section>
+
+			<section>
+				<h2>{SITE_TITLE} の特徴</h2>
+				<div class="features">
+					<div class="feature">
+						<h3>採用人事10年の視点</h3>
+						<p>
+							上場企業の人事部で延べ数千人の志望動機を評価してきた経験から、「企業がどんな人材を採用したいか」を逆算した添削を行います。大学のアドミッションポリシーと企業が求める人材像は地続きです。
+						</p>
+					</div>
+					<div class="feature">
+						<h3>総合型選抜100名以上の指導実績</h3>
+						<p>
+							大手総合型選抜専門塾で4年間、早慶上智MARCHを中心に多数の合格者を輩出。志望理由書だけでなく、面接対策・スケジュール管理まで包括的にサポートします。
+						</p>
+					</div>
+					<div class="feature">
+						<h3>大学AP起点の設計</h3>
+						<p>
+							各大学・学部の公式アドミッションポリシーから逆算し、「その学部で評価される志望理由」を設計します。汎用テンプレートでは決して得られない、固有性の高い志望理由書を一緒に作ります。
+						</p>
+					</div>
+					<div class="feature">
+						<h3>一次情報へのこだわり</h3>
+						<p>
+							人事担当者・現役大学生への継続的なヒアリングで得た最新の知見を、添削とコンテンツに反映しています。教科書的な指導ではなく、「いま実際に評価される」志望理由書づくりにこだわります。
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<CTA />
+		</main>
+		<Footer />
+
+		<style>
+			main {
+				max-width: 760px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			.page-header {
+				text-align: center;
+				margin-bottom: 3rem;
+				padding-bottom: 2rem;
+				border-bottom: 1px solid #e5e7eb;
+			}
+			.page-header h1 {
+				font-size: 2rem;
+				margin: 0 0 0.5rem;
+				color: #0f172a;
+			}
+			.page-header p {
+				color: #64748b;
+				margin: 0;
+			}
+			section {
+				margin-bottom: 3rem;
+			}
+			h2 {
+				font-size: 1.4rem;
+				color: #0f172a;
+				margin: 0 0 1rem;
+				padding-left: 0.75rem;
+				border-left: 4px solid #1a4d8f;
+			}
+			p {
+				line-height: 1.85;
+				color: #1f2937;
+				margin: 0.75rem 0;
+			}
+			.features {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 1.25rem;
+				margin-top: 1rem;
+			}
+			.feature {
+				background: white;
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+				padding: 1.25rem;
+			}
+			.feature h3 {
+				margin: 0 0 0.5rem;
+				color: #1a4d8f;
+				font-size: 1.05rem;
+			}
+			.feature p {
+				font-size: 0.9rem;
+				line-height: 1.75;
+				color: #475569;
+				margin: 0;
+			}
+		</style>
+	</body>
+</html>

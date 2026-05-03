@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { SITE_TITLE } from '../../consts';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// カテゴリごとにグルーピング
+const categoryOrder = ['基礎知識', 'スケジュール', '志望理由書', '活動実績', '面接対策', '保護者向け'];
+const grouped = categoryOrder
+	.map((cat) => ({
+		category: cat,
+		items: articles.filter((a) => a.data.category === cat),
+	}))
+	.filter((g) => g.items.length > 0);
+
+const ungrouped = articles.filter((a) => !categoryOrder.includes(a.data.category));
+if (ungrouped.length > 0) {
+	grouped.push({ category: 'その他', items: ungrouped });
+}
+
+const pageTitle = '記事一覧';
+const pageDescription = '推薦・総合型選抜の志望理由書、面接、スケジュール、保護者サポートに関する記事一覧。採用人事10年×総合型選抜指導100名以上の講師が監修。';
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>記事一覧</h1>
+				<p>{SITE_TITLE} の全記事を、目的別カテゴリで整理しています。</p>
+			</header>
+
+			{grouped.map((group) => (
+				<section class="category-section">
+					<h2>{group.category}</h2>
+					<div class="grid">
+						{group.items.map((a) => (
+							<ArticleCard
+								href={`/articles/${a.id}/`}
+								title={a.data.title}
+								description={a.data.description}
+								category={a.data.category}
+								date={a.data.date}
+							/>
+						))}
+					</div>
+				</section>
+			))}
+		</main>
+		<Footer />
+
+		<style>
+			main {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			.page-header {
+				text-align: center;
+				margin-bottom: 3rem;
+				padding-bottom: 2rem;
+				border-bottom: 1px solid #e5e7eb;
+			}
+			.page-header h1 {
+				font-size: 2rem;
+				margin: 0 0 0.5rem;
+				color: #0f172a;
+			}
+			.page-header p {
+				color: #64748b;
+				margin: 0;
+			}
+			.category-section {
+				margin-bottom: 3rem;
+			}
+			.category-section h2 {
+				font-size: 1.4rem;
+				color: #0f172a;
+				margin: 0 0 1rem;
+				padding-left: 0.75rem;
+				border-left: 4px solid #1a4d8f;
+			}
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				gap: 1rem;
+			}
+		</style>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+/* オープン添削 グローバルスタイル */
+
+:root {
+	--brand: #1a4d8f;
+	--brand-dark: #0f3a6f;
+	--accent: #ef4444;
+	--text: #1f2937;
+	--text-muted: #64748b;
+	--bg: #ffffff;
+	--bg-alt: #f8fafc;
+	--border: #e5e7eb;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family:
+		'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo',
+		system-ui, -apple-system, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: var(--text);
+	background: var(--bg);
+	font-size: 16px;
+	line-height: 1.7;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+a {
+	color: var(--brand);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 15px;
+	}
+}

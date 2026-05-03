@@ -1,0 +1,99 @@
+---
+import { SITE_TITLE } from '../consts';
+const today = new Date();
+---
+
+<footer>
+	<div class="container">
+		<div class="cols">
+			<div class="col">
+				<h3 class="brand">{SITE_TITLE}</h3>
+				<p class="tagline">
+					採用人事10年×総合型選抜指導100名以上の講師による志望理由書添削サービス
+				</p>
+			</div>
+			<div class="col">
+				<h4>サイトマップ</h4>
+				<ul>
+					<li><a href="/">ホーム</a></li>
+					<li><a href="/articles">記事一覧</a></li>
+					<li><a href="/about">運営者情報</a></li>
+					<li><a href="/contact">お問い合わせ</a></li>
+				</ul>
+			</div>
+			<div class="col">
+				<h4>規約・ポリシー</h4>
+				<ul>
+					<li><a href="/privacy">プライバシーポリシー</a></li>
+					<li><a href="/terms">利用規約</a></li>
+				</ul>
+			</div>
+		</div>
+		<p class="copyright">&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		background: #0f172a;
+		color: #cbd5e1;
+		padding: 3rem 1rem 2rem;
+		margin-top: 4rem;
+	}
+	.container {
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+	.cols {
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+	.brand {
+		color: white;
+		margin: 0 0 0.5rem;
+		font-size: 1.25rem;
+	}
+	.tagline {
+		font-size: 0.9rem;
+		line-height: 1.7;
+		margin: 0;
+		color: #94a3b8;
+	}
+	h4 {
+		color: white;
+		font-size: 0.95rem;
+		margin: 0 0 0.75rem;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		margin: 0.4rem 0;
+	}
+	a {
+		color: #cbd5e1;
+		text-decoration: none;
+		font-size: 0.9rem;
+	}
+	a:hover {
+		color: white;
+	}
+	.copyright {
+		text-align: center;
+		font-size: 0.85rem;
+		color: #64748b;
+		padding-top: 2rem;
+		border-top: 1px solid #1e293b;
+		margin: 0;
+	}
+	@media (max-width: 720px) {
+		.cols {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+	}
+</style>

@@ -1,0 +1,69 @@
+---
+import { SITE_TITLE, SITE_URL, SUPERVISOR } from '../consts';
+
+interface Props {
+	type: 'Article' | 'WebPage';
+	title: string;
+	description: string;
+	url: string;
+	datePublished?: Date;
+	dateModified?: Date;
+	image?: string;
+	breadcrumbs?: { name: string; url: string }[];
+}
+
+const {
+	type,
+	title,
+	description,
+	url,
+	datePublished,
+	dateModified,
+	image,
+	breadcrumbs,
+} = Astro.props;
+
+const articleSchema =
+	type === 'Article' && datePublished
+		? {
+				'@context': 'https://schema.org',
+				'@type': 'Article',
+				headline: title,
+				description,
+				image: image ? new URL(image, SITE_URL).toString() : undefined,
+				datePublished: datePublished.toISOString(),
+				dateModified: (dateModified ?? datePublished).toISOString(),
+				author: {
+					'@type': 'Person',
+					name: SUPERVISOR.name,
+					description: SUPERVISOR.short,
+				},
+				publisher: {
+					'@type': 'Organization',
+					name: SITE_TITLE,
+					url: SITE_URL,
+				},
+				mainEntityOfPage: {
+					'@type': 'WebPage',
+					'@id': url,
+				},
+			}
+		: null;
+
+const breadcrumbSchema =
+	breadcrumbs && breadcrumbs.length > 0
+		? {
+				'@context': 'https://schema.org',
+				'@type': 'BreadcrumbList',
+				itemListElement: breadcrumbs.map((b, i) => ({
+					'@type': 'ListItem',
+					position: i + 1,
+					name: b.name,
+					item: new URL(b.url, SITE_URL).toString(),
+				})),
+			}
+		: null;
+---
+
+{articleSchema && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
+{breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}

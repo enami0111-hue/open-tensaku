@@ -1,0 +1,238 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const pageTitle = 'お問い合わせ・無料診断';
+const pageDescription = `${SITE_TITLE} へのお問い合わせ、志望理由書の無料診断のお申し込みはこちらから。`;
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>お問い合わせ・無料診断</h1>
+				<p>志望理由書の無料診断、サービスに関するご質問はこちらから。</p>
+			</header>
+
+			<section class="form-card">
+				<form
+					name="contact"
+					method="POST"
+					data-netlify="true"
+					action="/thanks"
+				>
+					<input type="hidden" name="form-name" value="contact" />
+
+					<div class="field">
+						<label for="name">お名前 <span class="required">必須</span></label>
+						<input type="text" id="name" name="name" required autocomplete="name" />
+					</div>
+
+					<div class="field">
+						<label for="email">メールアドレス <span class="required">必須</span></label>
+						<input type="email" id="email" name="email" required autocomplete="email" />
+					</div>
+
+					<div class="field">
+						<label for="role">あなたは？ <span class="required">必須</span></label>
+						<select id="role" name="role" required>
+							<option value="">選択してください</option>
+							<option value="高校3年生">高校3年生</option>
+							<option value="高校2年生">高校2年生</option>
+							<option value="高校1年生">高校1年生</option>
+							<option value="保護者">保護者</option>
+							<option value="その他">その他</option>
+						</select>
+					</div>
+
+					<div class="field">
+						<label for="university">志望大学・学部</label>
+						<input type="text" id="university" name="university" placeholder="例: 早稲田大学 国際教養学部" />
+					</div>
+
+					<div class="field">
+						<label for="exam-type">志望する入試方式</label>
+						<select id="exam-type" name="exam-type">
+							<option value="">選択してください</option>
+							<option value="総合型選抜">総合型選抜（旧AO入試）</option>
+							<option value="学校推薦型選抜">学校推薦型選抜</option>
+							<option value="指定校推薦">指定校推薦</option>
+							<option value="一般選抜">一般選抜</option>
+							<option value="未定">未定</option>
+						</select>
+					</div>
+
+					<div class="field">
+						<label for="message">ご相談内容 <span class="required">必須</span></label>
+						<textarea id="message" name="message" rows="6" required placeholder="志望理由書の現状や、知りたいこと・相談したいことをご記入ください。"></textarea>
+					</div>
+
+					<div class="privacy-note">
+						<a href="/privacy">プライバシーポリシー</a>に同意の上、送信してください。
+					</div>
+
+					<button type="submit" class="submit-btn">無料診断を申し込む</button>
+				</form>
+			</section>
+
+			<section class="info">
+				<h2>お申し込みの流れ</h2>
+				<ol class="steps">
+					<li>
+						<strong>フォーム送信</strong>
+						<span>必要事項をご入力の上、送信してください。</span>
+					</li>
+					<li>
+						<strong>診断レポート送付（3営業日以内）</strong>
+						<span>志望理由書（または現状ヒアリング）をもとに、無料の診断レポートをメールでお送りします。</span>
+					</li>
+					<li>
+						<strong>ご希望に応じて添削サービスのご案内</strong>
+						<span>無理な勧誘は一切ありません。サービスが合うと感じた方のみご利用ください。</span>
+					</li>
+				</ol>
+			</section>
+		</main>
+		<Footer />
+
+		<style>
+			main {
+				max-width: 720px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			.page-header {
+				text-align: center;
+				margin-bottom: 2.5rem;
+				padding-bottom: 2rem;
+				border-bottom: 1px solid #e5e7eb;
+			}
+			.page-header h1 {
+				font-size: 1.875rem;
+				margin: 0 0 0.5rem;
+				color: #0f172a;
+			}
+			.page-header p {
+				color: #64748b;
+				margin: 0;
+			}
+			.form-card {
+				background: white;
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+				padding: 2rem;
+				margin-bottom: 3rem;
+			}
+			.field {
+				margin-bottom: 1.25rem;
+			}
+			label {
+				display: block;
+				font-weight: 600;
+				margin-bottom: 0.4rem;
+				font-size: 0.95rem;
+				color: #1f2937;
+			}
+			.required {
+				background: #ef4444;
+				color: white;
+				font-size: 0.7rem;
+				font-weight: 600;
+				padding: 0.1rem 0.4rem;
+				border-radius: 3px;
+				margin-left: 0.4rem;
+			}
+			input, select, textarea {
+				width: 100%;
+				padding: 0.625rem 0.75rem;
+				border: 1px solid #d1d5db;
+				border-radius: 6px;
+				font-size: 1rem;
+				font-family: inherit;
+				background: white;
+				box-sizing: border-box;
+			}
+			input:focus, select:focus, textarea:focus {
+				outline: none;
+				border-color: #1a4d8f;
+				box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.1);
+			}
+			textarea {
+				resize: vertical;
+			}
+			.privacy-note {
+				font-size: 0.85rem;
+				color: #64748b;
+				margin: 1rem 0 1.5rem;
+			}
+			.privacy-note a {
+				color: #1a4d8f;
+			}
+			.submit-btn {
+				width: 100%;
+				background: #ef4444;
+				color: white;
+				padding: 0.875rem;
+				border: none;
+				border-radius: 8px;
+				font-size: 1rem;
+				font-weight: 700;
+				cursor: pointer;
+				transition: background 0.15s;
+			}
+			.submit-btn:hover {
+				background: #dc2626;
+			}
+			.info h2 {
+				font-size: 1.4rem;
+				color: #0f172a;
+				margin: 0 0 1rem;
+				padding-left: 0.75rem;
+				border-left: 4px solid #1a4d8f;
+			}
+			.steps {
+				list-style: none;
+				padding: 0;
+				counter-reset: step;
+			}
+			.steps li {
+				counter-increment: step;
+				padding-left: 3rem;
+				position: relative;
+				margin-bottom: 1rem;
+			}
+			.steps li::before {
+				content: counter(step);
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 2rem;
+				height: 2rem;
+				background: #1a4d8f;
+				color: white;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: 700;
+			}
+			.steps strong {
+				display: block;
+				color: #0f172a;
+				margin-bottom: 0.25rem;
+			}
+			.steps span {
+				color: #475569;
+				font-size: 0.9rem;
+				line-height: 1.7;
+			}
+		</style>
+	</body>
+</html>

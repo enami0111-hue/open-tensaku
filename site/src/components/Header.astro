@@ -1,0 +1,86 @@
+---
+import { SITE_TITLE, NAV_LINKS } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header>
+	<nav class="container">
+		<a href="/" class="brand" aria-label={SITE_TITLE}>
+			<span class="brand-mark">添</span>
+			<span class="brand-text">{SITE_TITLE}</span>
+		</a>
+		<div class="links">
+			{NAV_LINKS.map((link) => (
+				<HeaderLink href={link.href}>{link.label}</HeaderLink>
+			))}
+		</div>
+		<a href="/contact" class="cta-button">無料相談</a>
+	</nav>
+</header>
+
+<style>
+	header {
+		background: #fff;
+		border-bottom: 1px solid #e5e7eb;
+		position: sticky;
+		top: 0;
+		z-index: 50;
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.75rem 1rem;
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: 700;
+		font-size: 1.125rem;
+		color: #1a4d8f;
+		text-decoration: none;
+	}
+	.brand-mark {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		background: #1a4d8f;
+		color: white;
+		border-radius: 8px;
+		font-size: 1rem;
+		font-weight: 700;
+	}
+	.links {
+		display: flex;
+		gap: 0.25rem;
+		flex: 1;
+		justify-content: center;
+	}
+	.cta-button {
+		background: #ef4444;
+		color: white;
+		padding: 0.5rem 1rem;
+		border-radius: 6px;
+		font-weight: 600;
+		font-size: 0.875rem;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.cta-button:hover {
+		background: #dc2626;
+	}
+	@media (max-width: 720px) {
+		.links {
+			display: none;
+		}
+		.brand-text {
+			font-size: 1rem;
+		}
+	}
+</style>

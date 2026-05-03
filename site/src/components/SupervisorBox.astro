@@ -1,0 +1,56 @@
+---
+import { SUPERVISOR } from '../consts';
+
+interface Props {
+	variant?: 'short' | 'full';
+}
+const { variant = 'full' } = Astro.props;
+---
+
+<aside class="supervisor-box" aria-label="本記事監修者">
+	<div class="header">
+		<span class="badge">本記事監修者</span>
+	</div>
+	<p class="name">{SUPERVISOR.name}</p>
+	{variant === 'short' ? (
+		<p class="body short">{SUPERVISOR.short}</p>
+	) : (
+		<p class="body">{SUPERVISOR.full}</p>
+	)}
+</aside>
+
+<style>
+	.supervisor-box {
+		background: #f8fafc;
+		border-left: 4px solid #1a4d8f;
+		padding: 1.25rem 1.5rem;
+		border-radius: 0 8px 8px 0;
+		margin: 2rem 0;
+	}
+	.header {
+		margin-bottom: 0.5rem;
+	}
+	.badge {
+		display: inline-block;
+		background: #1a4d8f;
+		color: white;
+		font-size: 0.75rem;
+		padding: 0.2rem 0.6rem;
+		border-radius: 4px;
+		font-weight: 600;
+	}
+	.name {
+		font-weight: 700;
+		margin: 0.5rem 0;
+		color: #0f172a;
+	}
+	.body {
+		font-size: 0.95rem;
+		line-height: 1.75;
+		margin: 0;
+		color: #334155;
+	}
+	.body.short {
+		font-size: 0.9rem;
+	}
+</style>
