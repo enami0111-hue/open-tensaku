@@ -1,0 +1,2 @@
+# Railway build entry point — actual deps are in correction-app/backend/requirements.txt
+-r correction-app/backend/requirements.txt
