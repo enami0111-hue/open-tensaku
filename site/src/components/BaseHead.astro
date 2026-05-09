@@ -27,11 +27,39 @@ const ogImageUrl = new URL(image, Astro.site).toString();
 const fullTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 ---
 
+<!-- Google Analytics 4 -->
+{import.meta.env.PUBLIC_GA4_ID && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA4_ID}`}></script>
+    <script define:vars={{ ga4Id: import.meta.env.PUBLIC_GA4_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', ga4Id, { send_page_view: true });
+
+      // CTA クリックイベント（data-ga-event 属性がある要素を自動追跡）
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-ga-event]').forEach(function (el) {
+          el.addEventListener('click', function () {
+            gtag('event', el.dataset.gaEvent, {
+              event_category: el.dataset.gaCategory || 'cta',
+              event_label:    el.dataset.gaLabel   || '',
+            });
+          });
+        });
+      });
+    </script>
+  </>
+)}
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#1a4d8f" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="theme-color" content="#1B468C" />
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/logo-mark-32.png" />
+<link rel="icon" type="image/png" sizes="180x180" href="/brand/logo-mark-180.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/brand/logo-mark-512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/brand/logo-mark-180.png" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <meta name="generator" content={Astro.generator} />

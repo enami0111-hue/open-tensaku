@@ -34,6 +34,11 @@ venv/
 # correction-app は別プロジェクトとして管理（今回のリポジトリには含めない）
 correction-app/
 
+# 戦略・ノウハウ（非公開）
+CLAUDE.md
+docs/
+.claude/
+
 # 一時ファイル
 *.tmp
 *.log

@@ -21,6 +21,7 @@ const articles = defineCollection({
 			heroImage: z.optional(image()),
 			ogImage: z.string().optional(),
 			draft: z.boolean().optional().default(false),
+		showBanner: z.boolean().optional().default(false),
 		}),
 });
 

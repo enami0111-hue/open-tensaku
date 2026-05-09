@@ -1,5 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import { getUnivFromSlug } from '../consts';
 
 interface Props {
 	href: string;
@@ -7,12 +8,22 @@ interface Props {
 	description: string;
 	category: string;
 	date: Date;
+	slug?: string;
 }
-const { href, title, description, category, date } = Astro.props;
+const { href, title, description, category, date, slug } = Astro.props;
+
+// href から大学スラッグを推定（slug propが優先）
+const slugForUniv = slug ?? href.replace(/^\/articles\//, '').replace(/\/$/, '');
+const univ = getUnivFromSlug(slugForUniv);
+const accent = univ?.color ?? '#1a4d8f';
+const accentBg = univ?.bg ?? '#eff6ff';
 ---
 
-<a class="card" href={href}>
-	<span class="category">{category}</span>
+<a class="card" href={href} style={`--accent: ${accent}; --accent-bg: ${accentBg};`}>
+	<div class="tags">
+		{univ && <span class="univ-chip">{univ.short}</span>}
+		<span class="category">{category}</span>
+	</div>
 	<h3>{title}</h3>
 	<p>{description}</p>
 	<div class="meta">
@@ -25,36 +36,55 @@ const { href, title, description, category, date } = Astro.props;
 		display: block;
 		background: white;
 		border: 1px solid #e5e7eb;
+		border-left: 4px solid var(--accent);
 		border-radius: 12px;
 		padding: 1.25rem;
 		text-decoration: none;
 		color: inherit;
 		transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+		position: relative;
 	}
 	.card:hover {
 		transform: translateY(-2px);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-		border-color: #1a4d8f;
+		box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+		border-color: var(--accent);
+		border-left-color: var(--accent);
+	}
+	.tags {
+		display: flex;
+		gap: 0.4rem;
+		flex-wrap: wrap;
+		margin-bottom: 0.7rem;
+	}
+	.univ-chip {
+		display: inline-block;
+		background: var(--accent-bg);
+		color: var(--accent);
+		font-size: 0.72rem;
+		font-weight: 700;
+		padding: 0.18rem 0.55rem;
+		border-radius: 4px;
+		letter-spacing: 0.02em;
 	}
 	.category {
 		display: inline-block;
-		background: #eff6ff;
-		color: #1a4d8f;
-		font-size: 0.75rem;
+		background: #f1f5f9;
+		color: #475569;
+		font-size: 0.72rem;
 		font-weight: 600;
-		padding: 0.2rem 0.6rem;
+		padding: 0.18rem 0.55rem;
 		border-radius: 4px;
-		margin-bottom: 0.75rem;
 	}
 	h3 {
 		margin: 0 0 0.5rem;
-		font-size: 1.1rem;
-		line-height: 1.5;
+		font-size: 1.05rem;
+		line-height: 1.55;
 		color: #0f172a;
+		letter-spacing: -0.005em;
 	}
 	p {
-		font-size: 0.9rem;
-		line-height: 1.6;
+		font-size: 0.88rem;
+		line-height: 1.65;
 		color: #475569;
 		margin: 0 0 0.75rem;
 		display: -webkit-box;
@@ -63,7 +93,7 @@ const { href, title, description, category, date } = Astro.props;
 		overflow: hidden;
 	}
 	.meta {
-		font-size: 0.8rem;
+		font-size: 0.78rem;
 		color: #94a3b8;
 	}
 </style>

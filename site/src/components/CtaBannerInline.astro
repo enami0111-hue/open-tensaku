@@ -1,0 +1,275 @@
+---
+// Inline CTA Banner — Banner-A design
+// PC: horizontal layout (content left / button right)
+// SP: stacked layout (full-width button)
+---
+
+<aside class="cta-banner" aria-label="無料添削の案内">
+  <!-- PC layout -->
+  <div class="b-pc">
+    <div class="b-body">
+      <div class="b-mark">オープン添削</div>
+      <div class="b-eyebrow">推薦・総合型選抜の志望理由書</div>
+      <h3 class="b-headline">下書きを <em>無料で添削</em>。1 分で結果。</h3>
+      <div class="b-chips">
+        <span class="b-chip"><span class="dot"></span>完全無料</span>
+        <span class="b-chip"><span class="dot"></span>登録不要</span>
+        <span class="b-chip"><span class="dot"></span>1 分で結果</span>
+      </div>
+    </div>
+    <a class="b-cta" href="/"
+      data-ga-event="cta_click"
+      data-ga-label="article_inline">
+      無料で添削を試す
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 5l7 7-7 7"/>
+      </svg>
+      <svg class="sparks" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true">
+        <circle cx="170" cy="14" r="2"/>
+        <circle cx="158" cy="30" r="1.6"/>
+        <circle cx="186" cy="22" r="1.4"/>
+        <circle cx="150" cy="20" r="1.2"/>
+      </svg>
+    </a>
+  </div>
+  <!-- SP layout -->
+  <div class="b-sp">
+    <div class="b-mark">オープン添削</div>
+    <h3 class="b-headline">下書きを <em>無料で添削</em>。1 分で結果。</h3>
+    <div class="b-chips">
+      <span class="b-chip"><span class="dot"></span>完全無料</span>
+      <span class="b-chip"><span class="dot"></span>登録不要</span>
+      <span class="b-chip"><span class="dot"></span>1 分</span>
+    </div>
+    <a class="b-cta" href="/"
+      data-ga-event="cta_click"
+      data-ga-label="article_inline">
+      無料で添削を試す
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+</aside>
+
+<style>
+  :root {
+    --bn-navy: #0B2A6B;
+    --bn-navy-deep: #091F4F;
+    --bn-teal: #0FB8C2;
+    --bn-ink: #1C2530;
+    --bn-mute: #5A6573;
+    --bn-line: #E4E9EE;
+    --bn-line2: #D6DEE6;
+    --bn-mist: #F5F8FA;
+  }
+
+  .cta-banner {
+    border: 2px solid var(--bn-teal);
+    border-radius: 14px;
+    background:
+      radial-gradient(70% 90% at 100% 0%, rgba(15,184,194,.14), transparent 65%),
+      linear-gradient(135deg, #EBF9FA 0%, #F5FEFF 50%, #EBF9FA 100%);
+    position: relative;
+    overflow: hidden;
+    margin: 2.5rem 0;
+    box-shadow: 0 4px 20px -6px rgba(11,42,107,.14), 0 0 0 0 transparent;
+    transition: box-shadow .25s ease, transform .25s ease;
+  }
+  .cta-banner:hover {
+    box-shadow: 0 8px 28px -8px rgba(11,42,107,.22);
+    transform: translateY(-1px);
+  }
+  /* dot pattern top-right */
+  .cta-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(11,42,107,.09) 1px, transparent 1px);
+    background-size: 14px 14px;
+    -webkit-mask: linear-gradient(225deg, #000 0%, transparent 55%);
+    mask: linear-gradient(225deg, #000 0%, transparent 55%);
+    opacity: .7;
+    pointer-events: none;
+  }
+
+  /* PC layout — visible above 640px */
+  .b-pc {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 26px 28px;
+    position: relative;
+    z-index: 1;
+  }
+  /* SP layout — hidden above 640px */
+  .b-sp {
+    display: none;
+    padding: 18px 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .b-body { min-width: 0; }
+
+  .b-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--bn-navy);
+    letter-spacing: .04em;
+    margin-bottom: 6px;
+  }
+  .b-mark::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--bn-teal);
+    box-shadow: 0 0 0 3px rgba(15,184,194,.18);
+    flex-shrink: 0;
+  }
+
+  .b-eyebrow {
+    font-size: 11px;
+    color: var(--bn-mute);
+    font-weight: 500;
+    letter-spacing: .06em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .b-eyebrow::before {
+    content: "";
+    width: 14px;
+    height: 1px;
+    background: var(--bn-mute);
+    flex-shrink: 0;
+  }
+
+  .b-headline {
+    font-weight: 800;
+    color: var(--bn-navy);
+    margin: 0 0 10px;
+    line-height: 1.4;
+    font-size: 20px;
+    letter-spacing: -.01em;
+  }
+  .b-headline em {
+    font-style: normal;
+    color: var(--bn-teal);
+    background-image: linear-gradient(transparent 70%, rgba(15,184,194,.22) 70%);
+    background-repeat: no-repeat;
+    padding: 0 2px;
+  }
+
+  .b-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .b-chip {
+    font-size: 11px;
+    color: var(--bn-ink);
+    background: #fff;
+    border: 1px solid var(--bn-line);
+    padding: 3px 9px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 9999px;
+    background: var(--bn-teal);
+    flex-shrink: 0;
+  }
+
+  /* CTA button */
+  .b-cta {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1;        /* prose の line-height: 1.85 継承を防ぐ */
+    color: #fff;
+    background: var(--bn-navy);
+    border-radius: 9999px;
+    padding: 14px 22px 14px 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background .2s ease, transform .25s ease;
+    box-shadow: 0 4px 14px -4px rgba(11,42,107,.35);
+  }
+  .b-cta:hover {
+    background: var(--bn-navy-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -6px rgba(11,42,107,.4);
+    text-decoration: none;
+  }
+  .b-cta svg:first-of-type {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* sparkle */
+  .sparks {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  }
+  .sparks circle {
+    fill: var(--bn-teal);
+    opacity: 0;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  @keyframes spk1{0%{opacity:0;transform:translate(0,0) scale(.6)}30%{opacity:1}100%{opacity:0;transform:translate(8px,-12px) scale(1.2)}}
+  @keyframes spk2{0%{opacity:0;transform:translate(0,0) scale(.4)}40%{opacity:1}100%{opacity:0;transform:translate(-6px,-10px) scale(1)}}
+  @keyframes spk3{0%{opacity:0;transform:translate(0,0) scale(.5)}50%{opacity:1}100%{opacity:0;transform:translate(10px,8px) scale(1.1)}}
+  @keyframes spk4{0%{opacity:0;transform:translate(0,0) scale(.4)}40%{opacity:1}100%{opacity:0;transform:translate(-8px,6px) scale(.9)}}
+  .b-cta:hover .sparks circle:nth-child(1){animation:spk1 .9s ease-out}
+  .b-cta:hover .sparks circle:nth-child(2){animation:spk2 1.05s ease-out .08s}
+  .b-cta:hover .sparks circle:nth-child(3){animation:spk3 .95s ease-out .15s}
+  .b-cta:hover .sparks circle:nth-child(4){animation:spk4 1.1s ease-out .05s}
+
+  /* SP breakpoint */
+  @media (max-width: 640px) {
+    .b-pc { display: none; }
+    .b-sp {
+      display: block;
+    }
+    .b-sp .b-headline {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .b-sp .b-mark { margin-bottom: 8px; }
+    .b-sp .b-chips { margin-bottom: 14px; }
+    .b-sp .b-cta {
+      width: 100%;
+      justify-content: center;
+      padding: 15px;
+      font-size: 15px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-banner, .b-cta { transition: none; }
+    .sparks circle { animation: none !important; }
+  }
+</style>

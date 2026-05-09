@@ -4,27 +4,75 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
-import { SITE_TITLE } from '../../consts';
+import { SITE_TITLE, UNIVERSITIES } from '../../consts';
 
 const articles = (await getCollection('articles', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+// ディレクトリ先頭セグメントから「大学別カテゴリ」を判定
+const UNIV_DIR_MAP: Record<string, string> = Object.fromEntries(
+	UNIVERSITIES.map((u) => [u.slug, u.name])
+);
+const resolveCategory = (a: typeof articles[number]) => {
+	const head = a.id.split('/')[0];
+	if (UNIV_DIR_MAP[head]) return UNIV_DIR_MAP[head];
+	return a.data.category;
+};
+
 // カテゴリごとにグルーピング
-const categoryOrder = ['基礎知識', 'スケジュール', '志望理由書', '活動実績', '面接対策', '保護者向け'];
+const categoryOrder = [
+	'基礎知識',
+	'学部選び',
+	'スケジュール',
+	'志望理由書',
+	'早稲田大学',
+	'慶應義塾大学',
+	'上智大学',
+	'明治大学',
+	'青山学院大学',
+	'立教大学',
+	'中央大学',
+	'法政大学',
+	'活動実績',
+	'面接対策',
+	'保護者向け',
+];
 const grouped = categoryOrder
 	.map((cat) => ({
 		category: cat,
-		items: articles.filter((a) => a.data.category === cat),
+		items: articles.filter((a) => resolveCategory(a) === cat),
 	}))
 	.filter((g) => g.items.length > 0);
 
-const ungrouped = articles.filter((a) => !categoryOrder.includes(a.data.category));
+const ungrouped = articles.filter((a) => !categoryOrder.includes(resolveCategory(a)));
 if (ungrouped.length > 0) {
 	grouped.push({ category: 'その他', items: ungrouped });
 }
 
+// 大学グループ vs 非大学グループに分離
+const univNames = new Set(UNIVERSITIES.map((u) => u.name));
+const nonUnivGroups = grouped.filter((g) => !univNames.has(g.category));
+const univGroups = grouped.filter((g) => univNames.has(g.category));
+
+// カテゴリ名 → アンカーID
+const CAT_ID: Record<string, string> = {
+	'基礎知識': 'cat-basics',
+	'学部選び': 'cat-faculty',
+	'スケジュール': 'cat-schedule',
+	'志望理由書': 'cat-writing',
+	'活動実績': 'cat-activity',
+	'面接対策': 'cat-interview',
+	'保護者向け': 'cat-parent',
+	'その他': 'cat-other',
+};
+const getGroupId = (cat: string) => {
+	const univ = UNIVERSITIES.find((u) => u.name === cat);
+	return univ ? univ.slug : (CAT_ID[cat] ?? 'cat-other');
+};
+
 const pageTitle = '記事一覧';
-const pageDescription = '推薦・総合型選抜の志望理由書、面接、スケジュール、保護者サポートに関する記事一覧。採用人事10年×総合型選抜指導100名以上の講師が監修。';
+const pageDescription =
+	'推薦・総合型選抜の志望理由書、面接、スケジュール、保護者サポートに関する記事一覧。新卒採用10年・1,000人以上評価×総合型選抜指導100名以上の講師が監修。';
 ---
 
 <!doctype html>
@@ -40,34 +88,102 @@ const pageDescription = '推薦・総合型選抜の志望理由書、面接、�
 				<p>{SITE_TITLE} の全記事を、目的別カテゴリで整理しています。</p>
 			</header>
 
-			{grouped.map((group) => (
-				<section class="category-section">
-					<h2>{group.category}</h2>
+			<!-- クイックジャンプナビ -->
+			<nav class="jump-nav" aria-label="カテゴリジャンプ">
+				<div class="jump-row">
+					{nonUnivGroups.map((g) => (
+						<a href={`#${getGroupId(g.category)}`} class="jump-chip">{g.category}</a>
+					))}
+				</div>
+				{univGroups.length > 0 && (
+					<div class="jump-row">
+						{UNIVERSITIES.filter((u) => univGroups.some((g) => g.category === u.name)).map((u) => (
+							<a
+								href={`#${u.slug}`}
+								class="jump-chip jump-univ"
+								style={`--jc: ${u.color}; --jbg: ${u.bg};`}
+							>{u.short}</a>
+						))}
+					</div>
+				)}
+			</nav>
+
+			<!-- 非大学カテゴリ（常時展開） -->
+			{nonUnivGroups.map((group) => (
+				<section id={getGroupId(group.category)} class="category-section">
+					<h2>
+						{group.category}
+						<span class="section-count">{group.items.length}記事</span>
+					</h2>
 					<div class="grid">
 						{group.items.map((a) => (
 							<ArticleCard
 								href={`/articles/${a.id}/`}
+								slug={a.id}
 								title={a.data.title}
 								description={a.data.description}
-								category={a.data.category}
+								category={resolveCategory(a)}
 								date={a.data.date}
 							/>
 						))}
 					</div>
 				</section>
 			))}
+
+			<!-- 大学別セクション（折りたたみ式） -->
+			{univGroups.length > 0 && (
+				<div class="univ-group-wrapper">
+					<div class="univ-group-header">
+						<h2>大学別に探す</h2>
+						<span class="expand-hint">クリックで展開</span>
+					</div>
+					{UNIVERSITIES.map((u) => {
+						const grp = univGroups.find((g) => g.category === u.name);
+						if (!grp) return null;
+						return (
+							<details
+								id={u.slug}
+								class="univ-section"
+								style={`--accent: ${u.color}; --accent-bg: ${u.bg};`}
+							>
+								<summary>
+									<span class="univ-label">{u.name}</span>
+									<span class="count-badge">{grp.items.length}記事</span>
+									<svg class="chevron-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+										<path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</summary>
+								<div class="grid univ-grid">
+									{grp.items.map((a) => (
+										<ArticleCard
+											href={`/articles/${a.id}/`}
+											slug={a.id}
+											title={a.data.title}
+											description={a.data.description}
+											category={resolveCategory(a)}
+											date={a.data.date}
+										/>
+									))}
+								</div>
+							</details>
+						);
+					})}
+				</div>
+			)}
 		</main>
 		<Footer />
 
 		<style>
 			main {
-				max-width: 1100px;
+				max-width: 1200px;
 				margin: 0 auto;
 				padding: 2rem 1rem;
 			}
+
+			/* ページヘッダー */
 			.page-header {
 				text-align: center;
-				margin-bottom: 3rem;
+				margin-bottom: 2rem;
 				padding-bottom: 2rem;
 				border-bottom: 1px solid #e5e7eb;
 			}
@@ -80,20 +196,181 @@ const pageDescription = '推薦・総合型選抜の志望理由書、面接、�
 				color: #64748b;
 				margin: 0;
 			}
+
+			/* クイックジャンプナビ */
+			.jump-nav {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+				margin-bottom: 2.5rem;
+				padding: 0.875rem 1.25rem;
+				background: #f8fafc;
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+			}
+			.jump-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				align-items: center;
+			}
+			.jump-chip {
+				display: inline-block;
+				padding: 0.45rem 1.05rem;
+				border-radius: 999px;
+				font-size: 0.82rem;
+				font-weight: 700;
+				text-decoration: none;
+				background: white;
+				color: #475569;
+				border: 1.5px solid #d1d5db;
+				transition: background 0.15s, border-color 0.15s, color 0.15s;
+				white-space: nowrap;
+			}
+			.jump-chip:hover {
+				background: #f1f5f9;
+				border-color: #94a3b8;
+				color: #0f172a;
+			}
+			.jump-univ {
+				background: white;
+				color: var(--jc);
+				border: 2px solid var(--jc);
+			}
+			.jump-univ:hover {
+				background: var(--jbg);
+			}
+
+
+			/* 非大学カテゴリセクション */
 			.category-section {
 				margin-bottom: 3rem;
 			}
 			.category-section h2 {
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
 				font-size: 1.4rem;
 				color: #0f172a;
 				margin: 0 0 1rem;
 				padding-left: 0.75rem;
 				border-left: 4px solid #1a4d8f;
 			}
+			.section-count {
+				font-size: 0.72rem;
+				font-weight: 600;
+				background: #f1f5f9;
+				color: #64748b;
+				padding: 0.15rem 0.55rem;
+				border-radius: 999px;
+				border: 1px solid #e2e8f0;
+			}
+
+			/* 共通グリッド */
 			.grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 				gap: 1rem;
+			}
+
+			/* 大学グループ */
+			.univ-group-wrapper {
+				margin-top: 0.5rem;
+			}
+			.univ-group-header {
+				display: flex;
+				align-items: baseline;
+				gap: 0.75rem;
+				margin-bottom: 1rem;
+			}
+			.univ-group-header h2 {
+				font-size: 1.4rem;
+				color: #0f172a;
+				margin: 0;
+				padding-left: 0.75rem;
+				border-left: 4px solid #64748b;
+			}
+			.expand-hint {
+				font-size: 0.75rem;
+				color: #94a3b8;
+			}
+
+			/* 大学折りたたみセクション */
+			.univ-section {
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+				margin-bottom: 0.625rem;
+				overflow: hidden;
+			}
+			.univ-section > summary {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				padding: 0.875rem 1.25rem;
+				cursor: pointer;
+				list-style: none;
+				border-left: 4px solid var(--accent);
+				background: white;
+				user-select: none;
+				-webkit-user-select: none;
+				transition: background 0.15s;
+			}
+			.univ-section > summary:hover {
+				background: var(--accent-bg);
+			}
+			.univ-section > summary::-webkit-details-marker {
+				display: none;
+			}
+			.univ-section[open] > summary {
+				border-bottom: 1px solid #e5e7eb;
+			}
+			.univ-label {
+				font-size: 1rem;
+				font-weight: 700;
+				color: var(--accent);
+			}
+			.count-badge {
+				display: inline-block;
+				font-size: 0.72rem;
+				font-weight: 600;
+				background: white;
+				color: #64748b;
+				padding: 0.15rem 0.6rem;
+				border-radius: 999px;
+				border: 1px solid #e2e8f0;
+			}
+			.chevron-icon {
+				margin-left: auto;
+				color: var(--accent);
+				opacity: 0.65;
+				transition: transform 0.22s ease;
+				flex-shrink: 0;
+			}
+			.univ-section[open] .chevron-icon {
+				transform: rotate(180deg);
+			}
+			.univ-grid {
+				padding: 1rem;
+				background: white;
+			}
+
+			/* モバイル調整 */
+			@media (max-width: 600px) {
+				.jump-nav {
+					padding: 0.75rem 1rem;
+					gap: 0.4rem;
+				}
+				.jump-chip {
+					font-size: 0.72rem;
+					padding: 0.25rem 0.65rem;
+				}
+				.univ-label {
+					font-size: 0.92rem;
+				}
+				.univ-group-header h2,
+				.category-section h2 {
+					font-size: 1.2rem;
+				}
 			}
 		</style>
 	</body>

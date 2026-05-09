@@ -1,12 +1,23 @@
 ---
 import { CTA } from '../consts';
+import Icon from './icons/Icon.astro';
 ---
 
 <section class="cta">
 	<div class="inner">
+		<div class="badge">
+			<Icon name="sparkles" size={16} stroke="#fde68a" />
+			<span>無料添削キャンペーン実施中</span>
+		</div>
 		<h2>{CTA.heading}</h2>
 		<p>{CTA.body}</p>
-		<a href={CTA.buttonHref} class="btn">{CTA.buttonLabel}</a>
+		<a href={CTA.buttonHref} class="btn"
+			data-ga-event="cta_click"
+			data-ga-label="article_bottom">
+			{CTA.buttonLabel}
+			<Icon name="arrow-right" size={18} />
+		</a>
+		{CTA.note && <p class="note">{CTA.note}</p>}
 	</div>
 </section>
 
@@ -14,35 +25,74 @@ import { CTA } from '../consts';
 	.cta {
 		background: linear-gradient(135deg, #1a4d8f 0%, #0f3a6f 100%);
 		color: white;
-		padding: 2.5rem 1.5rem;
-		border-radius: 12px;
+		padding: 2.75rem 1.5rem;
+		border-radius: 16px;
 		margin: 3rem 0;
 		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+	.cta::before {
+		content: '';
+		position: absolute;
+		top: -40%;
+		right: -10%;
+		width: 320px;
+		height: 320px;
+		background: radial-gradient(circle, rgba(239, 68, 68, 0.18) 0%, transparent 70%);
+		pointer-events: none;
+	}
+	.inner {
+		position: relative;
+		z-index: 1;
+	}
+	.badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		background: rgba(253, 230, 138, 0.15);
+		border: 1px solid rgba(253, 230, 138, 0.35);
+		color: #fde68a;
+		font-size: 0.78rem;
+		font-weight: 600;
+		padding: 0.3rem 0.85rem;
+		border-radius: 999px;
+		margin-bottom: 1rem;
 	}
 	h2 {
 		color: white;
 		margin: 0 0 0.75rem;
-		font-size: 1.5rem;
+		font-size: 1.55rem;
+		line-height: 1.5;
 	}
 	p {
-		color: #cbd5e1;
+		color: #dbeafe;
 		margin: 0 0 1.5rem;
 		font-size: 1rem;
-		line-height: 1.7;
+		line-height: 1.75;
 	}
 	.btn {
-		display: inline-block;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 		background: #ef4444;
 		color: white;
-		padding: 0.875rem 2rem;
-		border-radius: 8px;
+		padding: 0.95rem 2.25rem;
+		border-radius: 999px;
 		font-weight: 700;
 		text-decoration: none;
-		font-size: 1rem;
-		transition: transform 0.15s, background 0.15s;
+		font-size: 1.05rem;
+		transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+		box-shadow: 0 6px 18px rgba(239, 68, 68, 0.35);
 	}
 	.btn:hover {
 		background: #dc2626;
 		transform: translateY(-2px);
+		box-shadow: 0 10px 22px rgba(239, 68, 68, 0.45);
+	}
+	.note {
+		margin-top: 0.85rem;
+		font-size: 0.82rem;
+		color: #93c5fd;
 	}
 </style>

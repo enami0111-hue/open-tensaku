@@ -1,0 +1,122 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const pageTitle = 'お申し込みありがとうございます';
+const pageDescription = '志望理由書の無料診断お申し込みを受け付けました。3営業日以内にメールをお送りします。';
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <BaseHead title={pageTitle} description={pageDescription} />
+    <!-- コンバージョンイベント（GA4） -->
+    {import.meta.env.PUBLIC_GA4_ID && (
+      <script define:vars={{ ga4Id: import.meta.env.PUBLIC_GA4_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('event', 'contact_form_submit', {
+          event_category: 'conversion',
+          event_label: '無料診断申し込み',
+        });
+      </script>
+    )}
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="thanks-card">
+        <div class="icon" aria-hidden="true">✓</div>
+        <h1>お申し込みありがとうございます</h1>
+        <p class="lead">
+          ご入力いただいたメールアドレスに、<strong>3営業日以内</strong>に診断レポートをお送りします。
+        </p>
+        <p class="note">
+          メールが届かない場合は、迷惑メールフォルダもご確認ください。
+        </p>
+        <div class="actions">
+          <a href="/articles" class="btn-articles">記事一覧を読む</a>
+          <a href="/" class="btn-home">トップへ戻る</a>
+        </div>
+      </div>
+    </main>
+    <Footer />
+
+    <style>
+      main {
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 3rem 1rem 5rem;
+      }
+      .thanks-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+      .icon {
+        width: 56px;
+        height: 56px;
+        background: #dcfce7;
+        color: #16a34a;
+        font-size: 1.75rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-weight: 700;
+      }
+      h1 {
+        font-size: 1.5rem;
+        color: #0f172a;
+        margin: 0 0 1rem;
+        line-height: 1.45;
+      }
+      .lead {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: #1f2937;
+        margin: 0 0 0.75rem;
+      }
+      .note {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin: 0 0 2rem;
+      }
+      .actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-articles, .btn-home {
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: background 0.15s, transform 0.15s;
+      }
+      .btn-articles {
+        background: #1a4d8f;
+        color: white;
+      }
+      .btn-articles:hover {
+        background: #0f3a6f;
+        transform: translateY(-1px);
+      }
+      .btn-home {
+        background: #f1f5f9;
+        color: #475569;
+        border: 1px solid #e2e8f0;
+      }
+      .btn-home:hover {
+        background: #e2e8f0;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+---
+import Icon from './icons/Icon.astro';
+
+interface Heading {
+	depth: number;
+	slug: string;
+	text: string;
+}
+
+interface Props {
+	headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// h2のみを目次に表示。本文中の「目次」見出し自体は除外
+const toc = headings.filter(
+	(h) => h.depth === 2 && !/^(目次|もくじ)$/.test(h.text.trim()),
+);
+---
+
+{toc.length > 1 && (
+	<details class="toc-mobile" aria-label="目次">
+		<summary>
+			<Icon name="list" size={16} />
+			<span>目次を開く</span>
+			<span class="toc-count">（{toc.length}項目）</span>
+		</summary>
+		<ol class="toc-list">
+			{toc.map((h, i) => (
+				<li>
+					<a href={`#${h.slug}`}>
+						<span class="n">{String(i + 1).padStart(2, '0')}</span>
+						{h.text}
+					</a>
+				</li>
+			))}
+		</ol>
+	</details>
+)}
+
+<style>
+	/* モバイル目次：1300px 以上では非表示（レイアウトのサイドバーに委ねる） */
+	.toc-mobile {
+		display: block;
+		background: #f8fafc;
+		border: 1px solid #e5e7eb;
+		border-radius: 10px;
+		margin: 0 0 1.5rem;
+	}
+	@media (min-width: 1300px) {
+		.toc-mobile {
+			display: none;
+		}
+	}
+	.toc-mobile summary {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.85rem 1rem;
+		cursor: pointer;
+		font-weight: 600;
+		color: #1a4d8f;
+		font-size: 0.92rem;
+		list-style: none;
+		user-select: none;
+	}
+	.toc-mobile summary::-webkit-details-marker { display: none; }
+	.toc-mobile summary::after {
+		content: '';
+		margin-left: auto;
+		width: 16px;
+		height: 16px;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a4d8f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+		background-size: contain;
+		background-repeat: no-repeat;
+		transition: transform 0.2s;
+	}
+	.toc-mobile[open] summary::after { transform: rotate(180deg); }
+	.toc-count {
+		color: #94a3b8;
+		font-weight: 500;
+		font-size: 0.8rem;
+	}
+	.toc-list {
+		list-style: none;
+		padding: 0 1rem 0.85rem;
+		margin: 0;
+	}
+	.toc-list li { margin: 0; }
+	.toc-list a {
+		display: flex;
+		align-items: baseline;
+		gap: 0.45rem;
+		padding: 0.38rem 0.25rem;
+		color: #475569;
+		text-decoration: none;
+		font-size: 0.9rem;
+		line-height: 1.45;
+		border-radius: 4px;
+		transition: color 0.12s;
+	}
+	.toc-list a:hover { color: #1a4d8f; }
+	.n {
+		flex-shrink: 0;
+		font-size: 0.72rem;
+		color: #94a3b8;
+		font-weight: 700;
+	}
+</style>

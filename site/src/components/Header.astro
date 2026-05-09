@@ -1,26 +1,44 @@
 ---
 import { SITE_TITLE, NAV_LINKS } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import Icon from './icons/Icon.astro';
 ---
 
 <header>
 	<nav class="container">
 		<a href="/" class="brand" aria-label={SITE_TITLE}>
-			<span class="brand-mark">添</span>
-			<span class="brand-text">{SITE_TITLE}</span>
+			<img src="/brand/logo-full.png" alt={SITE_TITLE} class="brand-img" width="160" height="40" />
 		</a>
 		<div class="links">
 			{NAV_LINKS.map((link) => (
 				<HeaderLink href={link.href}>{link.label}</HeaderLink>
 			))}
 		</div>
-		<a href="/contact" class="cta-button">無料相談</a>
+		<a href="/contact" class="cta-button">
+			<Icon name="mail" size={16} />
+			<span>無料相談</span>
+		</a>
+
+		<details class="mobile-nav" aria-label="メニュー">
+			<summary aria-label="メニューを開く">
+				<Icon name="menu" size={26} />
+			</summary>
+			<div class="mobile-panel">
+				<ul>
+					{NAV_LINKS.map((link) => (
+						<li><a href={link.href}>{link.label}</a></li>
+					))}
+					<li class="divider"></li>
+					<li><a href="/contact" class="mobile-cta">無料相談する</a></li>
+				</ul>
+			</div>
+		</details>
 	</nav>
 </header>
 
 <style>
 	header {
-		background: #fff;
+		background: #ffffff;
 		border-bottom: 1px solid #e5e7eb;
 		position: sticky;
 		top: 0;
@@ -32,29 +50,18 @@ import HeaderLink from './HeaderLink.astro';
 		justify-content: space-between;
 		gap: 1rem;
 		padding: 0.75rem 1rem;
-		max-width: 1100px;
+		max-width: 1200px;
 		margin: 0 auto;
 	}
 	.brand {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		font-weight: 700;
-		font-size: 1.125rem;
-		color: #1a4d8f;
 		text-decoration: none;
 	}
-	.brand-mark {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 32px;
-		height: 32px;
-		background: #1a4d8f;
-		color: white;
-		border-radius: 8px;
-		font-size: 1rem;
-		font-weight: 700;
+	.brand-img {
+		height: 44px;
+		width: auto;
+		display: block;
 	}
 	.links {
 		display: flex;
@@ -63,24 +70,100 @@ import HeaderLink from './HeaderLink.astro';
 		justify-content: center;
 	}
 	.cta-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
 		background: #ef4444;
 		color: white;
-		padding: 0.5rem 1rem;
-		border-radius: 6px;
+		padding: 0.5rem 1.05rem;
+		border-radius: 999px;
 		font-weight: 600;
 		font-size: 0.875rem;
 		text-decoration: none;
 		white-space: nowrap;
+		transition: background 0.15s, transform 0.15s;
 	}
 	.cta-button:hover {
+		background: #dc2626;
+		transform: translateY(-1px);
+	}
+	.mobile-nav {
+		display: none;
+		position: relative;
+	}
+	.mobile-nav summary {
+		list-style: none;
+		cursor: pointer;
+		padding: 0.4rem;
+		border-radius: 6px;
+		color: #1a4d8f;
+		display: flex;
+		align-items: center;
+	}
+	.mobile-nav summary::-webkit-details-marker {
+		display: none;
+	}
+	.mobile-nav summary:hover {
+		background: #f1f5f9;
+	}
+	.mobile-panel {
+		position: absolute;
+		top: calc(100% + 6px);
+		right: 0;
+		background: white;
+		border: 1px solid #e5e7eb;
+		border-radius: 12px;
+		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+		min-width: 200px;
+		padding: 0.5rem;
+		z-index: 100;
+	}
+	.mobile-panel ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.mobile-panel li {
+		margin: 0;
+	}
+	.mobile-panel li.divider {
+		height: 1px;
+		background: #e5e7eb;
+		margin: 0.4rem 0;
+	}
+	.mobile-panel a {
+		display: block;
+		padding: 0.65rem 0.85rem;
+		color: #1f2937;
+		text-decoration: none;
+		font-size: 0.95rem;
+		border-radius: 8px;
+		font-weight: 500;
+	}
+	.mobile-panel a:hover {
+		background: #f1f5f9;
+	}
+	.mobile-panel a.mobile-cta {
+		background: #ef4444;
+		color: white;
+		text-align: center;
+		font-weight: 700;
+	}
+	.mobile-panel a.mobile-cta:hover {
 		background: #dc2626;
 	}
 	@media (max-width: 720px) {
 		.links {
 			display: none;
 		}
-		.brand-text {
-			font-size: 1rem;
+		.cta-button {
+			display: none;
+		}
+		.mobile-nav {
+			display: block;
+		}
+		.brand-img {
+			height: 34px;
 		}
 	}
 </style>

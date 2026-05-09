@@ -5,16 +5,17 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 export async function getStaticPaths() {
 	const articles = await getCollection('articles', ({ data }) => !data.draft);
 	return articles.map((article) => ({
-		params: { slug: article.id },
+		// `<dir>/index` の場合は親パス（/articles/<dir>/）として扱う
+		params: { slug: article.id.replace(/\/index$/, '') },
 		props: article,
 	}));
 }
 type Props = CollectionEntry<'articles'>;
 
 const article = Astro.props;
-const { Content } = await render(article);
+const { Content, headings } = await render(article);
 ---
 
-<ArticleLayout {...article.data} slug={article.id}>
+<ArticleLayout {...article.data} slug={article.id} headings={headings}>
 	<Content />
 </ArticleLayout>
