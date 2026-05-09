@@ -1,0 +1,9 @@
+[build]
+  base    = "site"
+  command = "npm run build"
+  publish = "correction-app/frontend"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Netlify Forms は contact.astro の data-netlify="true" で自動検出
