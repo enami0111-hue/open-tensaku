@@ -15,6 +15,8 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Astro ビルド（correction-app/frontend/ に出力）
+ARG PUBLIC_GA4_ID
+ENV PUBLIC_GA4_ID=$PUBLIC_GA4_ID
 RUN cd site && npm ci && npm run build
 
 # FastAPI の起動

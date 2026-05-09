@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "[ -z \"$NETLIFY\" ] && python3 ../index_all_urls.py --credentials \"$GOOGLE_CREDENTIALS\" || true",
     "preview": "astro preview",
     "astro": "astro"
   },
