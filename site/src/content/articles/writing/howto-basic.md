@@ -1,8 +1,9 @@
 ---
-title: "志望理由書の書き方｜合格者の3原則・例文・チェックリスト完全版"
+title: "志望理由書の書き方【総合型選抜】合格者が使う構成・例文・NG例"
 category: "志望理由書"
 audience: "高校生 / 保護者"
 date: "2026-05-08"
+heroImage: "/thumbnails/writing/howto-basic.png"
 description: "志望理由書の書き方を例文・チェックリスト付きで完全解説。合格者が実践する3原則・学部別Before/After10選・文字数別テンプレート・15項目チェックリスト・FAQ5問まで網羅した決定版ガイド。"
 keywords:
   - "志望理由書 書き方"

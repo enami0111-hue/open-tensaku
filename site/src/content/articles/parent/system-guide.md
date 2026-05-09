@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜とは？保護者向け仕組みと選抜の違い"
+title: "総合型選抜とは？保護者向けに仕組み・一般入試との違いをやさしく解説"
 category: "保護者向け"
 audience: "保護者"
 date: "2026-03-26"
+heroImage: "/thumbnails/parent/system-guide.png"
 description: "総合型選抜の仕組みを保護者向けにデータで解説。一般選抜との違い、合格者の割合、評価基準を文科省データとともに紹介します。"
 ---
 

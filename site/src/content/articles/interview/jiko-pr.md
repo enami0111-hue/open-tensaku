@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜の面接 自己PRの作り方｜例文3パターン"
+title: "総合型選抜の面接 自己PRの答え方｜1分例文3パターンと作り方"
 category: "面接対策"
 audience: "高校生 / 保護者"
 date: "2026-05-08"
+heroImage: "/thumbnails/interview/jiko-pr.png"
 description: "総合型選抜の面接で使える自己PRの作り方を例文付きで解説。自己紹介との違い・1分テンプレート・NG例・採用担当者10年の評価視点まで、Before/After3パターンで徹底解説。"
 keywords:
   - "総合型選抜 面接 自己PR"

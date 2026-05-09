@@ -1,8 +1,9 @@
 ---
-title: "経済・経営・商学部の違い｜早慶上智MARCH学部名一覧と選び方"
+title: "経済・経営・商学部の違いを比較｜学ぶ内容・向いている人・就職の違い"
 category: "学部選び"
 audience: "高校生 / 保護者"
 date: "2026-05-08"
+heroImage: "/thumbnails/faculty-guide/keizai-keiei-shogaku.png"
 description: "経済学部・経営学部・商学部の違いを早慶上智MARCHの実際の学部名・カリキュラムで比較。新卒採用10年・1,000人以上評価の監修者が就職・資格・志望理由書の書き方まで徹底解説。"
 keywords:
   - "経済学部 経営学部 商学部 違い"

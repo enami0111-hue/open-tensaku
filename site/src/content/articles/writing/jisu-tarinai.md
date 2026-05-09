@@ -1,8 +1,9 @@
 ---
-title: "志望理由書の字数が足りない時の増やし方｜原因別7つの解決策"
+title: "志望理由書の字数が足りない時の増やし方｜原因別7つの直し方と例文"
 category: "志望理由書"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/writing/jisu-tarinai.png"
 description: "志望理由書の字数が足りない・増やせない受験生向けに、原因を診断してから解決する7つの具体的テクニックを解説。Before/After例文・400字〜1200字テンプレート・言い換え表現集付き。"
 keywords:
   - "志望理由書 字数 足りない"

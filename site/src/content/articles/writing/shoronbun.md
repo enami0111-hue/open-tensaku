@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜の小論文の書き方｜構成・例文・字数別テンプレ"
+title: "総合型選抜の小論文の書き方｜構成テンプレ・例文・字数別対策"
 category: "志望理由書"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/writing/shoronbun.png"
 description: "総合型選抜の小論文の書き方を構成・テンプレート・字数別例で解説。一般入試との違い・序論〜結論の展開方法・NG表現・段落ごとの修正Before/After・15項目自己チェックリスト付き。"
 keywords:
   - "小論文 書き方 総合型選抜"

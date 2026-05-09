@@ -1,8 +1,9 @@
 ---
-title: "志望理由書の構成・テンプレート｜段落別字数配分と例文"
+title: "志望理由書の構成テンプレート｜段落別の字数配分と合格例文"
 category: "志望理由書"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/writing/kosei-template.png"
 description: "志望理由書の構成とテンプレートを段落別の字数配分付きで解説。400字〜1200字の字数別テンプレート・4段構成の書き方・NGパターン・面接との連動対策まで、合格者の構成を徹底分析。"
 keywords:
   - "志望理由書 構成"

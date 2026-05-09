@@ -19,7 +19,7 @@ const toc = headings.filter(
 );
 ---
 
-{toc.length > 1 && (
+{toc.length >= 1 && (
 	<details class="toc-mobile" aria-label="目次">
 		<summary>
 			<Icon name="list" size={16} />

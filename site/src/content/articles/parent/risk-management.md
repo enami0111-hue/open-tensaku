@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜に落ちたら？併願戦略とリスク管理"
+title: "総合型選抜に落ちたら終わり？保護者が知るべき併願戦略とリスク管理"
 category: "保護者向け"
 audience: "保護者"
 date: "2026-03-26"
+heroImage: "/thumbnails/parent/risk-management.png"
 description: "総合型選抜に不合格だった場合の選択肢と、一般選抜への切り替え方法を具体的に解説。併願できる大学の条件やスケジュール管理のポイントも紹介します。"
 ---
 

@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜入学後の成績・就職｜データで検証"
+title: "総合型選抜で入学後は大丈夫？成績・就職・ミスマッチをデータで検証"
 category: "保護者向け"
 audience: "保護者"
 date: "2026-03-26"
+heroImage: "/thumbnails/parent/after-admission.png"
 description: "総合型選抜で入学した学生は大学でついていけるのか？文科省の調査データをもとに、入学後のGPA・退学率・就職率を一般選抜と比較して検証します。"
 ---
 

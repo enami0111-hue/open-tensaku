@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜の出願時期と日程｜早慶上智MARCH一覧"
+title: "総合型選抜の出願時期・日程一覧｜早慶上智MARCHはいつ始まる？"
 category: "スケジュール"
 audience: "高校生 / 保護者"
 date: "2026-05-07"
+heroImage: "/thumbnails/schedule/nyushi-jiki.png"
 description: "総合型選抜（AO入試）の出願時期・試験日程を大学別に解説。9月出願解禁の背景から合格発表まで、早慶上智MARCHの傾向と逆算スケジュールをまとめました。"
 keywords:
   - "総合型選抜 出願時期"

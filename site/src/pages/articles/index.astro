@@ -9,7 +9,6 @@ import { SITE_TITLE, UNIVERSITIES } from '../../consts';
 const articles = (await getCollection('articles', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-// ディレクトリ先頭セグメントから「大学別カテゴリ」を判定
 const UNIV_DIR_MAP: Record<string, string> = Object.fromEntries(
 	UNIVERSITIES.map((u) => [u.slug, u.name])
 );
@@ -19,23 +18,10 @@ const resolveCategory = (a: typeof articles[number]) => {
 	return a.data.category;
 };
 
-// カテゴリごとにグルーピング
+const themeOrder = ['基礎知識', '学部選び', 'スケジュール', '志望理由書', '活動実績', '面接対策', '保護者向け'];
 const categoryOrder = [
-	'基礎知識',
-	'学部選び',
-	'スケジュール',
-	'志望理由書',
-	'早稲田大学',
-	'慶應義塾大学',
-	'上智大学',
-	'明治大学',
-	'青山学院大学',
-	'立教大学',
-	'中央大学',
-	'法政大学',
-	'活動実績',
-	'面接対策',
-	'保護者向け',
+	...themeOrder,
+	...UNIVERSITIES.map((u) => u.name),
 ];
 const grouped = categoryOrder
 	.map((cat) => ({
@@ -49,26 +35,65 @@ if (ungrouped.length > 0) {
 	grouped.push({ category: 'その他', items: ungrouped });
 }
 
-// 大学グループ vs 非大学グループに分離
+// NEW判定（公開日が7日以内）
+const NEW_THRESHOLD_DAYS = 7;
+const now = new Date();
+const isNewArticle = (a: typeof articles[number]): boolean => {
+	const diff = now.valueOf() - a.data.date.valueOf();
+	return diff <= NEW_THRESHOLD_DAYS * 24 * 60 * 60 * 1000;
+};
+
 const univNames = new Set(UNIVERSITIES.map((u) => u.name));
 const nonUnivGroups = grouped.filter((g) => !univNames.has(g.category));
 const univGroups = grouped.filter((g) => univNames.has(g.category));
 
-// カテゴリ名 → アンカーID
-const CAT_ID: Record<string, string> = {
-	'基礎知識': 'cat-basics',
-	'学部選び': 'cat-faculty',
-	'スケジュール': 'cat-schedule',
-	'志望理由書': 'cat-writing',
-	'活動実績': 'cat-activity',
-	'面接対策': 'cat-interview',
-	'保護者向け': 'cat-parent',
-	'その他': 'cat-other',
+const CAT_KEY: Record<string, string> = {
+	'基礎知識': 'basics',
+	'学部選び': 'faculty',
+	'スケジュール': 'schedule',
+	'志望理由書': 'writing',
+	'活動実績': 'activity',
+	'面接対策': 'interview',
+	'保護者向け': 'parent',
+	'その他': 'other',
 };
 const getGroupId = (cat: string) => {
 	const univ = UNIVERSITIES.find((u) => u.name === cat);
-	return univ ? univ.slug : (CAT_ID[cat] ?? 'cat-other');
+	return univ ? univ.slug : `cat-${CAT_KEY[cat] ?? 'other'}`;
 };
+const getCatKey = (cat: string) => {
+	const univ = UNIVERSITIES.find((u) => u.name === cat);
+	return univ ? univ.slug : (CAT_KEY[cat] ?? 'other');
+};
+
+const stripMd = (s: string): string =>
+	s
+		.replace(/^---[\s\S]*?---\s*/m, '')
+		.replace(/```[\s\S]*?```/g, ' ')
+		.replace(/`[^`]*`/g, ' ')
+		.replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+		.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+		.replace(/<[^>]+>/g, ' ')
+		.replace(/[#>*_~\-|]+/g, ' ')
+		.replace(/\s+/g, ' ')
+		.trim();
+
+const searchIndex = articles.map((a) => {
+	const head = a.id.split('/')[0];
+	const univSlug = UNIV_DIR_MAP[head] ? head : '';
+	const cat = resolveCategory(a);
+	const catKey = getCatKey(cat);
+	const body500 = stripMd(a.body ?? '').slice(0, 500);
+	return {
+		i: a.id,
+		t: a.data.title,
+		d: a.data.description,
+		k: (a.data.keywords ?? []).join(' '),
+		b: body500,
+		u: univSlug,
+		c: catKey,
+	};
+});
 
 const pageTitle = '記事一覧';
 const pageDescription =
@@ -83,60 +108,72 @@ const pageDescription =
 	<body>
 		<Header />
 		<main>
-			<header class="page-header">
-				<h1>記事一覧</h1>
-				<p>{SITE_TITLE} の全記事を、目的別カテゴリで整理しています。</p>
-			</header>
+			<!-- 最近見た記事 -->
+			<section id="recent-section" class="recent-section" hidden aria-label="最近見た記事">
+				<h2 class="recent-heading">最近見た記事</h2>
+				<div class="grid recent-grid" id="recent-grid"></div>
+			</section>
 
-			<!-- クイックジャンプナビ -->
-			<nav class="jump-nav" aria-label="カテゴリジャンプ">
-				<div class="jump-row">
-					{nonUnivGroups.map((g) => (
-						<a href={`#${getGroupId(g.category)}`} class="jump-chip">{g.category}</a>
-					))}
+<section class="filter-bar" aria-label="記事の絞り込み">
+				<div class="filter-row search-row">
+					<label class="search-label" for="article-search">
+						<svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+							<circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2"/>
+							<path d="m17 17-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+						</svg>
+						<input
+							id="article-search"
+							type="search"
+							placeholder={`${articles.length}記事の中から検索（タイトル・内容・キーワード）`}
+							autocomplete="off"
+						/>
+					</label>
 				</div>
-				{univGroups.length > 0 && (
-					<div class="jump-row">
+				<div class="filter-status" aria-live="polite">
+					<button type="button" class="reset-btn" id="reset-filters" hidden>条件をリセット</button>
+				</div>
+			</section>
+
+			<div class="chips-sticky" aria-label="カテゴリ絞り込み">
+				<div class="filter-row">
+					<span class="filter-label">大学</span>
+					<div class="chip-group" data-axis="u">
 						{UNIVERSITIES.filter((u) => univGroups.some((g) => g.category === u.name)).map((u) => (
-							<a
-								href={`#${u.slug}`}
-								class="jump-chip jump-univ"
+							<button
+								type="button"
+								class="chip chip-univ"
+								data-value={u.slug}
 								style={`--jc: ${u.color}; --jbg: ${u.bg};`}
-							>{u.short}</a>
+								aria-pressed="false"
+							>{u.short}</button>
 						))}
 					</div>
-				)}
-			</nav>
+				</div>
 
-			<!-- 非大学カテゴリ（常時展開） -->
-			{nonUnivGroups.map((group) => (
-				<section id={getGroupId(group.category)} class="category-section">
-					<h2>
-						{group.category}
-						<span class="section-count">{group.items.length}記事</span>
-					</h2>
-					<div class="grid">
-						{group.items.map((a) => (
-							<ArticleCard
-								href={`/articles/${a.id}/`}
-								slug={a.id}
-								title={a.data.title}
-								description={a.data.description}
-								category={resolveCategory(a)}
-								date={a.data.date}
-							/>
+				<div class="filter-row">
+					<span class="filter-label">テーマ</span>
+					<div class="chip-group" data-axis="t">
+						{nonUnivGroups.filter((g) => g.category !== 'その他').map((g) => (
+							<button
+								type="button"
+								class="chip"
+								data-value={getCatKey(g.category)}
+								aria-pressed="false"
+							>{g.category}</button>
 						))}
 					</div>
-				</section>
-			))}
+				</div>
+			</div>
 
-			<!-- 大学別セクション（折りたたみ式） -->
+
+			<p class="no-results" id="no-results" hidden>条件にマッチする記事がありません。</p>
+
 			{univGroups.length > 0 && (
-				<div class="univ-group-wrapper">
+				<div class="univ-group-wrapper" id="univ-group-wrapper">
 					<div class="univ-group-header">
 						<h2>大学別に探す</h2>
-						<span class="expand-hint">クリックで展開</span>
 					</div>
+					<div class="univ-sections-grid">
 					{UNIVERSITIES.map((u) => {
 						const grp = univGroups.find((g) => g.category === u.name);
 						if (!grp) return null;
@@ -144,6 +181,8 @@ const pageDescription =
 							<details
 								id={u.slug}
 								class="univ-section"
+								data-section
+								data-section-univ={u.slug}
 								style={`--accent: ${u.color}; --accent-bg: ${u.bg};`}
 							>
 								<summary>
@@ -155,23 +194,335 @@ const pageDescription =
 								</summary>
 								<div class="grid univ-grid">
 									{grp.items.map((a) => (
-										<ArticleCard
-											href={`/articles/${a.id}/`}
-											slug={a.id}
-											title={a.data.title}
-											description={a.data.description}
-											category={resolveCategory(a)}
-											date={a.data.date}
-										/>
+										<div
+											class="card-wrap"
+											data-card
+											data-id={a.id}
+											data-univ={u.slug}
+											data-cat={getCatKey(resolveCategory(a))}
+										>
+											<ArticleCard
+												href={`/articles/${a.id}/`}
+												slug={a.id}
+												title={a.data.title}
+												description={a.data.description}
+												category={resolveCategory(a)}
+												date={a.data.date}
+												heroImage={a.data.heroImage}
+												isNew={isNewArticle(a)}
+											/>
+										</div>
 									))}
 								</div>
 							</details>
 						);
 					})}
+					</div>
 				</div>
 			)}
+
+			{nonUnivGroups.map((group) => (
+				<section
+					id={getGroupId(group.category)}
+					class="category-section"
+					data-section
+					data-section-cat={getCatKey(group.category)}
+				>
+					<h2>
+						{group.category}
+						<span class="section-count">{group.items.length}記事</span>
+					</h2>
+					<div class="grid">
+						{group.items.map((a) => {
+							const head = a.id.split('/')[0];
+							const univSlug = UNIV_DIR_MAP[head] ? head : '';
+							return (
+								<div
+									class="card-wrap"
+									data-card
+									data-id={a.id}
+									data-univ={univSlug}
+									data-cat={getCatKey(resolveCategory(a))}
+								>
+									<ArticleCard
+										href={`/articles/${a.id}/`}
+										slug={a.id}
+										title={a.data.title}
+										description={a.data.description}
+										category={resolveCategory(a)}
+										date={a.data.date}
+										heroImage={a.data.heroImage}
+									/>
+								</div>
+							);
+						})}
+					</div>
+				</section>
+			))}
 		</main>
 		<Footer />
+
+		<script id="articles-index" type="application/json" set:html={JSON.stringify(searchIndex)}></script>
+
+		<script is:inline>
+			(function () {
+				const indexEl = document.getElementById('articles-index');
+				if (!indexEl) return;
+				let INDEX = [];
+				try { INDEX = JSON.parse(indexEl.textContent || '[]'); } catch (e) {}
+
+				const searchInput = document.getElementById('article-search');
+				const resetBtn = document.getElementById('reset-filters');
+				const noResults = document.getElementById('no-results');
+				const univWrapper = document.getElementById('univ-group-wrapper');
+				const cardWraps = Array.from(document.querySelectorAll('[data-card]'));
+				const sections = Array.from(document.querySelectorAll('[data-section]'));
+
+				const indexById = new Map(INDEX.map((it) => [it.i, it]));
+				const state = { q: '', u: new Set(), t: new Set() };
+				const expandedSections = new Set();
+				let searchTimer = null;
+
+				// ─── URL state ───────────────────────────────────────────────
+				function readURL() {
+					const p = new URLSearchParams(location.search);
+					state.q = (p.get('q') || '').trim();
+					state.u = new Set((p.get('u') || '').split(',').filter(Boolean));
+					state.t = new Set((p.get('t') || '').split(',').filter(Boolean));
+				}
+				function writeURL() {
+					const p = new URLSearchParams();
+					if (state.q) p.set('q', state.q);
+					if (state.u.size) p.set('u', Array.from(state.u).join(','));
+					if (state.t.size) p.set('t', Array.from(state.t).join(','));
+					const qs = p.toString();
+					history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+				}
+				function isFiltering() {
+					return state.q !== '' || state.u.size > 0 || state.t.size > 0;
+				}
+
+				// ─── Matching ────────────────────────────────────────────────
+				function matches(card) {
+					const id = card.dataset.id;
+					const item = indexById.get(id);
+					if (!item) return false;
+					const u = card.dataset.univ || '';
+					const c = card.dataset.cat || '';
+					if (state.u.size && !state.u.has(u)) return false;
+					if (state.t.size && !state.t.has(c)) return false;
+					if (state.q) {
+						const hay = (item.t + ' ' + item.d + ' ' + item.k + ' ' + item.b).toLowerCase();
+						const terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+						if (!terms.every((t) => hay.includes(t))) return false;
+					}
+					return true;
+				}
+
+				// ─── Highlight helpers ───────────────────────────────────────
+				function escHtml(s) {
+					return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+				}
+				function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+				function highlightText(text, terms) {
+					if (!terms.length) return escHtml(text);
+					return escHtml(text).replace(
+						new RegExp('(' + terms.map(escRe).join('|') + ')', 'gi'),
+						'<mark>$1</mark>'
+					);
+				}
+				function applyHighlight() {
+					const terms = state.q ? state.q.trim().toLowerCase().split(/\s+/).filter(Boolean) : [];
+					cardWraps.forEach((wrap) => {
+						const h3 = wrap.querySelector('h3');
+						const p = wrap.querySelector('p');
+						[h3, p].forEach((el) => {
+							if (!el) return;
+							if (!el.dataset.orig) el.dataset.orig = el.textContent || '';
+							el.innerHTML = wrap.hidden ? escHtml(el.dataset.orig) : highlightText(el.dataset.orig, terms);
+						});
+					});
+				}
+
+				// ─── list-mode クラス付与（隠さず全件表示・4件目以降をリスト形式）──
+				function applyOverflow() {
+					const explicitView = document.body.dataset.view; // 'card'|'list'|undefined
+					sections.forEach((sec) => {
+						// 非表示セクションのクリーンアップ
+						if (sec.hidden) {
+							sec.querySelectorAll('.list-mode').forEach((c) => c.classList.remove('list-mode'));
+							const btn = sec.querySelector('.show-more-btn');
+							if (btn) btn.remove();
+							return;
+						}
+						// 既存の show-more-btn を除去（不要になった）
+						const btn = sec.querySelector('.show-more-btn');
+						if (btn) btn.remove();
+
+						const isUnivSection = sec.tagName === 'DETAILS';
+						const visibleCards = Array.from(sec.querySelectorAll('[data-card]')).filter((c) => !c.hidden);
+						visibleCards.forEach((card, i) => {
+							card.classList.remove('overflow-hidden'); // 全件表示
+							// 大学別セクションは全件リスト型、その他は4件目以降のみリスト型
+							card.classList.toggle('list-mode', isUnivSection || (!explicitView && i >= 3));
+						});
+					});
+				}
+
+				// ─── Filter apply ────────────────────────────────────────────
+				function applyFilters() {
+					expandedSections.clear();
+					let visible = 0;
+					cardWraps.forEach((c) => {
+						const ok = matches(c);
+						c.hidden = !ok;
+						if (ok) visible++;
+					});
+					let anyUnivVisible = false;
+					sections.forEach((sec) => {
+						const innerCards = sec.querySelectorAll('[data-card]');
+						const anyVisible = Array.from(innerCards).some((c) => !c.hidden);
+						sec.hidden = !anyVisible;
+						if (sec.tagName === 'DETAILS') {
+							if (anyVisible) {
+								anyUnivVisible = true;
+								if (isFiltering()) sec.open = true;
+							} else {
+								sec.open = false;
+							}
+						}
+					});
+					if (univWrapper) univWrapper.hidden = !anyUnivVisible;
+					if (noResults) noResults.hidden = visible !== 0;
+					if (resetBtn) resetBtn.hidden = !isFiltering();
+					applyOverflow();
+					applyHighlight();
+
+				}
+
+				// ─── Chip sync ───────────────────────────────────────────────
+				function syncChips() {
+					if (searchInput && searchInput.value !== state.q) searchInput.value = state.q;
+				}
+
+				// ─── Bind events ─────────────────────────────────────────────
+				function bind() {
+					if (searchInput) {
+						searchInput.addEventListener('input', () => {
+							clearTimeout(searchTimer);
+							searchTimer = setTimeout(() => {
+								state.q = searchInput.value.trim();
+								writeURL();
+								applyFilters();
+							}, 250);
+						});
+					}
+					document.querySelectorAll('.chip-group').forEach((grp) => {
+						const axis = grp.dataset.axis;
+						grp.querySelectorAll('.chip').forEach((btn) => {
+							btn.addEventListener('click', () => {
+								const v = btn.dataset.value;
+								let targetId = axis === 'u' ? v : 'cat-' + v;
+								// 大学chipはdetailsを展開してから全記事表示
+								if (axis === 'u') {
+									const det = document.getElementById(v);
+									if (det && det.tagName === 'DETAILS') {
+										det.open = true;
+										expandedSections.add(v);
+										applyOverflow();
+									}
+									// univWrapperが非表示なら表示
+									if (univWrapper && univWrapper.hidden) {
+										univWrapper.hidden = false;
+									}
+								}
+								const target = document.getElementById(targetId);
+								if (target) {
+									setTimeout(() => {
+										const headerH = document.querySelector('header')?.offsetHeight ?? 64;
+										const chipsH = document.querySelector('.chips-sticky')?.offsetHeight ?? 0;
+										const offset = headerH + chipsH + 12;
+										const y = target.getBoundingClientRect().top + window.scrollY - offset;
+										window.scrollTo({ top: y, behavior: 'smooth' });
+									}, 30);
+								}
+							});
+						});
+					});
+					if (resetBtn) {
+						resetBtn.addEventListener('click', () => {
+							state.q = '';
+							state.u.clear();
+							state.t.clear();
+							if (searchInput) searchInput.value = '';
+							syncChips();
+							writeURL();
+							applyFilters();
+						});
+					}
+					// 大学名クリック（summary）→ 全記事表示
+					sections.forEach((sec) => {
+						if (sec.tagName === 'DETAILS') {
+							sec.addEventListener('toggle', () => {
+								if (sec.open && sec.id) {
+									expandedSections.add(sec.id);
+									applyOverflow();
+								}
+							});
+						}
+					});
+					// Card click → save to recent
+					document.querySelectorAll('[data-card] a.card').forEach((a) => {
+						a.addEventListener('click', () => {
+							const wrap = a.closest('[data-card]');
+							const id = wrap && wrap.dataset.id;
+							if (!id) return;
+							let recent = getRecent().filter((x) => x !== id);
+							recent.unshift(id);
+							recent = recent.slice(0, RECENT_MAX);
+							try { localStorage.setItem(RECENT_KEY, JSON.stringify(recent)); } catch(e) {}
+						});
+					});
+				}
+
+				// ─── Recent articles ─────────────────────────────────────────
+				const RECENT_KEY = 'ot.recent';
+				const RECENT_MAX = 3;
+				function getRecent() {
+					try {
+						const arr = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+						return Array.isArray(arr) ? arr : [];
+					} catch(e) { return []; }
+				}
+				function renderRecent() {
+					const sec = document.getElementById('recent-section');
+					const grid = document.getElementById('recent-grid');
+					if (!sec || !grid) return;
+					const ids = getRecent().slice(0, RECENT_MAX);
+					if (!ids.length) { sec.hidden = true; return; }
+					grid.innerHTML = '';
+					let count = 0;
+					ids.forEach((id) => {
+						const orig = document.querySelector('[data-card][data-id="' + CSS.escape(id) + '"] a.card');
+						if (!orig) return;
+						const clone = orig.cloneNode(true);
+						const wrap = document.createElement('div');
+						wrap.className = 'card-wrap';
+						wrap.appendChild(clone);
+						grid.appendChild(wrap);
+						count++;
+					});
+					sec.hidden = count === 0;
+				}
+
+				// ─── Init ────────────────────────────────────────────────────
+				readURL();
+				syncChips();
+				bind();
+				applyFilters();
+				renderRecent();
+			})();
+		</script>
 
 		<style>
 			main {
@@ -180,122 +531,258 @@ const pageDescription =
 				padding: 2rem 1rem;
 			}
 
-			/* ページヘッダー */
-			.page-header {
-				text-align: center;
-				margin-bottom: 2rem;
-				padding-bottom: 2rem;
-				border-bottom: 1px solid #e5e7eb;
-			}
-			.page-header h1 {
-				font-size: 2rem;
-				margin: 0 0 0.5rem;
-				color: #0f172a;
-			}
-			.page-header p {
-				color: #64748b;
-				margin: 0;
-			}
-
-			/* クイックジャンプナビ */
-			.jump-nav {
+			/* sticky なチップ群（大学・テーマ） */
+			.chips-sticky {
+				position: sticky;
+				top: 64px;
+				z-index: 50;
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem;
+				margin-bottom: 1.25rem;
+				padding: 0.75rem 1.25rem;
+				background: rgba(248, 250, 252, 0.96);
+				-webkit-backdrop-filter: blur(8px);
+				backdrop-filter: blur(8px);
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+			}
+
+			/* 最近見た記事 */
+			.recent-section {
 				margin-bottom: 2.5rem;
-				padding: 0.875rem 1.25rem;
+				padding: 1.25rem;
+				background: linear-gradient(135deg, #f8fafc, #eff6ff);
+				border-radius: 12px;
+				border: 1px solid #e5e7eb;
+			}
+			.recent-heading {
+				font-size: 1rem;
+				font-weight: 700;
+				color: #1a4d8f;
+				margin: 0 0 1rem;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+			.recent-heading::before {
+				content: '🕒';
+			}
+			.recent-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			@media (max-width: 700px) {
+				.recent-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			/* フィルタバー */
+			.filter-bar {
+				display: flex;
+				flex-direction: column;
+				gap: 0.75rem;
+				margin-bottom: 2.5rem;
+				padding: 1rem 1.25rem;
 				background: #f8fafc;
 				border: 1px solid #e5e7eb;
 				border-radius: 12px;
 			}
-			.jump-row {
+			.filter-row {
 				display: flex;
 				flex-wrap: wrap;
-				gap: 0.5rem;
+				gap: 0.6rem;
 				align-items: center;
 			}
-			.jump-chip {
-				display: inline-block;
-				padding: 0.45rem 1.05rem;
-				border-radius: 999px;
-				font-size: 0.82rem;
-				font-weight: 700;
-				text-decoration: none;
+			.search-row {
+				margin-bottom: 0.25rem;
+			}
+			.search-label {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				width: 100%;
+				padding: 0.55rem 0.85rem;
 				background: white;
-				color: #475569;
 				border: 1.5px solid #d1d5db;
-				transition: background 0.15s, border-color 0.15s, color 0.15s;
+				border-radius: 10px;
+				color: #94a3b8;
+				transition: border-color 0.15s, box-shadow 0.15s;
+			}
+			.search-label:focus-within {
+				border-color: #1a4d8f;
+				box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.12);
+				color: #1a4d8f;
+			}
+			.search-label input {
+				flex: 1;
+				border: none;
+				outline: none;
+				font: inherit;
+				color: #0f172a;
+				background: transparent;
+				min-width: 0;
+			}
+			.filter-label {
+				font-size: 0.78rem;
+				font-weight: 700;
+				color: #475569;
+				min-width: 3rem;
+			}
+			.chip-group {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.4rem;
+			}
+			.chip {
+				display: inline-flex;
+				align-items: center;
+				padding: 0.55rem 1.15rem;
+				background: white;
+				border: 1.5px solid #d1d5db;
+				border-radius: 999px;
+				font-size: 0.875rem;
+				font-weight: 700;
+				color: #475569;
+				cursor: pointer;
+				font-family: inherit;
+				line-height: 1;
+				transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
 				white-space: nowrap;
 			}
-			.jump-chip:hover {
+			.chip:hover {
 				background: #f1f5f9;
 				border-color: #94a3b8;
 				color: #0f172a;
+				transform: translateY(-1px);
 			}
-			.jump-univ {
-				background: white;
+			.chip:active { transform: translateY(0); }
+			.chip-univ {
 				color: var(--jc);
-				border: 2px solid var(--jc);
+				border-color: var(--jc);
 			}
-			.jump-univ:hover {
+			.chip-univ:hover {
 				background: var(--jbg);
+				color: var(--jc);
+			}
+			.filter-status {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				padding-top: 0.25rem;
+			}
+			.reset-btn {
+				background: white;
+				border: 1px solid #d1d5db;
+				color: #475569;
+				padding: 0.3rem 0.85rem;
+				border-radius: 999px;
+				font-size: 0.78rem;
+				font-weight: 600;
+				cursor: pointer;
+				font-family: inherit;
+			}
+			.reset-btn:hover {
+				border-color: #1a4d8f;
+				color: #1a4d8f;
+			}
+			.no-results {
+				text-align: center;
+				color: #64748b;
+				padding: 2rem 1rem;
+				background: #f8fafc;
+				border: 1px dashed #cbd5e1;
+				border-radius: 12px;
+				margin-bottom: 2rem;
 			}
 
-
-			/* 非大学カテゴリセクション */
 			.category-section {
 				margin-bottom: 3rem;
 			}
 			.category-section h2 {
 				display: flex;
 				align-items: center;
-				gap: 0.6rem;
-				font-size: 1.4rem;
+				gap: 0.75rem;
+				font-size: 1.5rem;
+				font-weight: 800;
 				color: #0f172a;
-				margin: 0 0 1rem;
-				padding-left: 0.75rem;
-				border-left: 4px solid #1a4d8f;
+				margin: 0 0 1.25rem;
+				padding: 0.6rem 1rem;
+				background: #f8fafc;
+				border-left: 5px solid #1a4d8f;
+				border-radius: 0 8px 8px 0;
 			}
 			.section-count {
 				font-size: 0.72rem;
 				font-weight: 600;
-				background: #f1f5f9;
+				background: white;
 				color: #64748b;
-				padding: 0.15rem 0.55rem;
+				padding: 0.2rem 0.6rem;
 				border-radius: 999px;
 				border: 1px solid #e2e8f0;
+				margin-left: auto;
 			}
 
-			/* 共通グリッド */
 			.grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 				gap: 1rem;
 			}
 
-			/* 大学グループ */
 			.univ-group-wrapper {
 				margin-top: 0.5rem;
+				margin-bottom: 3rem;
 			}
 			.univ-group-header {
-				display: flex;
-				align-items: baseline;
-				gap: 0.75rem;
 				margin-bottom: 1rem;
 			}
+			.univ-sections-grid {
+				display: grid;
+				grid-template-columns: repeat(6, 1fr); /* 6分割で端数行を均等化 */
+				gap: 0.625rem;
+				align-items: start;
+			}
+			/* 通常: 2カラム分(= 1/3幅) */
+			.univ-section { grid-column: span 2; }
+			/* 最終行に2件残る場合: 各3カラム分(= 1/2幅) */
+			.univ-section:nth-last-child(2):nth-child(3n+1) { grid-column: span 3; }
+			.univ-section:last-child:nth-child(3n+2)        { grid-column: span 3; }
+			/* 最終行に1件残る場合: フル幅 */
+			.univ-section:last-child:nth-child(3n+1)        { grid-column: span 6; }
+			/* 展開時はフル幅に広がる */
+			.univ-section[open] { grid-column: 1 / -1 !important; }
+			.univ-section[open] .univ-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+			@media (max-width: 900px) {
+				.univ-sections-grid { grid-template-columns: repeat(2, 1fr); }
+				.univ-section { grid-column: span 1; }
+				.univ-section:nth-last-child(2):nth-child(3n+1),
+				.univ-section:last-child:nth-child(3n+2),
+				.univ-section:last-child:nth-child(3n+1) { grid-column: span 1; }
+				.univ-section[open] .univ-grid { grid-template-columns: repeat(2, 1fr); }
+			}
+			@media (max-width: 560px) {
+				.univ-sections-grid { grid-template-columns: 1fr; }
+				.univ-section { grid-column: span 1 !important; }
+				.univ-section[open] .univ-grid { grid-template-columns: 1fr; }
+			}
 			.univ-group-header h2 {
-				font-size: 1.4rem;
+				font-size: 1.5rem;
+				font-weight: 800;
 				color: #0f172a;
 				margin: 0;
-				padding-left: 0.75rem;
-				border-left: 4px solid #64748b;
+				padding: 0.6rem 1rem;
+				background: #f8fafc;
+				border-left: 5px solid #64748b;
+				border-radius: 0 8px 8px 0;
 			}
 			.expand-hint {
 				font-size: 0.75rem;
 				color: #94a3b8;
 			}
 
-			/* 大学折りたたみセクション */
 			.univ-section {
 				border: 1px solid #e5e7eb;
 				border-radius: 12px;
@@ -354,15 +841,17 @@ const pageDescription =
 				background: white;
 			}
 
-			/* モバイル調整 */
 			@media (max-width: 600px) {
-				.jump-nav {
-					padding: 0.75rem 1rem;
-					gap: 0.4rem;
+				.filter-bar {
+					padding: 0.85rem 0.9rem;
 				}
-				.jump-chip {
-					font-size: 0.72rem;
-					padding: 0.25rem 0.65rem;
+				.filter-label {
+					min-width: auto;
+					width: 100%;
+				}
+				.chip {
+					font-size: 0.74rem;
+					padding: 0.32rem 0.7rem;
 				}
 				.univ-label {
 					font-size: 0.92rem;
@@ -371,6 +860,168 @@ const pageDescription =
 				.category-section h2 {
 					font-size: 1.2rem;
 				}
+			}
+
+
+			/* ─── もっと見るボタン（JS動的生成のためglobal） ─────────── */
+			:global(.show-more-btn) {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.4rem;
+				width: 100%;
+				margin: 1rem 0 0;
+				padding: 0.55rem 1.5rem;
+				border: none;
+				border-radius: 999px;
+				background: #f1f5f9;
+				color: #475569;
+				font-size: 0.82rem;
+				font-weight: 600;
+				cursor: pointer;
+				text-align: center;
+				font-family: inherit;
+				transition: background 0.15s, color 0.15s, transform 0.1s;
+			}
+			:global(.show-more-btn::after) { content: '›'; font-size: 1rem; line-height: 1; }
+			:global(.show-more-btn:hover) { background: #e2e8f0; color: #1a4d8f; transform: translateY(-1px); }
+			:global(.show-more-btn:active) { transform: translateY(0); }
+
+			/* ─── 3件制限（JS動的のためglobal） ─────────────────────── */
+			:global(.overflow-hidden) { display: none !important; }
+
+			/* ─── リスト表示（共通ミックスイン）────────────────────── */
+			/* .list-mode = デフォルト混在表示の4件目以降
+			   body[data-view="list"] = 明示的なリスト表示
+			   両方に同じスタイルを適用 */
+
+			body[data-view="list"] .grid {
+				display: flex;
+				flex-direction: column;
+				gap: 0.25rem;
+			}
+			body[data-view="list"] .card-wrap { width: 100%; }
+
+			/* .list-mode: グリッド内でフル幅に */
+			.list-mode { grid-column: 1 / -1; }
+
+			/* ─ サムネなし ─ */
+			body[data-view="list"] .card-wrap :global(.card:not(.has-thumb)),
+			.list-mode :global(.card:not(.has-thumb)) {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				gap: 0.75rem;
+				padding: 0.65rem 1rem;
+				border-radius: 8px;
+				border-left-width: 3px;
+			}
+			body[data-view="list"] .card-wrap :global(.card:not(.has-thumb) .tags),
+			.list-mode :global(.card:not(.has-thumb) .tags) { display: none; }
+
+			body[data-view="list"] .card-wrap :global(.card:not(.has-thumb) h3),
+			.list-mode :global(.card:not(.has-thumb) h3) {
+				flex: 1;
+				font-size: 1.05rem;
+				font-weight: 700;
+				margin: 0;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			body[data-view="list"] .card-wrap :global(.card:not(.has-thumb) p),
+			.list-mode :global(.card:not(.has-thumb) p) { display: none; }
+
+			body[data-view="list"] .card-wrap :global(.card:not(.has-thumb) .meta),
+			.list-mode :global(.card:not(.has-thumb) .meta) {
+				font-size: 0.74rem;
+				white-space: nowrap;
+				margin: 0;
+				flex-shrink: 0;
+			}
+
+			/* ─ サムネあり ─ */
+			body[data-view="list"] .card-wrap :global(.card.has-thumb),
+			.list-mode :global(.card.has-thumb) {
+				display: flex;
+				flex-direction: row;
+				align-items: stretch;
+				padding: 0;
+				border-top: 1px solid #e5e7eb;
+				border-left: 3px solid var(--accent);
+				border-radius: 8px;
+				overflow: hidden;
+			}
+			body[data-view="list"] .card-wrap :global(.card.has-thumb .thumb),
+			.list-mode :global(.card.has-thumb .thumb) {
+				flex-shrink: 0;
+				width: 200px;
+				height: 112px;
+				aspect-ratio: unset;
+				border-radius: 0;
+			}
+			body[data-view="list"] .card-wrap :global(.card.has-thumb .body),
+			.list-mode :global(.card.has-thumb .body) {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				grid-template-rows: 1fr auto;
+				padding: 0.8rem 1rem;
+				flex: 1;
+				min-width: 0;
+				align-items: start;
+			}
+			body[data-view="list"] .card-wrap :global(.card.has-thumb .tags),
+			.list-mode :global(.card.has-thumb .tags) { display: none; }
+
+			/* タイトル：1行目 左 */
+			body[data-view="list"] .card-wrap :global(.card.has-thumb h3),
+			.list-mode :global(.card.has-thumb h3) {
+				grid-column: 1;
+				grid-row: 1;
+				font-size: 1.05rem;
+				font-weight: 700;
+				margin: 0 0 0.35rem;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				align-self: end;
+			}
+			/* ディスクリプション：2行目 左 */
+			body[data-view="list"] .card-wrap :global(.card.has-thumb p),
+			.list-mode :global(.card.has-thumb p) {
+				grid-column: 1;
+				grid-row: 2;
+				font-size: 0.875rem;
+				margin: 0;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				-webkit-line-clamp: unset;
+				color: #64748b;
+				align-self: start;
+			}
+			/* 日付：右側・縦中央 */
+			body[data-view="list"] .card-wrap :global(.card.has-thumb .meta),
+			.list-mode :global(.card.has-thumb .meta) {
+				grid-column: 2;
+				grid-row: 1 / 3;
+				font-size: 0.74rem;
+				white-space: nowrap;
+				margin: 0;
+				padding-left: 1rem;
+				align-self: center;
+			}
+
+			body[data-view="list"] :global(.univ-grid) { padding: 0.5rem 0.75rem; }
+			:global(.univ-grid) .list-mode { grid-column: 1 / -1; }
+
+			/* ─── ハイライト（JS挿入のため global） ────────────────── */
+			:global(mark) {
+				background: #fef08a;
+				color: inherit;
+				border-radius: 2px;
+				padding: 0 1px;
+				font-style: normal;
 			}
 		</style>
 	</body>

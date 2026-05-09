@@ -1,8 +1,9 @@
 ---
-title: "面接で志望動機を聞かれたら？1分話法・例文3パターン・深掘り対策"
+title: "面接で志望動機を聞かれたら？1分回答例文と深掘り対策"
 category: "面接対策"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/interview/shiboudouki.png"
 description: "総合型選抜の面接で志望動機を聞かれた時の答え方を解説。1分話法の構造・学部別Before/After例文3パターン・深掘り質問への対策・面接官の評価視点を完全網羅。"
 keywords:
   - "面接 志望動機 答え方"

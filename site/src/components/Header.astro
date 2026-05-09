@@ -1,38 +1,18 @@
 ---
-import { SITE_TITLE, NAV_LINKS } from '../consts';
-import HeaderLink from './HeaderLink.astro';
-import Icon from './icons/Icon.astro';
+import { SITE_TITLE } from '../consts';
 ---
 
 <header>
-	<nav class="container">
-		<a href="/" class="brand" aria-label={SITE_TITLE}>
-			<img src="/brand/logo-full.png" alt={SITE_TITLE} class="brand-img" width="160" height="40" />
+	<nav class="header-inner">
+		<a class="logo" href="/" aria-label={SITE_TITLE}>
+			<img src="/brand/logo-full.png" alt={SITE_TITLE} width="180" height="44" />
 		</a>
-		<div class="links">
-			{NAV_LINKS.map((link) => (
-				<HeaderLink href={link.href}>{link.label}</HeaderLink>
-			))}
+		<div class="header-nav">
+			<a href="/articles">記事一覧</a>
 		</div>
-		<a href="/contact" class="cta-button">
-			<Icon name="mail" size={16} />
-			<span>無料相談</span>
+		<a href="/" class="header-cta">
+			<span>無料で添削する</span>
 		</a>
-
-		<details class="mobile-nav" aria-label="メニュー">
-			<summary aria-label="メニューを開く">
-				<Icon name="menu" size={26} />
-			</summary>
-			<div class="mobile-panel">
-				<ul>
-					{NAV_LINKS.map((link) => (
-						<li><a href={link.href}>{link.label}</a></li>
-					))}
-					<li class="divider"></li>
-					<li><a href="/contact" class="mobile-cta">無料相談する</a></li>
-				</ul>
-			</div>
-		</details>
 	</nav>
 </header>
 
@@ -42,128 +22,88 @@ import Icon from './icons/Icon.astro';
 		border-bottom: 1px solid #e5e7eb;
 		position: sticky;
 		top: 0;
-		z-index: 50;
+		z-index: 100;
 	}
-	nav {
+	.header-inner {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: 0.75rem 1rem;
+		gap: 1.5rem;
+		padding: 0 1.5rem;
+		height: 64px;
 		max-width: 1200px;
 		margin: 0 auto;
 	}
-	.brand {
+	.logo {
 		display: flex;
 		align-items: center;
 		text-decoration: none;
+		flex-shrink: 0;
+		margin-right: auto;
 	}
-	.brand-img {
-		height: 44px;
+	.logo img {
+		height: 40px;
 		width: auto;
 		display: block;
 	}
-	.links {
+	.header-nav {
 		display: flex;
-		gap: 0.25rem;
-		flex: 1;
-		justify-content: center;
+		align-items: stretch;
+		gap: 0;
+		height: 100%;
 	}
-	.cta-button {
+	.header-nav a {
+		display: inline-flex;
+		align-items: center;
+		padding: 0 1.25rem;
+		color: #1f2937;
+		text-decoration: none;
+		font-size: 1rem;
+		font-weight: 700;
+		white-space: nowrap;
+		position: relative;
+		transition: color 0.15s;
+	}
+	.header-nav a::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0.75rem;
+		right: 0.75rem;
+		height: 2px;
+		background: #1a3f8f;
+		border-radius: 2px 2px 0 0;
+		transform: scaleX(0);
+		transition: transform 0.18s;
+	}
+	.header-nav a:hover { color: #1a3f8f; }
+	.header-nav a:hover::after { transform: scaleX(0.6); }
+	.header-nav a.active { color: #1a3f8f; font-weight: 700; }
+	.header-nav a.active::after { transform: scaleX(1); }
+	.header-cta {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
 		background: #ef4444;
 		color: white;
-		padding: 0.5rem 1.05rem;
+		padding: 0.5rem 1.1rem;
 		border-radius: 999px;
-		font-weight: 600;
+		font-weight: 700;
 		font-size: 0.875rem;
 		text-decoration: none;
 		white-space: nowrap;
-		transition: background 0.15s, transform 0.15s;
+		flex-shrink: 0;
+		transition: background 0.15s, transform 0.12s, box-shadow 0.12s;
+		box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
 	}
-	.cta-button:hover {
+	.header-cta:hover {
 		background: #dc2626;
 		transform: translateY(-1px);
-	}
-	.mobile-nav {
-		display: none;
-		position: relative;
-	}
-	.mobile-nav summary {
-		list-style: none;
-		cursor: pointer;
-		padding: 0.4rem;
-		border-radius: 6px;
-		color: #1a4d8f;
-		display: flex;
-		align-items: center;
-	}
-	.mobile-nav summary::-webkit-details-marker {
-		display: none;
-	}
-	.mobile-nav summary:hover {
-		background: #f1f5f9;
-	}
-	.mobile-panel {
-		position: absolute;
-		top: calc(100% + 6px);
-		right: 0;
-		background: white;
-		border: 1px solid #e5e7eb;
-		border-radius: 12px;
-		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-		min-width: 200px;
-		padding: 0.5rem;
-		z-index: 100;
-	}
-	.mobile-panel ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	.mobile-panel li {
-		margin: 0;
-	}
-	.mobile-panel li.divider {
-		height: 1px;
-		background: #e5e7eb;
-		margin: 0.4rem 0;
-	}
-	.mobile-panel a {
-		display: block;
-		padding: 0.65rem 0.85rem;
-		color: #1f2937;
-		text-decoration: none;
-		font-size: 0.95rem;
-		border-radius: 8px;
-		font-weight: 500;
-	}
-	.mobile-panel a:hover {
-		background: #f1f5f9;
-	}
-	.mobile-panel a.mobile-cta {
-		background: #ef4444;
-		color: white;
-		text-align: center;
-		font-weight: 700;
-	}
-	.mobile-panel a.mobile-cta:hover {
-		background: #dc2626;
+		box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
 	}
 	@media (max-width: 720px) {
-		.links {
-			display: none;
-		}
-		.cta-button {
-			display: none;
-		}
-		.mobile-nav {
-			display: block;
-		}
-		.brand-img {
-			height: 34px;
-		}
+		.header-inner { padding: 0 1rem; height: 56px; }
+		.header-nav { display: none; }
+		.header-cta { display: none; }
+		.logo img { height: 34px; }
 	}
 </style>

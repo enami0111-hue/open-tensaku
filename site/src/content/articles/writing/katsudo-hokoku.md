@@ -1,8 +1,9 @@
 ---
-title: "活動報告書の書き方｜例文・字数別・タイプ別で徹底解説"
+title: "活動報告書の書き方【総合型選抜】例文・字数・タイプ別テンプレ"
 category: "志望理由書"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/writing/katsudo-hokoku.png"
 description: "総合型選抜の活動報告書の書き方を例文付きで解説。部活・探究・ボランティア・資格の4タイプ別Before/After・400字〜1200字の字数別テンプレ・志望理由書との書き分け方まで網羅。"
 keywords:
   - "活動報告書 書き方"

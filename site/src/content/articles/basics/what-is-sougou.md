@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜とは？AO入試との違い・仕組み・向いている人を完全解説"
+title: "総合型選抜とは？AO入試との違い・仕組み・受かる人を初心者向けに解説"
 category: "基礎知識"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/basics/what-is-sougou.png"
 description: "総合型選抜（旧AO入試）の仕組み・一般入試との違い・選考プロセス・早慶上智MARCHの実態まで徹底解説。向いている人の診断チェックリスト・よくある疑問のFAQ付き。"
 keywords:
   - "総合型選抜 とは"

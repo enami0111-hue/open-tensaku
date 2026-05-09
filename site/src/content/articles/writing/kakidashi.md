@@ -1,8 +1,9 @@
 ---
-title: "志望理由書の書き出し7パターン｜Before/After例文・選び方ガイド"
+title: "志望理由書の書き出し7パターン｜合格に近づく例文とNG例"
 category: "志望理由書"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/writing/kakidashi.png"
 description: "志望理由書の書き出しを7パターンで解説。エピソード型・疑問提示型・数字型・対比型など、自分の志望動機に合うパターンのBefore/After例文と選び方ガイド付き。"
 keywords:
   - "志望理由書 書き出し"

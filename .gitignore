@@ -58,3 +58,10 @@ site/_legacy/
 *.docx
 !docs/*.xlsx
 !docs/*.docx
+
+# Secrets / runtime cache
+token.json
+site/token.json
+sent_urls.json
+site/sent_urls.json
+.agents/

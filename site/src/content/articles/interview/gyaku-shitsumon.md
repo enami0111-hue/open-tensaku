@@ -1,8 +1,9 @@
 ---
-title: "面接の逆質問｜総合型選抜で使える質問15選とNG例"
+title: "総合型選抜の面接で使える逆質問15選｜好印象な聞き方とNG例"
 category: "面接対策"
 audience: "高校生 / 保護者"
 date: "2026-05-08"
+heroImage: "/thumbnails/interview/gyaku-shitsumon.png"
 description: "総合型選抜の面接で効果的な逆質問の作り方を解説。NG逆質問5パターン・カテゴリ別使える質問15選・学部別アレンジ例・逆質問から会話を広げる技法まで徹底解説します。"
 keywords:
   - "総合型選抜 面接 逆質問"

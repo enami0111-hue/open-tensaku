@@ -1,8 +1,9 @@
 ---
-title: "活動報告書の書き方｜何を書けばいいか例文で解説"
+title: "活動報告書の書き方【例文つき】何を書く？構成・字数・NG例を解説"
 category: "活動実績"
 audience: "高校生"
 date: "2026-03-23"
+heroImage: "/thumbnails/activity/katsudou-houkoku.png"
 description: "総合型選抜の活動報告書の書き方を解説。STAR法の構成・NG例・改善例・実績が少ない場合の対処法まで掲載。"
 ---
 

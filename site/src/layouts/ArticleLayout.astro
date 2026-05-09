@@ -71,14 +71,12 @@ const tocItems = headings.filter(
 		<Header />
 
 		<div class="page-wrapper">
-			<!-- Desktop sticky TOC sidebar (hidden below 1300px) -->
-			{tocItems.length > 1 && (
-				<aside class="toc-sidebar" aria-label="目次">
-					<div class="toc-inner">
-						<div class="toc-header">
-							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-							<span>目次</span>
-						</div>
+
+			<!-- Floating TOC (right side, desktop only, always open) -->
+			{tocItems.length >= 1 && (
+				<div class="floating-toc" id="floating-toc">
+					<div class="toc-panel">
+						<div class="toc-panel-header">目次</div>
 						<ol class="toc-list">
 							{tocItems.map((h, i) => (
 								<li>
@@ -90,7 +88,7 @@ const tocItems = headings.filter(
 							))}
 						</ol>
 					</div>
-				</aside>
+				</div>
 			)}
 
 			<!-- Main article column -->
@@ -134,7 +132,7 @@ const tocItems = headings.filter(
 
 		<Footer />
 
-		<!-- Scroll spy for active TOC item + mid-article CTA injection -->
+		<!-- Floating TOC toggle + scroll spy + mid-article CTA injection -->
 		<script>
 			// Mid-article CTA banner injection
 			(function() {
@@ -149,6 +147,7 @@ const tocItems = headings.filter(
 				midHeading.parentNode?.insertBefore(clone, midHeading);
 			})();
 
+			// Scroll spy
 			const links = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
 			if (links.length) {
 				const headingEls = Array.from(links).map(a => {
@@ -173,67 +172,52 @@ const tocItems = headings.filter(
 		</script>
 
 		<style>
-			/* ── Outer grid wrapper ─────────────────────────── */
+			/* ── Outer wrapper (single column, full width) ──── */
 			.page-wrapper {
 				max-width: 820px;
 				margin: 0 auto;
 				padding: 0 1.25rem;
 			}
-			@media (min-width: 1300px) {
-				.page-wrapper {
-					max-width: 1160px;
-					display: grid;
-					grid-template-columns: 256px 1fr;
-					gap: 0 52px;
-					align-items: start;
-					padding: 0 2rem;
-				}
-			}
 
-			/* ── Desktop TOC sidebar ────────────────────────── */
-			.toc-sidebar {
+			/* ── Floating TOC (always open, near article) ───── */
+			.floating-toc {
 				display: none;
 			}
-			@media (min-width: 1300px) {
-				.toc-sidebar {
+			@media (min-width: 1180px) {
+				.floating-toc {
 					display: block;
-					position: sticky;
-					top: 88px;
-					max-height: calc(100vh - 110px);
-					overflow-y: auto;
-					padding-top: 1.5rem;
-					scrollbar-width: thin;
+					position: fixed;
+					top: 110px;
+					/* 記事右端 (50% + 410px) から 16px 離す */
+					left: calc(50% + 410px + 16px);
+					z-index: 100;
+					width: 240px;
 				}
 			}
-			.toc-inner {
+			.toc-panel {
 				background: #fff;
 				border: 1px solid #e5e7eb;
 				border-radius: 10px;
-				padding: 0.9rem 0.8rem 0.9rem 1rem;
-				font-size: 0.84rem;
+				padding: 0.75rem 0.6rem 0.75rem 0.75rem;
+				box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+				max-height: calc(100vh - 140px);
+				overflow-y: auto;
+				scrollbar-width: thin;
 			}
-			.toc-header {
-				display: flex;
-				align-items: center;
-				gap: 0.4rem;
+			.toc-panel-header {
+				font-size: 0.72rem;
 				font-weight: 700;
 				color: #1a4d8f;
-				font-size: 0.76rem;
 				letter-spacing: 0.06em;
 				text-transform: uppercase;
-				margin-bottom: 0.65rem;
-				padding-bottom: 0.55rem;
+				padding: 0 0.5rem 0.5rem;
+				margin-bottom: 0.25rem;
 				border-bottom: 1px solid #e5e7eb;
-			}
-			.toc-header svg {
-				flex-shrink: 0;
-				color: #1a4d8f;
 			}
 			.toc-list {
 				list-style: none;
 				padding: 0;
 				margin: 0;
-				counter-reset: toc;
 			}
 			.toc-list li {
 				margin: 0;
@@ -345,6 +329,11 @@ const tocItems = headings.filter(
 				line-height: 1;
 			}
 			.prose :global(p) { margin: 1.1em 0; }
+			.prose :global(h2),
+			.prose :global(h3),
+			.prose :global(h4) {
+				scroll-margin-top: 90px;
+			}
 			.prose :global(h2) {
 				font-size: 1.5rem;
 				margin: 2.5rem 0 1rem;

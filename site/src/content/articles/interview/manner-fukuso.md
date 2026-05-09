@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜の面接マナー・服装ガイド｜当日の完全準備"
+title: "総合型選抜の面接マナー・服装｜前日準備から当日の流れまで解説"
 category: "面接対策"
 audience: "高校生 / 保護者"
 date: "2026-05-08"
+heroImage: "/thumbnails/interview/manner-fukuso.png"
 description: "総合型選抜の面接での服装・マナーを男女別に解説。入退室の手順・姿勢・持ち物チェックリスト・当日の行動プランまで、第一印象で損しないための完全ガイドです。"
 keywords:
   - "総合型選抜 面接 服装"

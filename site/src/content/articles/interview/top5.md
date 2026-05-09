@@ -1,8 +1,9 @@
 ---
-title: "面接でよく聞かれる質問TOP5と答え方のポイント"
+title: "総合型選抜の面接で落ちやすい質問TOP5｜答え方のポイントと例文"
 category: "面接対策"
 audience: "高校生"
 date: "2026-03-23"
+heroImage: "/thumbnails/interview/top5.png"
 description: "総合型選抜の面接で必ず聞かれる5つの質問と、面接官が評価するポイント、効果的な答え方をわかりやすく解説。面接合格に向けた準備方法も紹介します。"
 ---
 

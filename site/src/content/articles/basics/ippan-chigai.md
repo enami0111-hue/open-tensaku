@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜と一般入試の違い｜どちらを選ぶべきか"
+title: "結局どっちが有利？総合型選抜と一般入試の違いを本音比較"
 category: "基礎知識"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/basics/ippan-chigai.png"
 description: "総合型選抜と一般入試の違いを選考方式・スケジュール・準備内容・向いている人の観点で徹底比較。どちらを選ぶべきか迷っている受験生向けの判断軸を解説します。"
 keywords:
   - "総合型選抜 一般入試 違い"

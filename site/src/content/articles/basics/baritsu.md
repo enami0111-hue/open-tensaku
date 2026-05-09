@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜の倍率・合格率は？難易度を正確に知る"
+title: "総合型選抜の倍率・合格率は？受かりやすさと難易度をデータで解説"
 category: "基礎知識"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/basics/baritsu.png"
 description: "総合型選抜の倍率・合格率の実態を早慶上智MARCHの傾向とともに解説。「一般より簡単」は誤解——倍率の読み方・難易度を左右する要因・対策の方向性まで解説します。"
 keywords:
   - "総合型選抜 倍率"

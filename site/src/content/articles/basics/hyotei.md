@@ -1,8 +1,9 @@
 ---
-title: "総合型選抜に評定は関係ある？目安と対策を解説"
+title: "評定3.0でも受かる？総合型選抜の評定平均の目安と逆転対策"
 category: "基礎知識"
 audience: "高校生"
 date: "2026-05-08"
+heroImage: "/thumbnails/basics/hyotei.png"
 description: "総合型選抜（AO入試）における評定平均の重要性を解説。早慶上智MARCHの評定要件の目安・評定が低い場合の対策・評定不問の選抜方式まで、受験生の不安に正直に答えます。"
 keywords:
   - "総合型選抜 評定 関係ない"
