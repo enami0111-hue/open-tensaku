@@ -1,7 +1,7 @@
 [build]
   base    = "site"
   command = "npm run build"
-  publish = "correction-app/frontend"
+  publish = "../correction-app/frontend"
 
 [build.environment]
   NODE_VERSION = "22.12.0"
