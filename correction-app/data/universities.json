@@ -1,0 +1,2184 @@
+{
+  "version": "2026-05-02-db",
+  "note": "早慶上智MARCH_推薦AO入試データベース_backup_20260502.xlsx を正本として再生成。各 course.items[] は 1次選考 列から必要書類を抽出している。",
+  "universities": [
+    {
+      "id": "waseda",
+      "name": "早稲田大学",
+      "faculties": [
+        {
+          "id": "political-science-economics",
+          "name": "政治経済学部",
+          "admission_policy_path": "admission_policies/waseda/political-science-economics.md",
+          "courses": [
+            {
+              "id": "global",
+              "name": "グローバル入学試験",
+              "url": "https://www.waseda.jp/fpse/pse/applicants/admission/global/",
+              "meta": {
+                "category": "総合型選抜（海外就学）",
+                "quota": "約30名",
+                "gpa_requirement": "不問",
+                "english_requirement": "TOEFL iBT/IELTS提出必須（点数不問）",
+                "stage1": "書類審査",
+                "stage2": "120分日本語論文＋個人面接15〜20分",
+                "application_period": "7月中旬〜",
+                "result_announcement": "9月末",
+                "competition_ratio": "2.5〜3倍",
+                "exclusivity": "専願",
+                "notes": "帰国生入試に相当"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/waseda/political-science-economics/global/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "入試要項ページ（PDF一覧）",
+                      "url": "https://www.waseda.jp/fpse/pse/applicants/admission/global/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fla-sils",
+          "name": "国際教養学部（SILS）",
+          "admission_policy_path": "admission_policies/waseda/fla-sils.md",
+          "courses": [
+            {
+              "id": "ao-domestic",
+              "name": "AO入試（国内選考）",
+              "url": "https://www.waseda.jp/inst/sils/about/admission/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "多数",
+                "gpa_requirement": "不問",
+                "english_requirement": "TOEFL iBT 100・IELTS 7.0程度が合格者平均",
+                "stage1": "書類審査",
+                "stage2": "Critical Writing 120分＋書類",
+                "application_period": "5月〜",
+                "result_announcement": "8月",
+                "competition_ratio": "約4倍",
+                "exclusivity": "専願",
+                "notes": "英語・日本語両方"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/waseda/fla-sils/ao-domestic/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "SILS AO入試ページ",
+                      "url": "https://www.waseda.jp/inst/sils/about/admission/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "social-sciences",
+          "name": "社会科学部",
+          "admission_policy_path": "admission_policies/waseda/social-sciences.md",
+          "courses": [
+            {
+              "id": "national-self-rec",
+              "name": "全国自己推薦入学試験",
+              "url": "https://www.waseda.jp/fsss/sss/applicants/admission/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "約50名",
+                "gpa_requirement": "要件あり",
+                "english_requirement": "英検CSE 1950以上/TOEFL iBT 72以上/IELTS 5.5以上（2024〜必須化）",
+                "stage1": "書類選考",
+                "stage2": "小論文＋面接",
+                "application_period": "7月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "2024年度から英語外部試験必須"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/waseda/social-sciences/national-self-rec/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "全国自己推薦 入試情報",
+                      "url": "https://www.waseda.jp/fsss/sss/applicants/admission/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "human-sciences",
+          "name": "人間科学部",
+          "admission_policy_path": "admission_policies/waseda/human-sciences.md",
+          "courses": [
+            {
+              "id": "fact",
+              "name": "FACT選抜",
+              "url": "https://www.waseda.jp/fhum/hum/applicants/examination/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "若干名（5〜19名）",
+                "gpa_requirement": "全体3.9以上、理科・国語4.1以上",
+                "english_requirement": "外部試験スコア提出（基準なし）",
+                "stage1": "書類＋事前課題（実験観察レポート）",
+                "stage2": "論述試験120分＋面接20分",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "過去問公式公開あり"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/waseda/human-sciences/fact/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "事前課題（実験観察レポート）",
+                      "char_limit": null,
+                      "path": "questions/waseda/human-sciences/fact/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "FACT選抜 入試情報",
+                      "url": "https://www.waseda.jp/fhum/hum/applicants/examination/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sport-sciences",
+          "name": "スポーツ科学部",
+          "admission_policy_path": "admission_policies/waseda/sport-sciences.md",
+          "courses": [
+            {
+              "id": "sport-self-rec",
+              "name": "総合型選抜Ⅲ群（スポーツ自己推薦）",
+              "url": "https://www.waseda.jp/fspo/spo/applicants/examination/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "要件あり",
+                "english_requirement": "—",
+                "stage1": "書類選考",
+                "stage2": "小論文＋面接",
+                "application_period": "8月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "現役・1浪可"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/waseda/sport-sciences/sport-self-rec/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "スポーツ自己推薦 入試情報",
+                      "url": "https://www.waseda.jp/fspo/spo/applicants/examination/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "creative-architecture",
+          "name": "創造理工学部（建築学科）",
+          "admission_policy_path": "admission_policies/waseda/creative-architecture.md",
+          "courses": [
+            {
+              "id": "architecture-ao",
+              "name": "早稲田建築AO入試（創成入試）",
+              "url": "https://www.waseda.jp/fsci/apply/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "—",
+                "stage1": "書類＋ドローイング試験",
+                "stage2": "プレゼンテーション",
+                "application_period": "8月〜",
+                "result_announcement": "11月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "ドローイング320字以内説明文"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/waseda/creative-architecture/architecture-ao/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "ドローイング課題（記述説明）",
+                      "char_limit": 320,
+                      "path": "questions/waseda/creative-architecture/architecture-ao/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "建築AO入試 情報ページ",
+                      "url": "https://www.waseda.jp/fsci/apply/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keio",
+      "name": "慶應義塾大学",
+      "faculties": [
+        {
+          "id": "law",
+          "name": "法学部",
+          "admission_policy_path": "admission_policies/keio/law.md",
+          "courses": [
+            {
+              "id": "fit-a",
+              "name": "FIT入試 A方式",
+              "url": "https://www.keio.ac.jp/ja/admissions/ug_fit.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "160名（A・B合計）",
+                "gpa_requirement": "不問",
+                "english_requirement": "—",
+                "stage1": "書類審査",
+                "stage2": "論述試験＋口頭試問",
+                "application_period": "7月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "約3.7倍",
+                "exclusivity": "専願",
+                "notes": "志望理由書2000字"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": 2000,
+                      "path": "questions/keio/law/fit-a/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "FIT入試 要項ページ（PDF一覧）",
+                      "url": "https://www.keio.ac.jp/ja/admissions/ug_fit.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fit-b",
+              "name": "FIT入試 B方式",
+              "url": "https://www.keio.ac.jp/ja/admissions/ug_fit.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "160名（A・B合計）",
+                "gpa_requirement": "4.0以上",
+                "english_requirement": "—",
+                "stage1": "書類審査",
+                "stage2": "総合考査＋面接",
+                "application_period": "7月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "約3.7倍",
+                "exclusivity": "専願",
+                "notes": "7地域ブロック枠・高校長推薦"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": 2000,
+                      "path": "questions/keio/law/fit-b/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "FIT入試 要項ページ（PDF一覧）",
+                      "url": "https://www.keio.ac.jp/ja/admissions/ug_fit.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "letters",
+          "name": "文学部",
+          "admission_policy_path": "admission_policies/keio/letters.md",
+          "courses": [
+            {
+              "id": "self-application",
+              "name": "自主応募制推薦",
+              "url": "https://www.keio.ac.jp/ja/admissions/ug_letters.html",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "120名",
+                "gpa_requirement": "4.1以上",
+                "english_requirement": "—",
+                "stage1": "全員受験可（1次選抜なし）",
+                "stage2": "総合考査Ⅰ（120分）＋総合考査Ⅱ（60分）",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "2〜3倍",
+                "exclusivity": "専願",
+                "notes": "辞書持込不可、和文英訳あり"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/keio/letters/self-application/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "文学部 自主応募 要項ページ",
+                      "url": "https://www.keio.ac.jp/ja/admissions/ug_letters.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sfc-policy-management",
+          "name": "総合政策学部（SFC）",
+          "admission_policy_path": "admission_policies/keio/sfc-policy-management.md",
+          "courses": [
+            {
+              "id": "summer-fall-ao",
+              "name": "夏秋AO",
+              "url": "https://www.sfc.keio.ac.jp/admissions/undergraduate/ao.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "約150名",
+                "gpa_requirement": "不問（目安4.3以上）",
+                "english_requirement": "—",
+                "stage1": "書類審査",
+                "stage2": "個別面接30分（教授3名）",
+                "application_period": "7月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "5〜7倍",
+                "exclusivity": "専願",
+                "notes": "自由記述A4×2枚＋志望理由書2000字"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": 2000,
+                      "path": "questions/keio/sfc-policy-management/summer-fall-ao/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "自由記述（A4×2枚、自由フォーマット）",
+                      "char_limit": null,
+                      "path": "questions/keio/sfc-policy-management/summer-fall-ao/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "SFC AO入試 要項ページ（PDF一覧）",
+                      "url": "https://www.sfc.keio.ac.jp/admissions/undergraduate/ao.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sfc-environment-info",
+          "name": "環境情報学部（SFC）",
+          "admission_policy_path": "admission_policies/keio/sfc-environment-info.md",
+          "courses": [
+            {
+              "id": "summer-fall-ao",
+              "name": "夏秋AO",
+              "url": "https://www.sfc.keio.ac.jp/admissions/undergraduate/ao.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "約150名",
+                "gpa_requirement": "不問（目安4.3以上）",
+                "english_requirement": "—",
+                "stage1": "書類審査",
+                "stage2": "個別面接30分（教授3名）",
+                "application_period": "7月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "5〜7倍",
+                "exclusivity": "専願",
+                "notes": "1990年日本初AO導入"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": 2000,
+                      "path": "questions/keio/sfc-environment-info/summer-fall-ao/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "自由記述（A4×2枚、自由フォーマット）",
+                      "char_limit": null,
+                      "path": "questions/keio/sfc-environment-info/summer-fall-ao/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "SFC AO入試 要項ページ（PDF一覧）",
+                      "url": "https://www.sfc.keio.ac.jp/admissions/undergraduate/ao.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sophia",
+      "name": "上智大学",
+      "faculties": [
+        {
+          "id": "law-legal",
+          "name": "法学部（法律）",
+          "admission_policy_path": "admission_policies/sophia/law-legal.md",
+          "courses": [
+            {
+              "id": "pubrec",
+              "name": "公募制推薦（法律）",
+              "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "—",
+                "gpa_requirement": "全体4.0以上",
+                "english_requirement": "英検2級A以上",
+                "stage1": "なし（全員試験）",
+                "stage2": "学科試問＋面接",
+                "application_period": "10月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "3〜4倍",
+                "exclusivity": "専願（第一志望）",
+                "notes": "レポート：法律家と社会の関わり（2000字）"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/sophia/law-legal/pubrec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "事前レポート「法律家と社会の関わり」",
+                      "char_limit": 2000,
+                      "path": "questions/sophia/law-legal/pubrec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "公募制推薦 入試要項ページ",
+                      "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "law-international",
+          "name": "法学部（国際関係法）",
+          "admission_policy_path": "admission_policies/sophia/law-international.md",
+          "courses": [
+            {
+              "id": "pubrec",
+              "name": "公募制推薦（国際関係法）",
+              "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "—",
+                "gpa_requirement": "全体4.0以上",
+                "english_requirement": "英検2級A以上",
+                "stage1": "なし（全員試験）",
+                "stage2": "学科試問＋面接",
+                "application_period": "10月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "約5倍",
+                "exclusivity": "専願（第一志望）",
+                "notes": "レポート：移民問題の有効な解決策（2000字）"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/sophia/law-international/pubrec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "事前レポート「移民問題の有効な解決策」",
+                      "char_limit": 2000,
+                      "path": "questions/sophia/law-international/pubrec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "公募制推薦 入試要項ページ",
+                      "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "global-studies",
+          "name": "総合グローバル学部",
+          "admission_policy_path": "admission_policies/sophia/global-studies.md",
+          "courses": [
+            {
+              "id": "pubrec",
+              "name": "公募制推薦",
+              "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "—",
+                "gpa_requirement": "全体4.0以上",
+                "english_requirement": "英検準1級レベル",
+                "stage1": "なし（全員試験）",
+                "stage2": "学科試問＋面接（90分小論）",
+                "application_period": "10月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "4〜5倍",
+                "exclusivity": "専願（第一志望）",
+                "notes": "指定図書4冊から1冊選択レポート"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/sophia/global-studies/pubrec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "事前レポート（指定図書・学術論述）",
+                      "char_limit": 800,
+                      "path": "questions/sophia/global-studies/pubrec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "公募制推薦 入試要項ページ",
+                      "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "foreign-languages-english",
+          "name": "外国語学部（英語）",
+          "admission_policy_path": "admission_policies/sophia/foreign-languages-english.md",
+          "courses": [
+            {
+              "id": "pubrec",
+              "name": "公募制推薦（英語）",
+              "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "—",
+                "gpa_requirement": "全体4.0以上",
+                "english_requirement": "英検準1級レベル",
+                "stage1": "なし（全員試験）",
+                "stage2": "学科試問＋面接",
+                "application_period": "10月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "5倍超",
+                "exclusivity": "専願（第一志望）",
+                "notes": "英語資格要件が厳格"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/sophia/foreign-languages-english/pubrec/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "公募制推薦 入試要項ページ",
+                      "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "letters",
+          "name": "文学部（哲学〜新聞）",
+          "admission_policy_path": "admission_policies/sophia/letters.md",
+          "courses": [
+            {
+              "id": "pubrec",
+              "name": "公募制推薦（文学部各学科）",
+              "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "—",
+                "gpa_requirement": "全体4.0〜4.3",
+                "english_requirement": "学科による",
+                "stage1": "なし（全員試験）",
+                "stage2": "学科試問＋面接",
+                "application_period": "10月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "2〜5倍（学科差大）",
+                "exclusivity": "専願（第一志望）",
+                "notes": "課題図書に基づく学科指定レポート"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/sophia/letters/pubrec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "事前レポート（学科指定課題図書）",
+                      "char_limit": null,
+                      "path": "questions/sophia/letters/pubrec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "公募制推薦 入試要項ページ",
+                      "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "theology",
+          "name": "神学部",
+          "admission_policy_path": "admission_policies/sophia/theology.md",
+          "courses": [
+            {
+              "id": "pubrec",
+              "name": "公募制推薦",
+              "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "—",
+                "gpa_requirement": "全体3.5以上",
+                "english_requirement": "英検2級程度",
+                "stage1": "なし（全員試験）",
+                "stage2": "学科試問＋面接",
+                "application_period": "10月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "1〜2倍（低倍率）",
+                "exclusivity": "専願（第一志望）",
+                "notes": "入試要項は入学センターへメール請求"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/sophia/theology/pubrec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "事前レポート（入試要項に準拠）",
+                      "char_limit": null,
+                      "path": "questions/sophia/theology/pubrec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "公募制推薦 入試要項ページ",
+                      "url": "https://www.sophia.ac.jp/jpn/admissions/exam/exam_intro/jpn_recommend_pubrec/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meiji",
+      "name": "明治大学",
+      "faculties": [
+        {
+          "id": "international-japanese",
+          "name": "国際日本学部",
+          "admission_policy_path": "admission_policies/meiji/international-japanese.md",
+          "courses": [
+            {
+              "id": "self-rec-special",
+              "name": "自己推薦特別入試",
+              "url": "https://www.meiji.ac.jp/nippon/student/exam.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "4.0以上",
+                "english_requirement": "英検準1級／TOEFL iBT 72／IELTS 5.5／TEAP 309等",
+                "stage1": "書類（志望理由書800字＋ES1600字）",
+                "stage2": "小論文60分＋口頭試問20分",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "2022年度新設"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": 800,
+                      "path": "questions/meiji/international-japanese/self-rec-special/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "エントリーシート",
+                      "char_limit": 1600,
+                      "path": "questions/meiji/international-japanese/self-rec-special/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "国際日本学部 入試要項",
+                      "url": "https://www.meiji.ac.jp/nippon/student/exam.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "letters",
+          "name": "文学部",
+          "admission_policy_path": "admission_policies/meiji/letters.md",
+          "courses": [
+            {
+              "id": "self-rec-special",
+              "name": "自己推薦特別入試",
+              "url": "https://www.meiji.ac.jp/bungaku/student/exam.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "3.5以上",
+                "english_requirement": "—",
+                "stage1": "書類（志望理由書＋活動歴報告書＋専攻別事前課題）",
+                "stage2": "小論文＋面接（口頭試問）",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "専攻別事前課題あり"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/meiji/letters/self-rec-special/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "活動歴報告書",
+                      "char_limit": null,
+                      "path": "questions/meiji/letters/self-rec-special/2025-q2.md"
+                    },
+                    {
+                      "id": "q3",
+                      "title": "専攻別事前課題",
+                      "char_limit": null,
+                      "path": "questions/meiji/letters/self-rec-special/2025-q3.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "文学部 入試要項",
+                      "url": "https://www.meiji.ac.jp/bungaku/student/exam.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "political-science-economics",
+          "name": "政治経済学部",
+          "admission_policy_path": "admission_policies/meiji/political-science-economics.md",
+          "courses": [
+            {
+              "id": "global-special",
+              "name": "グローバル型特別入試",
+              "url": "https://www.meiji.ac.jp/seikei/student/exam.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "外国語検定試験スコア（独仏含む）",
+                "stage1": "書類",
+                "stage2": "総合（日本語）＋口頭試問",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "海外経験不要"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/meiji/political-science-economics/global-special/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "政治経済学部 入試要項",
+                      "url": "https://www.meiji.ac.jp/seikei/student/exam.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "agriculture",
+          "name": "農学部",
+          "admission_policy_path": "admission_policies/meiji/agriculture.md",
+          "courses": [
+            {
+              "id": "self-rec-special",
+              "name": "自己推薦特別入試",
+              "url": "https://www.meiji.ac.jp/agr/student/exam.html",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "学科による",
+                "english_requirement": "—",
+                "stage1": "書類＋課題レポート",
+                "stage2": "プレゼンテーション＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "学科指定の選考課題"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/meiji/agriculture/self-rec-special/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "課題レポート",
+                      "char_limit": null,
+                      "path": "questions/meiji/agriculture/self-rec-special/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "農学部 入試要項",
+                      "url": "https://www.meiji.ac.jp/agr/student/exam.html",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aoyama",
+      "name": "青山学院大学",
+      "faculties": [
+        {
+          "id": "letters-english",
+          "name": "文学部（英米文）",
+          "admission_policy_path": "admission_policies/aoyama/letters-english.md",
+          "courses": [
+            {
+              "id": "self-rec",
+              "name": "自己推薦入学者選抜",
+              "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "約30名",
+                "gpa_requirement": "—",
+                "english_requirement": "英検準1級レベル",
+                "stage1": "志望動機書1500字＋選抜課題2000字",
+                "stage2": "英語論述＋英語面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望動機書",
+                      "char_limit": 1500,
+                      "path": "questions/aoyama/letters-english/self-rec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "選抜課題（小論文）",
+                      "char_limit": 2000,
+                      "path": "questions/aoyama/letters-english/self-rec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "青学 入試情報ページ",
+                      "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "letters-comparative-arts",
+          "name": "文学部（比較芸術）",
+          "admission_policy_path": "admission_policies/aoyama/letters-comparative-arts.md",
+          "courses": [
+            {
+              "id": "self-rec",
+              "name": "自己推薦入学者選抜",
+              "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "約8名",
+                "gpa_requirement": "4.0以上",
+                "english_requirement": "—",
+                "stage1": "志望動機書1500字＋選抜課題2000字（「芸術と○○」型）",
+                "stage2": "芸術基礎知識90分筆記＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "テーマ：芸術と○○（毎年変更）"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望動機書",
+                      "char_limit": 1500,
+                      "path": "questions/aoyama/letters-comparative-arts/self-rec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "選抜課題（小論文）",
+                      "char_limit": 2000,
+                      "path": "questions/aoyama/letters-comparative-arts/self-rec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "青学 入試情報ページ",
+                      "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "global-coexistence",
+          "name": "地球社会共生学部",
+          "admission_policy_path": "admission_policies/aoyama/global-coexistence.md",
+          "courses": [
+            {
+              "id": "self-rec",
+              "name": "自己推薦入学者選抜",
+              "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "約31名",
+                "gpa_requirement": "3.5以上",
+                "english_requirement": "英検準1級/TOEFL iBT 57/IELTS 5.5/TEAP 280等",
+                "stage1": "志望理由書＋活動実績書",
+                "stage2": "小論文＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/aoyama/global-coexistence/self-rec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "活動実績書",
+                      "char_limit": null,
+                      "path": "questions/aoyama/global-coexistence/self-rec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "青学 入試情報ページ",
+                      "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "community-human-sciences",
+          "name": "コミュニティ人間科学部",
+          "admission_policy_path": "admission_policies/aoyama/community-human-sciences.md",
+          "courses": [
+            {
+              "id": "self-rec",
+              "name": "自己推薦入学者選抜",
+              "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "約12名",
+                "gpa_requirement": "3.5以上",
+                "english_requirement": "—",
+                "stage1": "志望理由書＋活動実績書",
+                "stage2": "小論文＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "狙い目学部"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/aoyama/community-human-sciences/self-rec/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "活動実績書",
+                      "char_limit": null,
+                      "path": "questions/aoyama/community-human-sciences/self-rec/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "青学 入試情報ページ",
+                      "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "all-faculties",
+          "name": "全学部",
+          "admission_policy_path": "admission_policies/aoyama/all-faculties.md",
+          "courses": [
+            {
+              "id": "christian-rec",
+              "name": "全国高等学校キリスト者推薦",
+              "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+              "meta": {
+                "category": "学校推薦型（特別）",
+                "quota": "各学科若干名",
+                "gpa_requirement": "—",
+                "english_requirement": "—",
+                "stage1": "書類審査",
+                "stage2": "小論文＋面接",
+                "application_period": "11月〜",
+                "result_announcement": "11月29日",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "プロテスタント現住陪餐会員対象"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/aoyama/all-faculties/christian-rec/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "青学 入試情報ページ",
+                      "url": "https://www.aoyama.ac.jp/admission/undergraduate/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rikkyo",
+      "name": "立教大学",
+      "faculties": [
+        {
+          "id": "economics",
+          "name": "経済学部",
+          "admission_policy_path": "admission_policies/rikkyo/economics.md",
+          "courses": [
+            {
+              "id": "free-selection",
+              "name": "自由選抜入試",
+              "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "3.5〜3.8以上",
+                "english_requirement": "外部試験スコア提出（基準なし）",
+                "stage1": "書類選考",
+                "stage2": "総合科目（政治・経済＋基礎数学）＋面接",
+                "application_period": "9/15〜9/21",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願（合格時入学確約）",
+                "notes": "2016年「思考力入試」として導入"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/rikkyo/economics/free-selection/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "自由選抜入試 要項ページ（PDF一覧）",
+                      "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sociology",
+          "name": "社会学部",
+          "admission_policy_path": "admission_policies/rikkyo/sociology.md",
+          "courses": [
+            {
+              "id": "free-selection",
+              "name": "自由選抜入試",
+              "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "3.5〜3.8以上",
+                "english_requirement": "外部試験スコア提出",
+                "stage1": "書類選考",
+                "stage2": "小論文＋グループワーク＋面接",
+                "application_period": "9/15〜9/21",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "GW・ディスカッション形式"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/rikkyo/sociology/free-selection/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "自由選抜入試 要項ページ（PDF一覧）",
+                      "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "psychology",
+          "name": "現代心理学部（心理）",
+          "admission_policy_path": "admission_policies/rikkyo/psychology.md",
+          "courses": [
+            {
+              "id": "free-selection",
+              "name": "自由選抜入試",
+              "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "3.5〜3.8以上",
+                "english_requirement": "外部試験スコア提出",
+                "stage1": "書類選考",
+                "stage2": "小論文＋集団面接（ディスカッション形式）",
+                "application_period": "9/15〜9/21",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/rikkyo/psychology/free-selection/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "自由選抜入試 要項ページ（PDF一覧）",
+                      "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "business",
+          "name": "経営学部",
+          "admission_policy_path": "admission_policies/rikkyo/business.md",
+          "courses": [
+            {
+              "id": "free-selection",
+              "name": "自由選抜入試",
+              "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "3.5〜3.8以上",
+                "english_requirement": "国際経営は基準スコアあり",
+                "stage1": "書類選考",
+                "stage2": "小論文＋面接（場合により英語面接）",
+                "application_period": "9/15〜9/21",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/rikkyo/business/free-selection/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "自由選抜入試 要項ページ（PDF一覧）",
+                      "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tourism",
+          "name": "観光学部",
+          "admission_policy_path": "admission_policies/rikkyo/tourism.md",
+          "courses": [
+            {
+              "id": "free-selection",
+              "name": "自由選抜入試",
+              "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "3.5〜3.8以上",
+                "english_requirement": "外部試験スコア提出",
+                "stage1": "書類選考",
+                "stage2": "課題作文＋面接",
+                "application_period": "9/15〜9/21",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/rikkyo/tourism/free-selection/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "自由選抜入試 要項ページ（PDF一覧）",
+                      "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "law",
+          "name": "法学部",
+          "admission_policy_path": "admission_policies/rikkyo/law.md",
+          "courses": [
+            {
+              "id": "free-selection",
+              "name": "自由選抜入試",
+              "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "3.5〜3.8以上",
+                "english_requirement": "外部試験スコア提出（国際ビジネス法は基準あり）",
+                "stage1": "書類選考",
+                "stage2": "面接のみ",
+                "application_period": "9/15〜9/21",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "国際ビジネス法グローバルコースは2022年新設"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/rikkyo/law/free-selection/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "自由選抜入試 要項ページ（PDF一覧）",
+                      "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/rikkyo/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chuo",
+      "name": "中央大学",
+      "faculties": [
+        {
+          "id": "law",
+          "name": "法学部",
+          "admission_policy_path": "admission_policies/chuo/law.md",
+          "courses": [
+            {
+              "id": "challenge",
+              "name": "チャレンジ入試",
+              "url": "https://www.chuo-u.ac.jp/academics/faculties/law/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "各学科15名前後",
+                "gpa_requirement": "—",
+                "english_requirement": "—",
+                "stage1": "書類審査（志望理由書3000字）",
+                "stage2": "講義理解力試験（45分講義→75分論述）＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "約7.6倍",
+                "exclusivity": "専願",
+                "notes": "課外活動実績必須・激戦区"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": 3000,
+                      "path": "questions/chuo/law/challenge/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "法学部 チャレンジ入試 要項ページ",
+                      "url": "https://www.chuo-u.ac.jp/academics/faculties/law/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "economics",
+          "name": "経済学部",
+          "admission_policy_path": "admission_policies/chuo/economics.md",
+          "courses": [
+            {
+              "id": "high-univ-link",
+              "name": "高大接続入試（自己推薦型）",
+              "url": "https://www.chuo-u.ac.jp/academics/faculties/economics/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "若干名",
+                "gpa_requirement": "—",
+                "english_requirement": "—",
+                "stage1": "書類（自己推薦書・要約100字＋本文1000字）",
+                "stage2": "小論文＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "自己推薦書（要約）",
+                      "char_limit": 100,
+                      "path": "questions/chuo/economics/high-univ-link/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "自己推薦書（本文）",
+                      "char_limit": 1000,
+                      "path": "questions/chuo/economics/high-univ-link/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "経済学部 高大接続入試 要項ページ",
+                      "url": "https://www.chuo-u.ac.jp/academics/faculties/economics/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "letters",
+          "name": "文学部",
+          "admission_policy_path": "admission_policies/chuo/letters.md",
+          "courses": [
+            {
+              "id": "self-rec-language",
+              "name": "自己推薦特別入試（外国語型）",
+              "url": "https://www.chuo-u.ac.jp/academics/faculties/letters/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "英検準1級/TOEFL iBT 57/TOEIC 1410等（独・仏資格も可）",
+                "stage1": "書類（志望理由書・活動内容）",
+                "stage2": "外国語試験60分＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "2021年度新設"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/chuo/letters/self-rec-language/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "活動内容報告書",
+                      "char_limit": null,
+                      "path": "questions/chuo/letters/self-rec-language/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "文学部 自己推薦（外国語型）要項ページ",
+                      "url": "https://www.chuo-u.ac.jp/academics/faculties/letters/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "letters-specialty",
+          "name": "文学部（社会学等）",
+          "admission_policy_path": "admission_policies/chuo/letters-specialty.md",
+          "courses": [
+            {
+              "id": "self-rec-aptitude",
+              "name": "自己推薦特別入試（専攻適性型）",
+              "url": "https://www.chuo-u.ac.jp/academics/faculties/letters/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "15名（社会学）等",
+                "gpa_requirement": "—",
+                "english_requirement": "専攻による",
+                "stage1": "書類（3000字小論文含む）",
+                "stage2": "専攻別試験90分（講義→論述）＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "講義理解力を重視"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/chuo/letters-specialty/self-rec-aptitude/2025-q1.md"
+                    },
+                    {
+                      "id": "q2",
+                      "title": "事前小論文",
+                      "char_limit": null,
+                      "path": "questions/chuo/letters-specialty/self-rec-aptitude/2025-q2.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "文学部 自己推薦（専攻適性型）要項ページ",
+                      "url": "https://www.chuo-u.ac.jp/academics/faculties/letters/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "international-management",
+          "name": "国際経営学部",
+          "admission_policy_path": "admission_policies/chuo/international-management.md",
+          "courses": [
+            {
+              "id": "self-rec",
+              "name": "自己推薦入学試験",
+              "url": "https://www.chuo-u.ac.jp/academics/faculties/intl_management/exam/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "25名",
+                "gpa_requirement": "3.8以上または課外活動実績",
+                "english_requirement": "英検準1級/TOEFL iBT 72/IELTS 5.5/TEAP 309等",
+                "stage1": "書類（英語で志望理由書）",
+                "stage2": "小論文（日本語）＋面接（日＋英）",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "1.5〜1.7倍（狙い目）",
+                "exclusivity": "専願",
+                "notes": "英語志望理由書が特徴"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書（英文）",
+                      "char_limit": null,
+                      "path": "questions/chuo/international-management/self-rec/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "国際経営学部 自己推薦 要項ページ",
+                      "url": "https://www.chuo-u.ac.jp/academics/faculties/intl_management/exam/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hosei",
+      "name": "法政大学",
+      "faculties": [
+        {
+          "id": "gis",
+          "name": "GIS（グローバル教養学部）",
+          "admission_policy_path": "admission_policies/hosei/gis.md",
+          "courses": [
+            {
+              "id": "self-rec-s",
+              "name": "自己推薦 S基準",
+              "url": "https://www.hosei.ac.jp/gis/admissions/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "TOEFL iBT 90以上/IELTS 7.0/英検1級レベル",
+                "stage1": "書類のみ（S基準通過者のみ面接）",
+                "stage2": "オンライン面接（S基準通過者）",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "約3倍（狙い目）",
+                "exclusivity": "専願",
+                "notes": "書類重視、英語力高い者向け"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/hosei/gis/self-rec-s/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "GIS 自己推薦 要項ページ",
+                      "url": "https://www.hosei.ac.jp/gis/admissions/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "self-rec-a",
+              "name": "自己推薦 A基準",
+              "url": "https://www.hosei.ac.jp/gis/admissions/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "英語資格基準なし",
+                "stage1": "書類（Personal Statement 500w程度）",
+                "stage2": "—",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "約3倍（狙い目）",
+                "exclusivity": "専願",
+                "notes": "書類の質が決め手"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "Personal Statement (English)",
+                      "char_limit": null,
+                      "path": "questions/hosei/gis/self-rec-a/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "GIS 自己推薦 要項ページ",
+                      "url": "https://www.hosei.ac.jp/gis/admissions/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "economics",
+          "name": "経済学部",
+          "admission_policy_path": "admission_policies/hosei/economics.md",
+          "courses": [
+            {
+              "id": "self-rec-english",
+              "name": "英語外部試験利用自己推薦",
+              "url": "https://www.hosei.ac.jp/keizai/nyushi/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "英検準1級レベル",
+                "stage1": "書類選考",
+                "stage2": "小論文＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/hosei/economics/self-rec-english/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "経済学部 入試要項ページ",
+                      "url": "https://www.hosei.ac.jp/keizai/nyushi/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "intercultural",
+          "name": "国際文化学部",
+          "admission_policy_path": "admission_policies/hosei/intercultural.md",
+          "courses": [
+            {
+              "id": "sa-self-rec",
+              "name": "SA自己推薦入試",
+              "url": "https://www.hosei.ac.jp/kokusai/nyushi/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "外国語（独仏露中西朝）への強い関心",
+                "stage1": "書類選考",
+                "stage2": "言語・文化試験＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "留学希望者向け"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/hosei/intercultural/sa-self-rec/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "国際文化学部 入試要項ページ",
+                      "url": "https://www.hosei.ac.jp/kokusai/nyushi/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "letters",
+          "name": "文学部（英文等）",
+          "admission_policy_path": "admission_policies/hosei/letters.md",
+          "courses": [
+            {
+              "id": "global-experience",
+              "name": "グローバル体験公募推薦",
+              "url": "https://www.hosei.ac.jp/bungaku/nyushi/",
+              "meta": {
+                "category": "学校推薦型（公募）",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "—",
+                "stage1": "書類選考",
+                "stage2": "小論文60分＋面接",
+                "application_period": "11月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "海外高校留学体験者対象"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/hosei/letters/global-experience/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "文学部 入試要項ページ",
+                      "url": "https://www.hosei.ac.jp/bungaku/nyushi/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "career-design",
+          "name": "キャリアデザイン学部",
+          "admission_policy_path": "admission_policies/hosei/career-design.md",
+          "courses": [
+            {
+              "id": "career-experience",
+              "name": "キャリア体験自己推薦",
+              "url": "https://www.hosei.ac.jp/careerdesign/nyushi/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "—",
+                "stage1": "書類選考",
+                "stage2": "小論文＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "—"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/hosei/career-design/career-experience/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "キャリアデザイン学部 入試要項ページ",
+                      "url": "https://www.hosei.ac.jp/careerdesign/nyushi/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "welfare",
+          "name": "現代福祉学部（福祉コミュ）",
+          "admission_policy_path": "admission_policies/hosei/welfare.md",
+          "courses": [
+            {
+              "id": "machizukuri-challenge",
+              "name": "まちづくりチャレンジ自己推薦",
+              "url": "https://www.hosei.ac.jp/fukushi/nyushi/",
+              "meta": {
+                "category": "総合型選抜",
+                "quota": "—",
+                "gpa_requirement": "—",
+                "english_requirement": "—",
+                "stage1": "書類選考",
+                "stage2": "小論文＋面接",
+                "application_period": "9月〜",
+                "result_announcement": "12月",
+                "competition_ratio": "—",
+                "exclusivity": "専願",
+                "notes": "地域活動実績が強みになる"
+              },
+              "questions": [
+                {
+                  "year": 2025,
+                  "status": "archived",
+                  "items": [
+                    {
+                      "id": "q1",
+                      "title": "志望理由書",
+                      "char_limit": null,
+                      "path": "questions/hosei/welfare/machizukuri-challenge/2025-q1.md"
+                    }
+                  ],
+                  "source_docs": [
+                    {
+                      "label": "現代福祉学部 入試要項ページ",
+                      "url": "https://www.hosei.ac.jp/fukushi/nyushi/",
+                      "type": "page"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

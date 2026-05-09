@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
 	site: 'https://open-tensaku.com',
-	outDir: '../correction-app/frontend',
+	outDir: process.env.NETLIFY ? 'dist' : '../correction-app/frontend',
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		shikiConfig: {

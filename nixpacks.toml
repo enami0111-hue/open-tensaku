@@ -1,0 +1,14 @@
+[phases.setup]
+nixPkgs = ['python311', 'nodejs_22']
+
+[phases.install]
+cmds = [
+  'pip install -r correction-app/backend/requirements.txt',
+  'cd site && npm ci'
+]
+
+[phases.build]
+cmds = ['cd site && npm run build']
+
+[start]
+cmd = 'cd correction-app/backend && uvicorn main:app --host 0.0.0.0 --port $PORT'
