@@ -1,0 +1,4409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【推薦・総合型選抜】志望理由書の無料添削｜オープン添削</title>
+  <meta name="description" content="推薦・総合型選抜の志望理由書をAIが無料で添削。会員登録不要・1分で結果がわかる。評価観点・コメント・改善案をその場で確認。早慶上智MARCH対応。高校3年生の出願対策に。">
+  <link rel="icon" type="image/png" href="/brand/logo-mark-32.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Brand colors (logo-aligned) */
+      --navy: #1a3f8f;
+      --navy-dark: #0e2c6e;
+      --navy-light: #e7eef9;
+      --navy-50: #f3f6fc;
+      --teal: #14b8a6;
+      --teal-dark: #0d9488;
+      --teal-light: #d1f5ee;
+      --teal-50: #f0fbf8;
+      /* Functional */
+      --red: #ef4444;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --amber: #f59e0b;
+      --amber-light: #fef3c7;
+      --yellow-bg: #fffbe8;
+      --yellow-border: #facc15;
+      --text: #0f172a;
+      --text-sub: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --border-light: #eef2f7;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 4px rgba(15,23,42,0.06);
+      --shadow: 0 2px 16px rgba(15,23,42,0.08);
+      --shadow-lg: 0 8px 32px rgba(15,23,42,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Noto Sans JP', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header (matches article site Header.astro) ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 1.5rem;
+      height: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+      margin-right: auto;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .header-nav {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      height: 100%;
+    }
+    .header-nav a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 1.25rem;
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      white-space: nowrap;
+      position: relative;
+      transition: color 0.15s;
+    }
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0.75rem;
+      right: 0.75rem;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px 2px 0 0;
+      transform: scaleX(0);
+      transition: transform 0.18s;
+    }
+    .header-nav a:hover { color: var(--navy); }
+    .header-nav a:hover::after { transform: scaleX(0.6); }
+    .header-nav a.active { color: var(--navy); font-weight: 700; }
+    .header-nav a.active::after { transform: scaleX(1); }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #ef4444;
+      color: white;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.12s, box-shadow 0.12s;
+      box-shadow: 0 2px 8px rgba(239,68,68,0.3);
+    }
+    .header-cta:hover { background: #dc2626; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(239,68,68,0.4); }
+    .header-mobile-nav {
+      display: none;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .header-mobile-nav summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.45rem;
+      border-radius: 8px;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+    }
+    .header-mobile-nav summary::-webkit-details-marker { display: none; }
+    .header-mobile-nav summary:hover { background: #f1f5f9; }
+    .header-mobile-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.13);
+      min-width: 210px;
+      padding: 0.5rem;
+      z-index: 100;
+    }
+    .header-mobile-panel ul { list-style: none; padding: 0; margin: 0; }
+    .header-mobile-panel li { margin: 0; }
+    .header-mobile-panel li.divider { height: 1px; background: #e5e7eb; margin: 0.5rem 0; }
+    .header-mobile-panel a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 0.9rem;
+      color: #1f2937;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.12s;
+    }
+    .header-mobile-panel a:hover { background: #f1f5f9; }
+    .header-mobile-panel a.header-mobile-cta {
+      background: #ef4444;
+      color: white;
+      text-align: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-top: 0.25rem;
+    }
+    .header-mobile-panel a.header-mobile-cta:hover { background: #dc2626; }
+    @media (max-width: 720px) {
+      .header-inner { padding: 0 1rem; height: 56px; }
+      .header-nav { display: none; }
+      .header-cta { display: none; }
+      .header-mobile-nav { display: block; }
+      .logo img { height: 34px; }
+    }
+
+    /* Horizontal step bar (sticky under header) */
+    .step-bar-wrap {
+      background: var(--navy-50);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      position: sticky;
+      top: 64px; /* below header */
+      z-index: 90;
+      box-shadow: 0 2px 8px rgba(15,23,42,0.04);
+    }
+    @media (max-width: 720px) {
+      .step-bar-wrap { top: 56px; }
+    }
+    .step-bar-wrap::-webkit-scrollbar { display: none; }
+    .step-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      white-space: nowrap;
+      min-width: max-content;
+      justify-content: center;
+      min-height: 44px;
+    }
+    .step-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      line-height: 1;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .sp-label {
+      display: inline-flex;
+      align-items: center;
+      height: 19px;
+      line-height: 1;
+      padding-top: 1px; /* 日本語ベースラインの視覚補正 */
+    }
+    .step-pill.active {
+      background: var(--navy);
+      color: #ffffff;
+      border-color: var(--navy);
+      box-shadow: 0 6px 18px rgba(26,63,143,0.40), 0 0 0 3px rgba(26,63,143,0.15);
+    }
+    .step-pill.active .sp-label,
+    .step-pill.done .sp-label { color: #ffffff; }
+    .step-pill.done {
+      background: var(--navy);
+      color: #ffffff;
+      border-color: var(--navy);
+      opacity: 0.78;
+    }
+    .step-pill.done:hover { opacity: 1; }
+    .sp-num {
+      width: 19px; height: 19px;
+      border-radius: 50%;
+      background: var(--bg);
+      color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .step-pill.active .sp-num {
+      background: rgba(255,255,255,0.22);
+      color: var(--white);
+    }
+    .step-pill.done .sp-num {
+      background: rgba(255,255,255,0.22);
+      color: var(--white);
+      font-size: 0;
+    }
+    .step-pill.done .sp-num::before {
+      content: '✓';
+      font-size: 11px;
+    }
+    .step-arrow {
+      color: var(--border);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .step-pill.active ~ .step-arrow,
+    .step-pill.done + .step-arrow {
+      color: var(--text-muted);
+    }
+    @media (max-width: 720px) {
+      .step-bar { justify-content: flex-start; }
+      .step-section { scroll-margin-top: 104px; }
+      .sp-label { font-size: 11px; }
+    }
+
+    /* Progress dots in header (legacy, kept for safety) */
+    .progress {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .prog-step {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .prog-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .prog-step.active .prog-dot {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 0 0 3px var(--navy-light), 0 2px 6px rgba(26,77,143,0.25);
+    }
+    .prog-step.done .prog-dot {
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0;
+    }
+    .prog-step.done .prog-dot::before {
+      content: '✓';
+      font-size: 12px;
+    }
+    .prog-step.active { color: var(--navy); }
+    .prog-step.done { color: var(--navy); }
+    .prog-line { width: 14px; height: 2px; background: var(--border); }
+    .prog-step.active + .prog-line, .prog-step.done + .prog-line { background: var(--navy); }
+
+    /* ── Layout ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 0 24px 64px; }
+
+    /* ── Hero ── */
+    .hero {
+      margin: 0 -24px 32px;
+      padding: 0;
+    }
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .hero-img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+    .hero-cta-overlay {
+      position: absolute;
+      bottom: 13%;
+      left: 4.5%;
+    }
+    /* オーバーレイCTA：幅広・押しやすく */
+    .hero-cta-overlay .start-cta {
+      width: auto;
+      min-width: 340px;
+      padding: 18px 48px;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+    .hero-cta-mobile { display: none; }
+
+    /* Sample preview */
+    .sample-card {
+      background: var(--white);
+      border: 1.5px solid #c5d8ee;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 40px rgba(15,23,42,0.12);
+      padding: 16px;
+      position: relative;
+    }
+    .sample-card::after {
+      content: '実際にこんな結果が届きます';
+      position: absolute;
+      bottom: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .sample-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 12px;
+      border-bottom: 1.5px solid var(--border-light);
+      padding-bottom: 10px;
+      align-items: center;
+    }
+    .sample-tab {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 5px;
+      background: var(--bg);
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .sample-tab.active { background: var(--teal); color: var(--white); }
+    .sample-body {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 10px;
+      padding: 6px 0 10px;
+    }
+    .sample-essay {
+      font-size: 9.5px;
+      line-height: 1.85;
+      color: var(--text);
+      padding: 12px;
+      border: 1px solid var(--border-light);
+      border-radius: 7px;
+      background: var(--bg);
+      min-height: 130px;
+    }
+    .sample-essay .hl-y { background: #fef3c7; padding: 0 2px; border-radius: 2px; }
+    .sample-essay .hl-b { background: #dbeafe; padding: 0 2px; border-radius: 2px; }
+    .sample-essay .hl-r { background: #fee2e2; padding: 0 2px; border-radius: 2px; }
+    .sample-comments { display: flex; flex-direction: column; gap: 5px; }
+    .sc-comments-title {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      padding: 3px 6px;
+      border: 1px solid var(--navy);
+      border-radius: 4px;
+      margin-bottom: 4px;
+      display: inline-block;
+      background: var(--white);
+    }
+    .sc-comments-title::before { content: '【'; }
+    .sc-comments-title::after { content: '】'; }
+    .sample-comment {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--navy);
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 8.5px;
+      line-height: 1.5;
+    }
+    .sample-comment.good { border-left-color: var(--teal); }
+    .sample-comment.more { border-left-color: var(--amber); }
+    .sample-comment .sc-title {
+      font-weight: 800; color: var(--text); margin-bottom: 3px;
+      font-size: 9px; display: flex; align-items: center; gap: 4px;
+    }
+    .sc-dot {
+      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+    .sc-dot.good { background: var(--teal); }
+    .sc-dot.more { background: var(--amber); }
+    .sample-comment .sc-body { color: var(--text-sub); line-height: 1.55; }
+    .sample-cta {
+      background: linear-gradient(90deg, var(--navy), var(--teal));
+      color: var(--white);
+      text-align: center;
+      padding: 9px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      box-shadow: 0 2px 10px rgba(20,184,166,0.30);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Big start CTA ── */
+    .start-cta-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 28px 0 40px;
+    }
+    .start-cta {
+      background: var(--navy);
+      color: var(--white);
+      padding: 20px 32px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(26,63,143,0.30);
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+      width: min(560px, 80%);
+      justify-content: center;
+    }
+    .start-cta:hover { background: var(--navy-dark); transform: translateY(-1px); box-shadow: 0 10px 28px rgba(26,77,143,0.4); }
+
+    /* ── Step section ── */
+    .step-section { margin-bottom: 32px; scroll-margin-top: 116px; }
+    .step-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 14px;
+      padding: 0 6px;
+    }
+    .step-tag {
+      background: var(--navy);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 13px;
+      border-radius: 5px;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+    .step-title {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.025em;
+    }
+    .step-note {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-left: auto;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .step-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .step-card.disabled {
+      background: #fafbfc;
+      border-style: dashed;
+      border-color: #d1d9e1;
+    }
+    .step-card.active {
+      border-color: var(--navy);
+      box-shadow: 0 4px 16px rgba(26,77,143,0.10);
+    }
+    .step-card.disabled .empty-placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Step 1 wrapper (large blue bordered box containing intro + grids) */
+    .step1-wrap {
+      background: linear-gradient(180deg, #f0f6fc, #e8f1fa);
+      border: 1.5px solid rgba(26,77,143,0.22);
+      border-radius: 14px;
+      padding: 26px 28px;
+      position: relative;
+      box-shadow: 0 1px 6px rgba(26,77,143,0.05) inset;
+    }
+    .step1-wrap::after {
+      content: '';
+      position: absolute;
+      top: 26px;
+      right: 28px;
+      width: 30px; height: 30px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='none' stroke='%231a4d8f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cpolyline points='19 12 12 19 5 12'/%3E%3C/svg%3E") no-repeat center / contain;
+      opacity: 0.45;
+    }
+    .step1-wrap-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .intro-num {
+      width: 26px; height: 26px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step1-wrap-desc {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-left: 38px;
+      margin-bottom: 18px;
+    }
+
+    /* University / faculty / course grid */
+    .pick-row { margin-bottom: 18px; }
+    .pick-row:last-child { margin-bottom: 0; }
+    .pick-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .pick-num {
+      width: 22px; height: 22px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .pick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .pick-card {
+      background: var(--white);
+      border: 1.5px solid #d8e0e8;
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+      font-family: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-height: 68px;
+      justify-content: center;
+      box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+    }
+    .pick-card:hover {
+      border-color: var(--navy);
+      background: #f5f9fd;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(26,77,143,0.10);
+    }
+    .pick-card.selected {
+      border-color: var(--navy);
+      background: var(--navy-light);
+      border-width: 2px;
+      box-shadow: 0 4px 12px rgba(26,77,143,0.18);
+    }
+    .pick-card .pc-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .pick-card .pc-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Selection panel (clean white card with strong typography) */
+    .selection-panel {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-bottom: 16px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-left: 4px solid var(--navy);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(15,23,42,0.06);
+    }
+    .sp-marker {
+      padding: 18px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--navy);
+    }
+    .sp-body {
+      flex: 1;
+      padding: 14px 4px 14px 0;
+      min-width: 0;
+    }
+    .sp-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .sp-univ {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .sp-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .sp-meta .sp-fac {
+      color: var(--text);
+    }
+    .sp-meta .sp-divider {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .sp-meta .sp-course {
+      color: var(--navy);
+      background: var(--navy-light);
+      padding: 3px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+    .sp-edit {
+      align-self: center;
+      margin: 0 18px 0 12px;
+      background: var(--white);
+      color: var(--text-sub);
+      border: 1.5px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .sp-edit:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+      background: var(--navy-light);
+    }
+    @media (max-width: 600px) {
+      .selection-panel { flex-direction: column; align-items: stretch; }
+      .sp-marker { padding: 14px 16px 0; justify-content: flex-start; }
+      .sp-body { padding: 8px 16px 14px; }
+      .sp-univ { font-size: 18px; }
+      .sp-edit { margin: 0 16px 14px; align-self: stretch; text-align: center; }
+      /* pick-grid 漏れ補完 */
+      .pick-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Legacy pills (used in result page) */
+    .pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 8px 10px 8px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--navy);
+      box-shadow: 0 2px 8px rgba(26,63,143,0.08);
+    }
+    .pill .pill-x {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: none;
+      flex-shrink: 0;
+    }
+    .pill .pill-x:hover { background: var(--red); }
+    .pill-arrow {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .pills-divider { height: 1px; background: var(--border-light); margin: 14px 0; }
+
+    /* Action buttons (favorite/memo) below pills */
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .action-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .action-btn-link {
+      text-decoration: none;
+      background: var(--navy-light);
+      border-color: rgba(26,63,143,0.25);
+      color: var(--navy);
+    }
+    .action-btn-link:hover {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .action-btn[aria-pressed="true"] {
+      background: #fffbe8;
+      border-color: #facc15;
+      color: #a16207;
+    }
+    .action-btn[aria-pressed="true"] .fav-icon {
+      fill: #f59e0b;
+      stroke: #f59e0b;
+    }
+    .fav-toast {
+      display: none;
+      font-size: 11px;
+      color: var(--text-sub);
+      padding: 5px 10px;
+      background: var(--bg);
+      border-radius: 6px;
+      animation: fadeOut 2.4s ease forwards;
+    }
+    .fav-toast.show { display: inline-flex; align-items: center; }
+    @keyframes fadeOut {
+      0% { opacity: 0; transform: translateY(2px); }
+      15% { opacity: 1; transform: translateY(0); }
+      75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* Yellow info box (collapsible) */
+    .info-yellow {
+      background: var(--yellow-bg);
+      border: 1.5px solid var(--yellow-border);
+      border-radius: 10px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+    .info-yellow-toggle {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      color: #92400e;
+      text-align: left;
+      transition: background 0.15s;
+    }
+    .info-yellow-toggle:hover { background: rgba(251,191,36,0.08); }
+    .info-yellow-toggle .iy-chevron {
+      margin-left: auto;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      color: #92400e;
+    }
+    .info-yellow.open .info-yellow-toggle .iy-chevron {
+      transform: rotate(180deg);
+    }
+    .info-yellow-content {
+      padding: 0 20px 16px;
+      border-top: 1px solid rgba(251, 191, 36, 0.4);
+      display: none;
+    }
+    .info-yellow.open .info-yellow-content { display: block; }
+    .info-yellow-content-inner { padding-top: 14px; }
+    .info-yellow-head {
+      display: none;
+    }
+    .info-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px 18px;
+      font-size: 12px;
+    }
+    .info-meta-grid > div { color: var(--text); line-height: 1.55; }
+    .info-meta-grid .key {
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: 3px;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+    }
+    .info-meta-grid .val { font-size: 12px; font-weight: 600; }
+    .info-help-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      color: #92400e;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    /* Step 2: Question list */
+    .empty-placeholder {
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 28px 20px;
+      border: 1.5px dashed #d1d9e1;
+      border-radius: 10px;
+      background: #fafbfc;
+    }
+    .empty-chip-row {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .empty-chip {
+      display: inline-block;
+      background: var(--border);
+      height: 20px;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+    .question-block { padding: 4px 4px; }
+    .question-block .q-section-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--navy);
+      display: inline-block;
+    }
+    .question-list {
+      list-style: none;
+      counter-reset: q;
+    }
+    .question-list li {
+      counter-increment: q;
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      align-items: flex-start;
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--text);
+    }
+    .question-list li::before {
+      content: counter(q) ".";
+      font-weight: 800;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    /* Multiple-question tabs */
+    .q-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 14px 0 8px;
+      padding: 6px;
+      background: var(--bg);
+      border-radius: 10px;
+    }
+    .q-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      transition: all 0.15s;
+    }
+    .q-tab:hover { border-color: var(--navy); color: var(--navy); }
+    .q-tab.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      box-shadow: 0 2px 8px rgba(26,63,143,0.20);
+    }
+    .q-tab-num {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--navy-light);
+      color: var(--navy);
+      font-size: 10px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .q-tab.active .q-tab-num { background: rgba(255,255,255,0.25); color: var(--white); }
+    .q-tab-title { white-space: nowrap; }
+    .q-tab-limit {
+      font-size: 10px;
+      opacity: 0.75;
+      padding: 1px 6px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 3px;
+    }
+    .q-tab.active .q-tab-limit { background: rgba(255,255,255,0.18); }
+    .q-tabs-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin: 0 4px 14px;
+    }
+    .question-body { display: none; }
+    .question-body.active { display: block; }
+    .q-body-title {
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      font-size: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--navy);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* Step 3 current question reference */
+    .step3-q-ref {
+      background: var(--navy-light);
+      border: 1.5px solid rgba(26,63,143,0.20);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+    }
+    .s3q-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .s3q-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .s3q-limit {
+      font-size: 11px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .s3q-other {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--text-sub);
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .s3q-switch {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-sub);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .s3q-switch:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* Markdown rendered question body */
+    .md-body { font-size: 13px; line-height: 1.85; color: var(--text); }
+    .md-body p { margin: 0 0 8px; }
+    .md-body p:last-child { margin-bottom: 0; }
+    .md-body .md-heading {
+      font-weight: 800;
+      color: var(--navy);
+      margin: 14px 0 8px;
+    }
+    .md-body .md-heading.md-h1 {
+      font-size: 14px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--navy);
+      display: inline-block;
+    }
+    .md-body .md-heading.md-h2 {
+      font-size: 13px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .md-body h5.md-heading { font-size: 12px; }
+    .md-body h6.md-heading { font-size: 11px; color: var(--text-sub); border: none; padding: 0; }
+    .md-body blockquote.md-bq {
+      border-left: 3px solid var(--border);
+      background: var(--bg);
+      padding: 8px 12px;
+      margin: 6px 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      border-radius: 0 6px 6px 0;
+    }
+    .md-body blockquote.md-bq p { margin: 0; }
+
+    /* 設問本体（プライマリ）— 最も強調 */
+    .md-body .md-primary {
+      background: var(--white);
+      border: 1.5px solid var(--navy);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 4px 0 14px;
+      box-shadow: 0 2px 12px rgba(26,63,143,0.08);
+    }
+    .md-body .md-h-primary {
+      font-size: 16px !important;
+      font-weight: 900 !important;
+      color: var(--navy) !important;
+      letter-spacing: -0.01em;
+      margin: 0 0 12px !important;
+      padding-bottom: 10px !important;
+      border-bottom: 2px solid var(--navy) !important;
+      display: flex !important;
+      align-items: center;
+      gap: 8px;
+    }
+    .md-body .md-h-primary::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: var(--navy);
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E") no-repeat center / contain;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E") no-repeat center / contain;
+      flex-shrink: 0;
+    }
+    .md-body .md-primary ol,
+    .md-body .md-primary ul {
+      font-size: 14px;
+      line-height: 2;
+      padding-left: 24px;
+    }
+    .md-body .md-primary li {
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .md-body .md-primary p {
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    /* 攻略のポイント・補足（セカンダリ）— 開閉式・控えめ */
+    .md-body details.md-secondary {
+      margin: 12px 0 4px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .md-body details.md-secondary summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      transition: color 0.15s;
+      user-select: none;
+    }
+    .md-body details.md-secondary summary::-webkit-details-marker { display: none; }
+    .md-body details.md-secondary summary:hover { color: var(--navy); }
+    .md-body details.md-secondary summary .md-chev {
+      margin-left: auto;
+      transition: transform 0.2s;
+    }
+    .md-body details.md-secondary[open] summary .md-chev {
+      transform: rotate(180deg);
+    }
+    .md-body details.md-secondary[open] summary {
+      border-bottom: 1px solid var(--border-light);
+      color: var(--navy);
+    }
+    .md-body .md-secondary-body {
+      padding: 12px 16px;
+      font-size: 12px;
+      line-height: 1.85;
+      color: var(--text-sub);
+    }
+    .md-body .md-h-secondary {
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      color: var(--text-sub) !important;
+      margin: 8px 0 4px !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    .md-body .md-secondary-body ul,
+    .md-body .md-secondary-body ol {
+      font-size: 12px;
+      padding-left: 20px;
+    }
+    .md-body ol, .md-body ul {
+      margin: 4px 0 8px;
+      padding-left: 22px;
+    }
+    .md-body li { margin-bottom: 3px; }
+    .md-body strong { font-weight: 800; color: var(--text); }
+    .md-body em { color: var(--text-sub); font-style: italic; }
+    .md-body code {
+      background: var(--bg);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 12px;
+    }
+    .q-meta-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .q-chip {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: var(--navy-light);
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .q-chip.archived { background: var(--amber-light); color: #92400e; }
+
+    /* Step 3 */
+    /* 書き直しモード：前回の指摘を残しながら入力 */
+    .rewrite-hint {
+      background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%);
+      border: 1.5px solid #fbbf24;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .rewrite-hint > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #78350f;
+      font-size: 13px;
+    }
+    .rewrite-hint > summary::-webkit-details-marker { display: none; }
+    .rewrite-hint > summary svg:first-of-type { color: #d97706; flex-shrink: 0; }
+    .rh-summary-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+      flex: 1;
+    }
+    .rh-summary-text strong { font-size: 13px; color: #78350f; }
+    .rh-summary-meta { font-size: 11px; color: #92400e; font-weight: 600; }
+    .rh-chev { color: #92400e; transition: transform 0.22s; flex-shrink: 0; }
+    .rewrite-hint[open] .rh-chev { transform: rotate(180deg); }
+    .rewrite-hint-body {
+      padding: 0 14px 14px;
+      background: white;
+      border-top: 1px dashed #fbbf24;
+    }
+    .rewrite-hint-body .rh-cmt {
+      padding: 9px 12px;
+      margin: 8px 0;
+      background: var(--bg);
+      border-left: 3px solid var(--amber);
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .rewrite-hint-body .rh-cmt.good { border-left-color: var(--teal); background: var(--teal-50, #ccfbf1); }
+    .rewrite-hint-body .rh-cmt-cat {
+      display: inline-block;
+      background: var(--white);
+      color: var(--text-sub);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-right: 6px;
+      border: 1px solid var(--border);
+    }
+    .rewrite-hint-body .rh-empty {
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 8px 0;
+    }
+
+    .essay-area {
+      width: 100%;
+      min-height: 240px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      font-size: 14px;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+      line-height: 1.95;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: var(--white);
+    }
+    .essay-area:disabled { background: var(--bg); color: var(--text-muted); cursor: not-allowed; }
+    .essay-area:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,77,143,0.10); }
+    .char-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .char-row .over { color: var(--red); font-weight: 800; }
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: var(--border-light);
+      border-radius: 2px;
+      margin: 0 12px;
+      overflow: hidden;
+    }
+    .progress-bar > div {
+      height: 100%;
+      background: var(--navy);
+      transition: width 0.3s;
+    }
+    .progress-bar > div.over { background: var(--red); }
+    .submit-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+    }
+    .submit-row .btn-submit {
+      flex: 1;
+      background: var(--navy);
+      color: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 0.02em;
+    }
+    .submit-row .btn-submit:hover:not(:disabled) {
+      background: var(--navy-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(26,77,143,0.3);
+    }
+    .submit-row .btn-submit:disabled {
+      background: #cbd5e1;
+      color: var(--white);
+      cursor: not-allowed;
+    }
+    .btn-clear {
+      background: var(--white);
+      color: var(--text-sub);
+      border: 1.5px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-clear:hover { background: var(--bg); border-color: var(--text-muted); }
+    .privacy-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* ── Loading ── */
+    .loading-screen {
+      display: none;
+      max-width: 720px;
+      margin: 32px auto 60px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      box-shadow: var(--shadow);
+    }
+    .loading-screen.active { display: block; }
+    .ls-head { text-align: center; margin-bottom: 24px; }
+    .ls-title-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .ls-spinner {
+      width: 22px;
+      height: 22px;
+      border: 2.5px solid color-mix(in srgb, var(--navy) 18%, white);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: ls-spin 0.9s linear infinite;
+      display: inline-block;
+    }
+    @keyframes ls-spin { to { transform: rotate(360deg); } }
+    .loading-screen h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0;
+      line-height: 1;
+    }
+    .loading-screen .sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* 進捗バー */
+    .ls-bar-wrap {
+      margin-bottom: 24px;
+    }
+    .ls-bar {
+      width: 100%;
+      height: 8px;
+      background: #f1f5f9;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .ls-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--navy) 0%, #2563eb 100%);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .ls-bar-fill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+      animation: ls-shimmer 1.6s ease-in-out infinite;
+    }
+    @keyframes ls-shimmer {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+    .ls-bar-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+    .ls-stage {
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .ls-elapsed {
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* コツのローテータ */
+    .ls-tip {
+      background: linear-gradient(135deg, #fffbea 0%, #fef3c7 100%);
+      border: 1px solid #fcd34d;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+    }
+    .ls-tip-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #92400e;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .ls-tip-text {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: #78350f;
+      transition: opacity 0.25s ease;
+    }
+
+    /* 関連記事 */
+    .ls-articles {
+      border-top: 1px dashed var(--border);
+      padding-top: 20px;
+    }
+    .ls-articles-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ls-articles-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .ls-articles-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .ls-articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .ls-art-card {
+      display: block;
+      padding: 12px 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--navy);
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+    .ls-art-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15,23,42,0.08);
+      border-color: var(--navy);
+    }
+    .ls-art-cat {
+      display: inline-block;
+      background: var(--navy-light, #eff6ff);
+      color: var(--navy);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .ls-art-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.55;
+      color: var(--text);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .loading-screen { padding: 24px 16px; }
+      .loading-screen h2 { font-size: 18px; }
+      .ls-articles-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Result ── */
+    .result-wrap { display: none; }
+    .result-wrap.active { display: block; }
+
+    /* ── 履歴ストリップ ── */
+    .history-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    .hs-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+    .hs-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-sub);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+    .hs-item:hover { border-color: var(--navy); color: var(--navy); }
+    .hs-item.current { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .hs-grade {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .hs-item.current .hs-grade { background: var(--white); }
+    .hs-clear {
+      margin-left: auto;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .hs-clear:hover { color: var(--red); }
+
+    /* ── 結果ヒーロー（凝縮） ── */
+    .result-hero {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 26px 20px;
+      margin-bottom: 18px;
+    }
+    .rh-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .rh-label {
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .rh-context {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--text-sub);
+      font-weight: 700;
+    }
+    .rh-context .pill {
+      padding: 3px 9px;
+      font-size: 11px;
+      background: var(--navy-50, #eff6ff);
+      color: var(--navy);
+      border-radius: 4px;
+      border: 1px solid color-mix(in srgb, var(--navy) 18%, white);
+    }
+    .streak-badge {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      background: linear-gradient(135deg, #fef3c7, #fbbf24);
+      color: #78350f;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* 主要アクション */
+    .rh-actions {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .rh-act {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-sub);
+      font-size: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      transition: all 0.15s;
+      text-align: left;
+    }
+    .rh-act:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+      background: var(--navy-50, #eff6ff);
+      transform: translateY(-1px);
+    }
+    .rh-act svg { flex-shrink: 0; }
+    .rh-act > span {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .rh-act strong { font-size: 13px; font-weight: 800; color: var(--text); line-height: 1.2; }
+    .rh-act:hover strong { color: var(--navy); }
+    .rh-act-sub { font-size: 10px; color: var(--text-muted); font-weight: 600; }
+    .rh-act.primary {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(26,77,143,0.25);
+    }
+    .rh-act.primary strong { color: var(--white); }
+    .rh-act.primary .rh-act-sub { color: rgba(255,255,255,0.78); }
+    .rh-act.primary:hover {
+      background: var(--navy-dark, #0f3a6f);
+      border-color: var(--navy-dark, #0f3a6f);
+      color: var(--white);
+    }
+    .rh-act.primary:hover strong { color: var(--white); }
+    @media (max-width: 720px) {
+      .rh-actions {
+        grid-template-columns: 1fr 1fr;
+      }
+      .rh-act.primary {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* AI注意 */
+    .rh-disclaimer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 14px 0 0;
+      padding: 10px 12px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      font-size: 11px;
+      color: #78350f;
+      line-height: 1.55;
+    }
+    .rh-disclaimer svg { flex-shrink: 0; color: #d97706; }
+
+    /* セクションタイトルの階層 */
+    .annot-title.primary-title {
+      color: var(--navy);
+      font-size: 19px;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 8px;
+    }
+    .annot-title.secondary-title {
+      color: var(--text-sub);
+      font-size: 16px;
+    }
+    .annot-help {
+      margin-left: auto;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: normal;
+    }
+
+    .grade-section {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .grade-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .grade-circle {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: conic-gradient(from 220deg, var(--navy), var(--teal), var(--navy));
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 6px 20px rgba(26,63,143,0.3);
+      position: relative;
+    }
+    .grade-circle::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+    }
+    .grade-circle > * { position: relative; z-index: 1; }
+    .grade-circle .gc-label { font-size: 10px; font-weight: 700; opacity: 0.85; letter-spacing: 0.1em; }
+    .grade-circle .gc-val { font-size: 36px; font-weight: 900; line-height: 1; margin-top: 2px; }
+    .grade-text { flex: 1; min-width: 240px; }
+    .grade-text h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; color: var(--text); }
+    .grade-text p { font-size: 13px; line-height: 1.85; color: var(--text-sub); }
+
+    /* グレードのトーン別カラー */
+    .grade-circle.tone-good::before { background: linear-gradient(135deg, #047857, #0f766e); }
+    .grade-circle.tone-good { box-shadow: 0 6px 20px rgba(15,118,110,0.32); }
+    .grade-circle.tone-ok::before { background: linear-gradient(135deg, var(--navy), var(--navy-dark)); }
+    .grade-circle.tone-warn::before { background: linear-gradient(135deg, #c2410c, #9a3412); }
+    .grade-circle.tone-warn { box-shadow: 0 6px 20px rgba(194,65,12,0.32); }
+
+    /* 内訳バー */
+    .grade-breakdown {
+      margin-top: 12px;
+    }
+    .gb-bar {
+      display: flex;
+      width: 100%;
+      height: 8px;
+      background: var(--bg);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .gb-bar .gb-good { background: var(--teal, #14b8a6); height: 100%; transition: width 0.6s ease; }
+    .gb-bar .gb-more { background: var(--amber, #f59e0b); height: 100%; transition: width 0.6s ease; }
+    .gb-legend {
+      display: flex;
+      gap: 14px;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-sub);
+      font-weight: 700;
+    }
+    .gb-legend .dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .gb-legend .dot.good { background: var(--teal, #14b8a6); }
+    .gb-legend .dot.more { background: var(--amber, #f59e0b); }
+    .gb-legend strong { color: var(--text); margin-left: 2px; }
+
+    .total-comment {
+      margin-top: 18px;
+      padding: 12px 16px;
+      background: var(--teal-50);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+      color: #134e4a;
+      line-height: 1.7;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .total-comment-label {
+      background: var(--teal);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .download-row {
+      margin-top: 18px;
+      text-align: center;
+    }
+    .btn-download {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 36px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(26,77,143,0.3);
+      transition: all 0.2s;
+    }
+    .btn-download:hover { background: var(--navy-dark); transform: translateY(-1px); }
+    .download-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Annotations */
+    .annot-section {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .annot-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .filter-chip {
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--bg);
+      color: var(--text-sub);
+      cursor: pointer;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-chip.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .filter-chip.good.active { background: var(--teal); border-color: var(--teal); }
+    .filter-chip.more.active { background: var(--amber); border-color: var(--amber); }
+    .filter-chip.cat { font-size: 11px; padding: 5px 12px; }
+    .filter-chip.cat.active { background: var(--teal-50, #ccfbf1); color: var(--teal); border-color: var(--teal); }
+    .filter-sep {
+      display: inline-block;
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+      align-self: center;
+      margin: 0 4px;
+    }
+
+    /* mark / annot-card のフラッシュ＆操作可能化 */
+    .annot-essay mark[data-cmt-id] {
+      cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .annot-essay mark[data-cmt-id]:hover {
+      box-shadow: 0 0 0 3px rgba(26,77,143,0.18);
+    }
+    .annot-card { cursor: pointer; }
+    .annot-essay mark.flash,
+    .annot-card.flash {
+      animation: cmtFlash 1.1s ease-out;
+    }
+    @keyframes cmtFlash {
+      0%   { box-shadow: 0 0 0 0 rgba(26,77,143,0); }
+      18%  { box-shadow: 0 0 0 6px rgba(26,77,143,0.32); }
+      100% { box-shadow: 0 0 0 0 rgba(26,77,143,0); }
+    }
+
+    .annot-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    @media (max-width: 800px) {
+      .annot-body { grid-template-columns: 1fr; }
+    }
+    .annot-essay {
+      background: var(--bg);
+      border: 1.5px solid var(--border-light);
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+      font-size: 13px;
+      line-height: 2.1;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .annot-essay mark {
+      padding: 1px 3px;
+      border-radius: 3px;
+      font-style: normal;
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+    .annot-essay mark:hover { filter: brightness(0.95); }
+    .annot-essay mark.good { background: var(--teal-light); }
+    .annot-essay mark.more { background: #fef3c7; }
+    .annot-essay mark sup {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-left: 2px;
+      vertical-align: super;
+    }
+
+    .annot-list { display: flex; flex-direction: column; gap: 10px; }
+    .annot-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .annot-card:hover { border-color: var(--navy); box-shadow: var(--shadow-sm); }
+    .annot-card.good { border-left: 4px solid var(--teal); }
+    .annot-card.more { border-left: 4px solid var(--amber); }
+    .annot-card-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .annot-num {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--navy-light);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .annot-type {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+    .annot-type.good { background: var(--teal-light); color: #134e4a; }
+    .annot-type.more { background: var(--amber-light); color: #92400e; }
+    .annot-cat {
+      font-size: 10px;
+      background: var(--bg);
+      color: var(--text-sub);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .annot-body-text { font-size: 12px; color: var(--text); line-height: 1.75; }
+
+    /* Next actions */
+    .nextactions-section {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .nextactions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 700px) {
+      .nextactions-grid { grid-template-columns: 1fr; }
+    }
+    .na-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .na-card .na-priority {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--white);
+      background: var(--navy);
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .na-card.p1 .na-priority { background: var(--red); }
+    .na-card.p2 .na-priority { background: var(--amber); }
+    .na-card.p3 .na-priority { background: var(--navy); }
+    .na-card .na-text { font-size: 12px; color: var(--text); line-height: 1.7; }
+
+    /* 次の一手の階層 */
+    .na-top {
+      border: 2px solid var(--red);
+      background: linear-gradient(135deg, #fff7ed 0%, #fef2f2 100%);
+      padding: 18px 22px;
+      grid-column: 1 / -1;
+    }
+    .na-top .na-rank {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--red);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .na-top .na-text { font-size: 14px; font-weight: 700; }
+    .na-rest {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+      grid-column: 1 / -1;
+      margin-top: 4px;
+    }
+    .na-mini {
+      padding: 12px 14px;
+    }
+    .na-mini .na-rank-sm {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--bg);
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* モバイル: 添削原稿を縦積みでも対応関係を保つ */
+    @media (max-width: 720px) {
+      .annot-body {
+        grid-template-columns: 1fr !important;
+      }
+      .annot-essay {
+        position: sticky;
+        top: 0;
+        background: var(--white);
+        z-index: 5;
+        max-height: 40vh;
+        overflow-y: auto;
+        padding: 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 12px;
+      }
+      .annot-list {
+        max-height: none;
+      }
+    }
+
+    /* 印刷スタイル */
+    @media print {
+      header, footer, .step-bar, .progress, .filter-bar, .filter-shell,
+      .step-card, .input-view, .articles-section, .disclaimer,
+      .nexttodo-section, .history-strip, .rh-actions, .rh-disclaimer,
+      .to-top, .step1-wrap, .step2-wrap, .nt-card,
+      #articlesSection { display: none !important; }
+      body { background: white !important; }
+      .result-wrap { display: block !important; }
+      .result-hero, .annot-section, .nextactions-section {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+      }
+      .grade-circle::before { background: #1a4d8f !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .annot-body {
+        grid-template-columns: 1fr !important;
+      }
+      .annot-essay mark.flash, .annot-card.flash { animation: none; }
+    }
+
+    /* Encouragement */
+    .encouragement-box {
+      background: linear-gradient(135deg, var(--navy-light), #f0f9ff);
+      border: 1.5px solid rgba(26,77,143,0.18);
+      border-radius: var(--radius);
+      padding: 18px 24px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--navy-dark);
+      line-height: 1.85;
+      font-weight: 500;
+    }
+
+    /* Save / Share */
+    .share-section {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .share-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .share-btn {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+      transition: all 0.15s;
+    }
+    .share-btn:hover { border-color: var(--navy); background: var(--navy-50); }
+    .share-btn .sb-title { font-weight: 800; color: var(--text); }
+    .share-btn .sb-sub { font-size: 10px; color: var(--text-muted); font-weight: 600; }
+
+    /* Next is? */
+    .nexttodo-section {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .nexttodo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 700px) {
+      .nexttodo-grid { grid-template-columns: 1fr; }
+    }
+    .nt-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: left;
+      font-family: inherit;
+    }
+    .nt-card:hover { border-color: var(--navy); background: var(--navy-50); transform: translateY(-1px); }
+    .nt-card .nt-icon {
+      width: 32px; height: 32px;
+      background: var(--navy-light);
+      color: var(--navy);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 8px;
+    }
+    .nt-card .nt-title { font-size: 13px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .nt-card .nt-desc { font-size: 11px; color: var(--text-muted); line-height: 1.55; }
+
+    /* Articles section */
+    .articles-section {
+      margin: 32px 0 24px;
+      padding: 24px 28px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .articles-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .articles-head h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .articles-head a {
+      font-size: 12px;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 700px) {
+      .articles-grid { grid-template-columns: 1fr; }
+    }
+    .article-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 12px;
+      padding: 0;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+    .article-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      border-color: var(--navy);
+    }
+    .article-card .ac-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #f1f5f9;
+    }
+    .article-card .ac-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .article-card:hover .ac-thumb img {
+      transform: scale(1.03);
+    }
+    .article-card .ac-body {
+      padding: 1rem 1.25rem 1.25rem;
+    }
+    .article-card .ac-cat {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-bottom: 11px;
+    }
+    .article-card .ac-cat.cat-basic { background: #fff7ed; color: #c2410c; }
+    .article-card .ac-cat.cat-writing { background: #fef2f2; color: #b91c1c; }
+    .article-card .ac-cat.cat-schedule { background: #ecfdf5; color: #047857; }
+    .article-card .ac-cat.cat-interview { background: #faf5ff; color: #7c2d12; }
+    .article-card .ac-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.55;
+      margin: 0 0 8px;
+      letter-spacing: -0.005em;
+    }
+    .article-card .ac-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.65;
+      margin: 0 0 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .article-card .ac-more {
+      display: none;
+    }
+    .article-card .ac-more { font-size: 11px; color: var(--navy); font-weight: 700; margin-top: 6px; }
+
+    .disclaimer {
+      background: #f0f6fc;
+      border: 1px solid #d6e3f0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 11px;
+      color: var(--text-sub);
+      line-height: 1.75;
+      margin: 20px 0 8px;
+    }
+    .disclaimer::before {
+      content: '※';
+      color: var(--navy);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+    .disclaimer strong { color: var(--navy); font-weight: 800; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--white);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-brand img { height: 28px; width: auto; display: block; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; }
+    .footer-links a { color: var(--text-sub); text-decoration: none; font-weight: 500; }
+    .footer-links a:hover { color: var(--navy); }
+    .footer-copy { text-align: right; color: var(--text-muted); }
+    @media (max-width: 700px) {
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-copy { text-align: center; }
+      .footer-links { flex-wrap: wrap; }
+    }
+
+    /* Floating CTA */
+    .floating-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(26,77,143,0.4);
+      cursor: pointer;
+      border: none;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      z-index: 50;
+      transition: all 0.2s;
+    }
+    .floating-cta.show { display: inline-flex; }
+    .floating-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(26,77,143,0.5); }
+
+    /* Error */
+    .error-box {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #991b1b;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .error-box.active { display: block; }
+
+    /* Mock notice */
+    .mock-notice {
+      background: var(--amber-light);
+      border: 1.5px solid var(--amber);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #92400e;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { margin: 0 -16px 24px; }
+      .hero-cta-overlay .start-cta { min-width: 180px; padding: 14px 24px; font-size: 15px; }
+      .pick-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      header { padding: 0 16px; }
+      .header-right { gap: 12px; }
+      .progress { gap: 4px; }
+      .prog-step .prog-label { display: none; }
+      main { padding: 24px 16px 64px; }
+    }
+    @media (max-width: 600px) {
+      .step-card { padding: 18px 16px; }
+      .grade-row { gap: 16px; }
+      .grade-circle { width: 80px; height: 80px; }
+      .grade-circle .gc-val { font-size: 30px; }
+      .start-cta { padding: 16px 36px; font-size: 14px; }
+      .annot-section, .nextactions-section, .share-section, .nexttodo-section, .articles-section, .grade-section { padding: 18px; }
+    }
+
+    .hidden { display: none !important; }
+    /* ── モバイル最適化 (≤480px) ───────────────────────── */
+    @media (max-width: 480px) {
+      /* FV CTAボタン: 画面幅超えを防止 */
+      .hero-cta-overlay { left: 50%; transform: translateX(-50%); width: calc(100% - 32px); }
+      .hero-cta-overlay .start-cta { min-width: 0 !important; width: 100% !important; font-size: 15px !important; padding: 15px 20px !important; justify-content: center; }
+
+      /* 大学選択グリッド: 2列に固定 */
+      .pick-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+      /* 結果アクションボタン: 2列 */
+      .rh-actions { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+
+      /* 次のアクション: 1列 */
+      .nextactions-grid { grid-template-columns: 1fr !important; }
+
+      /* テキストエリア: min-height縮小 + iOS自動ズーム防止(16px) */
+      .essay-area { min-height: 160px !important; font-size: 16px !important; }
+
+      /* 字数カウンター */
+      .char-row { font-size: 13px; }
+
+      /* 削除ボタン タップターゲット拡大 */
+      .pill .pill-x { width: 28px !important; height: 28px !important; font-size: 14px; }
+
+      /* STEPラベル */
+      .sp-label { font-size: 12px; }
+
+      /* 添削コメント番号 タップ領域確保 */
+      .annot-num { width: 28px !important; height: 28px !important; font-size: 12px !important; }
+
+      /* FVサンプルカードのコメント文字 */
+      .sample-comment { font-size: 11px !important; }
+
+      /* 軽微フォント調整 */
+      .pick-card .pc-meta { font-size: 12px; }
+      .rh-disclaimer { font-size: 12px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Header (matches article site) -->
+<header>
+  <nav class="header-inner">
+    <a class="logo" href="/" aria-label="オープン添削">
+      <img src="/brand/logo-full.png" alt="オープン添削" width="180" height="44">
+    </a>
+    <div class="header-nav">
+      <a href="/articles">受験対策記事</a>
+      <a href="/match/">総合型選抜診断</a>
+    </div>
+    <a href="/#step1Sec" class="header-cta">
+      <span>無料で添削する</span>
+    </a>
+    <details class="header-mobile-nav" aria-label="メニュー">
+      <summary aria-label="メニューを開く">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </summary>
+      <div class="header-mobile-panel">
+        <ul>
+          <li><a href="/articles">受験対策記事</a></li>
+          <li><a href="/match/">総合型選抜診断</a></li>
+          <li class="divider"></li>
+          <li><a href="/#step1Sec" class="header-mobile-cta">無料で添削する</a></li>
+        </ul>
+      </div>
+    </details>
+  </nav>
+</header>
+
+<!-- Horizontal step bar (slides under header) -->
+<div class="step-bar-wrap">
+  <div class="step-bar" id="stepBar">
+    <div class="step-pill active" id="sb1"><span class="sp-num">1</span><span class="sp-label">志望先を選ぶ</span></div>
+    <span class="step-arrow">→</span>
+    <div class="step-pill" id="sb2"><span class="sp-num">2</span><span class="sp-label">設問を確認</span></div>
+    <span class="step-arrow">→</span>
+    <div class="step-pill" id="sb3"><span class="sp-num">3</span><span class="sp-label">本文を入力</span></div>
+    <span class="step-arrow">→</span>
+    <div class="step-pill" id="sb4"><span class="sp-num">4</span><span class="sp-label">添削結果</span></div>
+  </div>
+</div>
+
+<main>
+
+<!-- ─── INPUT VIEW (Steps 1-3) ─── -->
+<div id="inputView">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-img-wrap">
+      <img src="fv.png" alt="オープン添削 — 伝わる志望理由書が、最短でわかる。" class="hero-img">
+      <div class="hero-cta-overlay">
+        <button class="start-cta" id="startCta">
+          無料で志望理由を添削する
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 1 -->
+  <section class="step-section" id="step1Sec">
+    <div class="step-header">
+      <span class="step-tag">STEP 1</span>
+      <span class="step-title">志望先を選ぶ</span>
+      <span class="step-note">大学→学部学科→受験コースの順で絞り込めます</span>
+    </div>
+    <div class="step-card active" id="step1Card">
+
+      <!-- Selection panel (prominent, when fully selected) -->
+      <div id="selectionPanelHost"></div>
+      <!-- Selection pills (when only partially selected) -->
+      <div class="pills" id="selectedPills" style="display:none;"></div>
+
+      <!-- Action buttons after selection -->
+      <div class="action-buttons" id="actionButtons" style="display:none;">
+        <button class="action-btn" id="favBtn" type="button" aria-pressed="false">
+          <svg class="fav-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="fav-label">お気に入りに追加</span>
+        </button>
+        <a class="action-btn action-btn-link" id="officialLink" target="_blank" rel="noopener" style="display:none;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          公式募集要項を検索
+        </a>
+        <span class="fav-toast" id="favToast" role="status" aria-live="polite"></span>
+      </div>
+
+      <!-- Step 1 wrapper (intro + grids inside one blue bordered box) -->
+      <div class="step1-wrap" id="step1Wrap">
+        <div class="step1-wrap-title">
+          <span class="intro-num">1</span>
+          <span>まず、志望校を選びましょう</span>
+        </div>
+        <p class="step1-wrap-desc">大学 → 学部 → 受験コース の順に進むと、自動で次のステップに進みます。</p>
+
+        <!-- Grid wrapper -->
+        <div id="gridsWrap">
+          <!-- University grid -->
+          <div class="pick-row" id="univRow">
+            <div class="pick-label">
+              <span class="pick-num">1</span> 大学を選ぶ
+            </div>
+            <div class="pick-grid" id="univGrid"></div>
+          </div>
+
+          <!-- Faculty grid -->
+          <div class="pick-row" id="facRow" style="display:none;">
+            <div class="pick-label">
+              <span class="pick-num">2</span> 学部・研究科を選ぶ
+            </div>
+            <div class="pick-grid" id="facGrid"></div>
+          </div>
+
+          <!-- Course grid -->
+          <div class="pick-row" id="courseRow" style="display:none;">
+            <div class="pick-label">
+              <span class="pick-num">3</span> 学科・コース／入試方式を選ぶ
+            </div>
+            <div class="pick-grid" id="courseGrid"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yellow info box (outside the blue wrapper) -->
+      <div class="info-yellow" id="infoYellow" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step-section" id="step2Sec">
+    <div class="step-header">
+      <span class="step-tag">STEP 2</span>
+      <span class="step-title">設問を確認する</span>
+      <span class="step-note" id="step2Note">STEP 1 を完了すると、ここに設問が表示されます</span>
+    </div>
+    <div class="step-card disabled" id="step2Card">
+      <div class="empty-placeholder" id="step2Empty">
+        <div class="empty-chip-row">
+          <span class="empty-chip" style="width:80px;"></span>
+          <span class="empty-chip" style="width:60px;"></span>
+        </div>
+        → 志望先を選ぶと、ここに設問本文と字数・観点が展開されます
+      </div>
+      <div id="step2Content" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step-section" id="step3Sec">
+    <div class="step-header">
+      <span class="step-tag">STEP 3</span>
+      <span class="step-title">本文を入力する</span>
+      <span class="step-note" id="step3Note">志望先と設問を選ぶと、ここで入力できます</span>
+    </div>
+    <div class="step-card disabled" id="step3Card">
+      <div class="step3-q-ref" id="step3QuestionRef" style="display:none;"></div>
+      <details class="rewrite-hint" id="rewriteHint" hidden>
+        <summary>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span class="rh-summary-text">
+            <strong>前回の添削結果を見ながら書き直し中</strong>
+            <span class="rh-summary-meta" id="rewriteHintMeta"></span>
+          </span>
+          <svg class="rh-chev" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </summary>
+        <div class="rewrite-hint-body" id="rewriteHintBody"></div>
+      </details>
+      <div class="error-box" id="err3">本文を50字以上入力してください</div>
+      <textarea
+        class="essay-area"
+        id="essayBody"
+        placeholder="例：私が貴学を志望する理由は、〇〇学部だけにこだわっています。&#10;&#10;[STEP 1・STEP 2 を完了すると、入力欄が有効化されます]"
+        disabled
+      ></textarea>
+      <div class="char-row">
+        <span id="charCount">0字</span>
+        <div class="progress-bar"><div id="charBar" style="width:0%"></div></div>
+        <span id="charLimit">字数制限なし</span>
+      </div>
+      <div class="submit-row">
+        <button class="btn-submit" id="btnSubmit" disabled>
+          いますぐ添削する
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <button class="btn-clear" id="btnClear" style="display:none;">入力をクリア</button>
+      </div>
+      <p class="privacy-note">※ STEP 1・2 を完了すると入力できるようになります。本文はサーバーに保存されません。</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ─── LOADING VIEW ─── -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="ls-head">
+    <div class="ls-title-row">
+      <span class="ls-spinner" aria-hidden="true"></span>
+      <h2>添削しています</h2>
+    </div>
+    <p class="sub">通常 30〜60秒で完了します。このまま閉じずにお待ちください。</p>
+  </div>
+
+  <!-- 進捗バー -->
+  <div class="ls-bar-wrap">
+    <div class="ls-bar"><div class="ls-bar-fill" id="lsBarFill"></div></div>
+    <div class="ls-bar-meta">
+      <span class="ls-stage" id="lsStage">本文を読み込んでいます…</span>
+      <span class="ls-elapsed"><span id="lsElapsed">0</span>秒</span>
+    </div>
+  </div>
+
+  <!-- コツのローテータ -->
+  <div class="ls-tip" aria-live="polite">
+    <div class="ls-tip-label">
+      <span aria-hidden="true">💡</span>
+      <span>志望理由書のコツ</span>
+    </div>
+    <div class="ls-tip-text" id="lsTipText">
+      過去の経験 → 今の学び → 大学での具体的な学び → 卒業後の貢献。<br/>この4点を一本の線でつなげると、説得力が一気に増します。
+    </div>
+  </div>
+
+  <!-- 関連記事 -->
+  <div class="ls-articles">
+    <div class="ls-articles-head">
+      <span class="ls-articles-title">📚 待ち時間に読みたい記事</span>
+      <span class="ls-articles-note">別タブで開きます</span>
+    </div>
+    <div class="ls-articles-grid" id="lsArticlesGrid"></div>
+  </div>
+</div>
+
+<!-- ─── RESULT VIEW ─── -->
+<div class="result-wrap" id="resultView">
+  <!-- 履歴ストリップ（過去の添削） -->
+  <div class="history-strip" id="historyStrip" style="display:none;"></div>
+
+  <!-- ヒーローサマリー：Above-the-fold で「結果の核」を凝縮 -->
+  <section class="result-hero" id="resultHero">
+    <!-- 上部：選択コース -->
+    <div class="rh-meta">
+      <span class="rh-label">添削結果</span>
+      <span class="rh-context" id="resultPills"></span>
+      <span id="streakBadge" class="streak-badge" hidden></span>
+    </div>
+
+    <!-- Mock notice -->
+    <div id="mockNotice"></div>
+
+    <!-- グレード + 所見 -->
+    <div class="grade-section" id="gradeSection"></div>
+
+    <!-- 主要アクション（ダウンロード／URL／メール／印刷を1か所に統合） -->
+    <div class="rh-actions" id="rhActions" hidden>
+      <a class="rh-act primary" id="rhDownload" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span><strong>Wordでダウンロード</strong><span class="rh-act-sub">原稿に追記して保存</span></span>
+      </a>
+      <button type="button" class="rh-act" id="shareCopy">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span><strong>URLをコピー</strong><span class="rh-act-sub">30分有効・他端末で開ける</span></span>
+      </button>
+      <button type="button" class="rh-act" id="shareMail">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span><strong>メールで送る</strong><span class="rh-act-sub">本人・保護者へ共有</span></span>
+      </button>
+      <button type="button" class="rh-act" id="sharePrint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span><strong>印刷／PDF</strong><span class="rh-act-sub">紙で見直す</span></span>
+      </button>
+    </div>
+
+    <!-- AI注意書き -->
+    <p class="rh-disclaimer">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      AI生成のため、最終判断は学校・先生・公式募集要項と必ず照らし合わせてください。
+    </p>
+  </section>
+
+  <!-- 励ましメッセージ -->
+  <div id="encouragementWrap"></div>
+
+  <!-- 添削原稿 -->
+  <div class="annot-section" id="annotSection" style="display:none;">
+    <div class="annot-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      添削原稿
+      <span class="annot-help">ハイライト or 番号 をタップで対応するコメントへ</span>
+    </div>
+    <div class="filter-row" id="annotFilter"></div>
+    <div class="annot-body">
+      <div class="annot-essay" id="annotEssay"></div>
+      <div class="annot-list" id="annotList"></div>
+    </div>
+  </div>
+
+  <!-- 次の一手（AI推奨アクション）-->
+  <div class="nextactions-section" id="nextActionsSection" style="display:none;">
+    <div class="annot-title primary-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      次の一手
+      <span class="annot-help">AI が抽出した「最優先で直すべきポイント」</span>
+    </div>
+    <div class="nextactions-grid" id="nextActionsGrid"></div>
+  </div>
+
+  <!-- 次は？（ナビゲーション） -->
+  <div class="nexttodo-section">
+    <div class="annot-title secondary-title" style="margin-bottom:14px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      次に何をする？
+    </div>
+    <div class="nexttodo-grid">
+      <button class="nt-card" id="ntSame">
+        <div class="nt-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div class="nt-title" id="ntSameTitle">同じ大学で書き直す</div>
+        <div class="nt-desc" id="ntSameDesc">フィードバックを反映して、もう一度添削する</div>
+      </button>
+      <button class="nt-card" id="ntDiff">
+        <div class="nt-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <div class="nt-title">別の大学で書く</div>
+        <div class="nt-desc">志望先を変えて、新しい志望理由書を添削</div>
+      </button>
+      <a class="nt-card" id="ntArticles" href="/articles">
+        <div class="nt-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="nt-title">記事を見る</div>
+        <div class="nt-desc">志望理由書の書き方を、より深く学ぶ</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Common: articles & disclaimer -->
+<div class="articles-section" id="articlesSection">
+  <div class="articles-head">
+    <h3 id="articlesHeadTitle">迷ったらまず読む</h3>
+    <a href="/articles">記事一覧をすべて見る →</a>
+  </div>
+  <div class="articles-grid">
+    <a class="article-card" href="/articles/basics/what-is-sougou/">
+      <div class="ac-thumb"><img src="/thumbnails/basics/what-is-sougou.png" alt="" loading="lazy"></div>
+      <div class="ac-body">
+        <span class="ac-cat cat-basic">基礎知識</span>
+        <div class="ac-title">総合型選抜って何？5分でわかる基礎知識まとめ</div>
+        <div class="ac-desc">出願時期、試験内容、一般入試との違いまで初心者向けに解説。</div>
+      </div>
+    </a>
+    <a class="article-card" href="/articles/basics/muiteiru-hito/">
+      <div class="ac-thumb"><img src="/thumbnails/basics/muiteiru-hito.png" alt="" loading="lazy"></div>
+      <div class="ac-body">
+        <span class="ac-cat cat-basic">基礎知識</span>
+        <div class="ac-title">総合型選抜に向いている人の7特徴</div>
+        <div class="ac-desc">不向きパターンと適性診断で、自分に合うかをチェック。</div>
+      </div>
+    </a>
+    <a class="article-card" href="/articles/writing/jisu-tarinai/">
+      <div class="ac-thumb"><img src="/thumbnails/writing/jisu-tarinai.png" alt="" loading="lazy"></div>
+      <div class="ac-body">
+        <span class="ac-cat cat-writing">志望理由書</span>
+        <div class="ac-title">志望理由書の字数が足りない時の増やし方｜原因別7つの直し方と例文</div>
+        <div class="ac-desc">原因を診断してから解決する7つの具体的テクニック・Before/After例文・字数別テンプレート付き。</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="disclaimer">
+  このサービスは <strong>生成AI（Claude）</strong> を活用して添削を生成しています。総合型選抜の個別指導経験・ES／志望理由書の添削経験が豊富な講師の観点で評価していますが、最終的な提出判断は、学校・先生・公式募集要項と必ず照らし合わせてください。
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="/brand/logo-full.png" alt="オープン添削" width="140" height="28"></div>
+    <div class="footer-links">
+      <a href="/articles">受験対策記事</a>
+      <a href="/match/">総合型選抜診断</a>
+      <a href="/terms">利用規約</a>
+      <a href="/privacy">プライバシーポリシー</a>
+      <a href="/">無料添削</a>
+    </div>
+    <div class="footer-copy">© 2026 オープン添削</div>
+  </div>
+</footer>
+
+
+<script>
+(function () {
+  'use strict';
+
+  // ── State ──
+  let masterData = null;
+  let selected = { univ: null, fac: null, course: null, question: null };
+  let resultData = null;
+  let resultToken = null;
+
+  // ── Favorites (localStorage) ──
+  const FAV_KEY = 'open-tensaku.favorites.v1';
+  function loadFavs() {
+    try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveFavs(arr) {
+    try { localStorage.setItem(FAV_KEY, JSON.stringify(arr)); } catch {}
+  }
+  function favKey(univId, facId, courseId) { return `${univId}::${facId}::${courseId}`; }
+  function isFav() {
+    if (!selected.univ || !selected.fac || !selected.course) return false;
+    const k = favKey(selected.univ, selected.fac, selected.course);
+    return loadFavs().some(f => f.key === k);
+  }
+  function toggleFav() {
+    if (!selected.univ || !selected.fac || !selected.course) return false;
+    const univ = masterData.universities.find(u => u.id === selected.univ);
+    const fac = univ?.faculties.find(f => f.id === selected.fac);
+    const course = fac?.courses.find(c => c.id === selected.course);
+    if (!course) return false;
+    const k = favKey(selected.univ, selected.fac, selected.course);
+    const favs = loadFavs();
+    const idx = favs.findIndex(f => f.key === k);
+    if (idx >= 0) {
+      favs.splice(idx, 1);
+      saveFavs(favs);
+      return false;
+    }
+    favs.push({
+      key: k,
+      univ_id: selected.univ, univ_name: univ.name,
+      fac_id: selected.fac, fac_name: fac.name,
+      course_id: selected.course, course_name: course.name,
+      saved_at: new Date().toISOString(),
+    });
+    saveFavs(favs);
+    return true;
+  }
+  function refreshFavBtn() {
+    const btn = document.getElementById('favBtn');
+    if (!btn) return;
+    const on = isFav();
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.querySelector('.fav-label').textContent = on ? 'お気に入り済み' : 'お気に入りに追加';
+  }
+  function showFavToast(text) {
+    const t = document.getElementById('favToast');
+    if (!t) return;
+    t.textContent = text;
+    t.classList.remove('show');
+    void t.offsetWidth; // restart animation
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  // ── DOM refs ──
+  const $ = id => document.getElementById(id);
+  const inputView = $('inputView');
+  const loadingScreen = $('loadingScreen');
+  const resultView = $('resultView');
+  const articlesSection = $('articlesSection');
+  const essayBody = $('essayBody');
+
+  // ── Helpers ──
+  function escHtml(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  // 簡易マークダウンレンダラ。h2/h3/h4, ul/ol, bold, italic, code, paragraphs, br対応。
+  // 同時に「出願概要」「入試概要」「概要」セクションを抽出して別管理。
+  function parseMarkdown(raw) {
+    if (!raw) return { html: '', meta: {} };
+    const meta = {};
+    const SEED_DATA_RE = /シードデータ|DBから自動生成|公式募集要項で確認|更新すること/;
+    const lines = raw.replace(/\r\n/g, '\n').split('\n')
+      .filter(l => !SEED_DATA_RE.test(l));
+    const sections = [];
+    let cur = { heading: null, level: 0, content: [] };
+    for (const line of lines) {
+      // 1〜4レベルの見出しを認識
+      const m = line.match(/^(#{1,4})\s+(.+)/);
+      if (m) {
+        sections.push(cur);
+        cur = { heading: m[2].trim(), level: m[1].length, content: [] };
+      } else {
+        cur.content.push(line);
+      }
+    }
+    sections.push(cur);
+
+    // 出願概要・入試概要などのメタ情報セクションを抽出
+    const META_HEADING_RE = /(出願概要|入試概要|概要|出題概要|選抜概要|出願情報)/;
+    // 設問本体（主役）
+    const PRIMARY_HEADING_RE = /(設問|Question|想定される設問|テーマ|形式|書類の性格)/i;
+    // 攻略・対策（補助）
+    const SECONDARY_HEADING_RE = /(攻略|ポイント|傾向|対策|構成例|記載|注意|留意)/;
+    const FIELD_PATTERNS = [
+      { key: '出願時期', re: /出願時期[:：]\s*(.+)/ },
+      { key: '推奨字数', re: /(推奨字数|字数目安|推奨文字数)[:：]\s*(.+)/ },
+      { key: '評価科目', re: /(評価科目|出願要件|要件|語学要件|英語資格要件|評定要件)[:：]\s*(.+)/ },
+      { key: '必要書類', re: /(必要書類|提出書類|書類)[:：]\s*(.+)/ },
+      { key: '選考内容', re: /(選考内容|試験内容|選考方法|1次選考|2次選考|入試種別)[:：]\s*(.+)/ },
+      { key: '募集人員', re: /(募集人員|定員)[:：]\s*(.+)/ },
+    ];
+
+    const primarySecs = [];
+    const secondarySecs = [];
+    const normalSecs = [];
+
+    sections.forEach(sec => {
+      if (sec.heading && META_HEADING_RE.test(sec.heading)) {
+        sec.content.forEach(l => {
+          const cleanLine = l.replace(/^[-*•]\s*/, '').trim();
+          FIELD_PATTERNS.forEach(p => {
+            const mm = cleanLine.match(p.re);
+            if (mm && !meta[p.key]) {
+              meta[p.key] = mm[mm.length - 1].trim();
+            }
+          });
+        });
+      } else if (sec.heading && PRIMARY_HEADING_RE.test(sec.heading)) {
+        primarySecs.push(sec);
+      } else if (sec.heading && SECONDARY_HEADING_RE.test(sec.heading)) {
+        secondarySecs.push(sec);
+      } else {
+        normalSecs.push(sec);
+      }
+    });
+
+    const renderSec = (sec, klass) => {
+      let s = '';
+      if (sec.heading) {
+        const tag = sec.level <= 2 ? 'h4' : sec.level === 3 ? 'h5' : 'h6';
+        s += `<${tag} class="md-heading md-h${sec.level}${klass ? ' ' + klass : ''}">${escHtml(sec.heading)}</${tag}>`;
+      }
+      s += renderInlineBlocks(sec.content);
+      return s;
+    };
+
+    let html = '';
+    // 1. 設問本体（最優先で大きく表示）
+    if (primarySecs.length > 0) {
+      html += `<div class="md-primary">${primarySecs.map(s => renderSec(s, 'md-h-primary')).join('')}</div>`;
+    }
+    // 2. その他の通常コンテンツ
+    if (normalSecs.length > 0) {
+      html += normalSecs.map(s => renderSec(s, '')).join('');
+    }
+    // 3. 攻略・対策（控えめに、開閉式）
+    if (secondarySecs.length > 0) {
+      const inner = secondarySecs.map(s => renderSec(s, 'md-h-secondary')).join('');
+      html += `
+        <details class="md-secondary">
+          <summary>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+            <span>攻略のポイント・補足を表示</span>
+            <svg class="md-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="md-secondary-body">${inner}</div>
+        </details>
+      `;
+    }
+
+    return { html, meta };
+  }
+
+  function renderInlineBlocks(lines) {
+    let html = '';
+    let listType = null;
+    let listItems = [];
+    let bqLines = [];
+    const flush = () => {
+      if (listItems.length) {
+        html += `<${listType}>${listItems.map(li => `<li>${renderInline(li)}</li>`).join('')}</${listType}>`;
+        listItems = [];
+        listType = null;
+      }
+    };
+    let para = [];
+    const flushPara = () => {
+      if (para.length) {
+        html += `<p>${renderInline(para.join(' '))}</p>`;
+        para = [];
+      }
+    };
+    const flushBq = () => {
+      if (bqLines.length) {
+        html += `<blockquote class="md-bq">${bqLines.map(l => `<p>${renderInline(l)}</p>`).join('')}</blockquote>`;
+        bqLines = [];
+      }
+    };
+    lines.forEach(line => {
+      const trimmed = line.trim();
+      if (!trimmed) {
+        flush(); flushPara(); flushBq();
+        return;
+      }
+      // blockquote "> xxx"
+      const bq = trimmed.match(/^>\s*(.*)/);
+      if (bq) {
+        flush(); flushPara();
+        if (bq[1]) bqLines.push(bq[1]);
+        return;
+      }
+      // ordered list "1. xxx"
+      const ol = trimmed.match(/^\d+[.、)]\s+(.+)/);
+      if (ol) {
+        flushBq();
+        if (listType !== 'ol') flush();
+        listType = 'ol';
+        listItems.push(ol[1]);
+        return;
+      }
+      // unordered list "- xxx"
+      const ul = trimmed.match(/^[-*•・]\s+(.+)/);
+      if (ul) {
+        flushBq();
+        if (listType !== 'ul') flush();
+        listType = 'ul';
+        listItems.push(ul[1]);
+        return;
+      }
+      flush(); flushBq();
+      para.push(trimmed);
+    });
+    flush(); flushPara(); flushBq();
+    return html;
+  }
+
+  function renderInline(text) {
+    return escHtml(text)
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>');
+  }
+
+  function setProgress(step) {
+    [1,2,3,4].forEach(n => {
+      const el = $('sb' + n);
+      if (!el) return;
+      el.classList.remove('active', 'done');
+      if (n < step) el.classList.add('done');
+      else if (n === step) el.classList.add('active');
+    });
+  }
+
+  // ── Master ──
+  async function loadMaster() {
+    try {
+      const res = await fetch('/api/master');
+      if (!res.ok) throw new Error('master fetch failed');
+      masterData = await res.json();
+      renderUnivGrid();
+    } catch (e) {
+      $('univGrid').innerHTML = '<p style="color:var(--red);font-size:12px;padding:8px;">マスターデータの取得に失敗しました。リロードしてください。</p>';
+    }
+  }
+
+  function renderUnivGrid() {
+    const grid = $('univGrid');
+    grid.innerHTML = '';
+    masterData.universities.forEach(u => {
+      const facCount = (u.faculties || []).length;
+      const btn = document.createElement('button');
+      btn.className = 'pick-card';
+      btn.dataset.id = u.id;
+      btn.innerHTML = `
+        <span class="pc-name">${escHtml(u.name)}</span>
+        <span class="pc-meta">${facCount}学部</span>
+      `;
+      btn.addEventListener('click', () => onUnivPick(u.id));
+      grid.appendChild(btn);
+    });
+  }
+
+  function onUnivPick(id) {
+    selected.univ = id;
+    selected.fac = null;
+    selected.course = null;
+    selected.question = null;
+    document.querySelectorAll('#univGrid .pick-card').forEach(c => {
+      c.classList.toggle('selected', c.dataset.id === id);
+    });
+
+    const univ = masterData.universities.find(u => u.id === id);
+    const facGrid = $('facGrid');
+    facGrid.innerHTML = '';
+    (univ.faculties || []).forEach(f => {
+      const cCount = (f.courses || []).length;
+      const btn = document.createElement('button');
+      btn.className = 'pick-card';
+      btn.dataset.id = f.id;
+      btn.innerHTML = `
+        <span class="pc-name">${escHtml(f.name)}</span>
+        <span class="pc-meta">${cCount}コース</span>
+      `;
+      btn.addEventListener('click', () => onFacPick(f.id));
+      facGrid.appendChild(btn);
+    });
+    $('facRow').style.display = '';
+    $('courseRow').style.display = 'none';
+    $('infoYellow').style.display = 'none';
+    updateSelectionPills();
+    refreshSteps();
+  }
+
+  function onFacPick(id) {
+    selected.fac = id;
+    selected.course = null;
+    selected.question = null;
+    document.querySelectorAll('#facGrid .pick-card').forEach(c => {
+      c.classList.toggle('selected', c.dataset.id === id);
+    });
+
+    const univ = masterData.universities.find(u => u.id === selected.univ);
+    const fac = univ.faculties.find(f => f.id === id);
+    const courseGrid = $('courseGrid');
+    courseGrid.innerHTML = '';
+    (fac.courses || []).forEach(c => {
+      const itemCount = (c.items || []).length;
+      const btn = document.createElement('button');
+      btn.className = 'pick-card';
+      btn.dataset.id = c.id;
+      const yearLabel = c.active_year ? `${c.active_year}年度${c.active_status === 'archived' ? '(参考)' : ''}` : '';
+      btn.innerHTML = `
+        <span class="pc-name">${escHtml(c.name)}</span>
+        <span class="pc-meta">${yearLabel} / 設問${itemCount}件</span>
+      `;
+      btn.addEventListener('click', () => onCoursePick(c.id));
+      courseGrid.appendChild(btn);
+    });
+    $('courseRow').style.display = '';
+    $('infoYellow').style.display = 'none';
+    updateSelectionPills();
+    refreshSteps();
+  }
+
+  function onCoursePick(id) {
+    selected.course = id;
+    selected.question = null;
+    document.querySelectorAll('#courseGrid .pick-card').forEach(c => {
+      c.classList.toggle('selected', c.dataset.id === id);
+    });
+
+    const course = getCourse();
+    if (course && course.items && course.items.length > 0) {
+      selected.question = course.items[0].id;
+    }
+
+    renderInfoYellow();
+    updateSelectionPills();
+    collapseGrids(true);
+    refreshSteps();
+  }
+
+  function collapseGrids(collapse) {
+    // 完了時は wrapper ごと非表示にしてピルだけで完結させる
+    if (collapse) {
+      $('step1Wrap').style.display = 'none';
+      $('actionButtons').style.display = '';
+    } else {
+      $('step1Wrap').style.display = '';
+      $('actionButtons').style.display = 'none';
+    }
+  }
+
+
+  function renderInfoYellow() {
+    const course = getCourse();
+    if (!course) return;
+    const box = $('infoYellow');
+    const isArchived = course.active_status === 'archived';
+    const meta = course.meta || {};
+    const extracted = course._extractedMeta || {};
+    const items = course.items || [];
+
+    const fields = [
+      { keys: ['application_period', 'period'], extracted: '出願時期', label: '出願時期' },
+      { keys: ['recommended_chars', 'char_limit_note', 'char_limit'], extracted: '推奨字数', label: '推奨字数' },
+      { keys: ['eligibility', 'requirements'], extracted: '評価科目', label: '評価科目' },
+      { keys: ['documents', 'required_docs'], extracted: '必要書類', label: '必要書類' },
+      { keys: ['exam_type', 'screening'], extracted: '選考内容', label: '選考内容' },
+      { keys: ['admission_size', 'capacity'], extracted: '募集人員', label: '募集人員' }
+    ];
+
+    const totalChars = items.reduce((sum, it) => sum + (it.char_limit || 0), 0) || null;
+    const itemCount = items.length;
+
+    const fallbacks = {
+      '推奨字数': totalChars ? `合計 ${totalChars}字以内` : (items.some(i => i.char_limit) ? '個別字数あり' : '不問'),
+      '設問数': itemCount ? `${itemCount}件` : null,
+      '出題形式': itemCount ? `志望理由${itemCount > 1 ? '・自己推薦' : ''}書` : null
+    };
+
+    let metaItems = [];
+    fields.forEach(f => {
+      let val = null;
+      // 1. course.meta (構造化データ)
+      f.keys.forEach(k => { if (meta[k] && !val) val = meta[k]; });
+      // 2. 設問本文から抽出
+      if (!val && f.extracted && extracted[f.extracted]) val = extracted[f.extracted];
+      if (val) metaItems.push({ label: f.label, value: val });
+    });
+
+    if (metaItems.length < 4) {
+      Object.entries(fallbacks).forEach(([label, value]) => {
+        if (value && !metaItems.find(m => m.label === label)) {
+          metaItems.push({ label, value });
+        }
+      });
+    }
+
+    if (metaItems.length === 0) {
+      metaItems = [
+        { label: '設問数', value: `${itemCount}件` },
+        { label: '評価年度', value: `${course.active_year || '－'}年度` },
+        { label: 'ステータス', value: isArchived ? '参考（前年度）' : '当年度' }
+      ];
+    }
+
+    const metaHtml = metaItems.slice(0, 8).map(m =>
+      `<div><div class="key">${escHtml(m.label)}</div><div class="val">${escHtml(m.value)}</div></div>`
+    ).join('');
+
+    const wasOpen = box.classList.contains('open');
+    box.style.display = '';
+    box.innerHTML = `
+      <button class="info-yellow-toggle" type="button" aria-expanded="${wasOpen ? 'true' : 'false'}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>入試概要：${escHtml(course.name)} ／ ${course.active_year || '－'}年度${isArchived ? '（参考設問あり）' : ''}</span>
+        <svg class="iy-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="info-yellow-content">
+        <div class="info-yellow-content-inner">
+          <div class="info-meta-grid">${metaHtml}</div>
+          ${(() => {
+            const univ = masterData.universities.find(u => u.id === selected.univ);
+            const fac = univ?.faculties.find(f => f.id === selected.fac);
+            const q = `${univ?.name || ''} ${fac?.name || ''} ${course.name} 募集要項`.trim();
+            return `<a class="info-help-link" href="https://www.google.com/search?q=${encodeURIComponent(q)}" target="_blank" rel="noopener">公式情報を検索する →</a>`;
+          })()}
+        </div>
+      </div>
+    `;
+    const toggle = box.querySelector('.info-yellow-toggle');
+    toggle.addEventListener('click', () => {
+      const isOpen = box.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  function getCourse() {
+    if (!selected.univ || !selected.fac || !selected.course) return null;
+    const univ = masterData.universities.find(u => u.id === selected.univ);
+    const fac = univ?.faculties.find(f => f.id === selected.fac);
+    return fac?.courses.find(c => c.id === selected.course) || null;
+  }
+
+  function updateSelectionPills() {
+    const pills = $('selectedPills');
+    const host = $('selectionPanelHost');
+    pills.innerHTML = '';
+    host.innerHTML = '';
+
+    const univ = selected.univ ? masterData.universities.find(u => u.id === selected.univ) : null;
+    const fac = univ && selected.fac ? univ.faculties.find(f => f.id === selected.fac) : null;
+    const course = fac && selected.course ? fac.courses.find(c => c.id === selected.course) : null;
+
+    if (!univ) {
+      pills.style.display = 'none';
+      $('actionButtons').style.display = 'none';
+      return;
+    }
+
+    // 完全選択（大学＋学部＋コース）→ 派手なパネル
+    if (course) {
+      pills.style.display = 'none';
+      host.innerHTML = `
+        <div class="selection-panel" role="status" aria-label="添削する志望先">
+          <div class="sp-marker" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="sp-body">
+            <div class="sp-label">添削する志望先</div>
+            <div class="sp-univ">${escHtml(univ.name)}</div>
+            <div class="sp-meta">
+              <span class="sp-fac">${escHtml(fac.name)}</span>
+              <span class="sp-divider">›</span>
+              <span class="sp-course">${escHtml(course.name)}</span>
+            </div>
+          </div>
+          <button class="sp-edit" type="button" id="spEditBtn">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="vertical-align:-1px;margin-right:4px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            選び直す
+          </button>
+        </div>
+      `;
+      $('spEditBtn').addEventListener('click', () => clearLevel('univ'));
+
+      // アクションボタンと公式検索リンク
+      $('actionButtons').style.display = '';
+      const officialLink = $('officialLink');
+      const query = `${univ.name} ${fac.name} ${course.name} 募集要項`.trim();
+      officialLink.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+      officialLink.style.display = '';
+      refreshFavBtn();
+      return;
+    }
+
+    // 部分選択（大学のみ／大学＋学部）→ 旧ピル表示
+    const items = [];
+    items.push({ name: univ.name, level: 'univ' });
+    if (fac) items.push({ name: fac.name, level: 'fac' });
+    pills.style.display = '';
+    $('actionButtons').style.display = 'none';
+    items.forEach((it, i) => {
+      if (i > 0) {
+        const arrow = document.createElement('span');
+        arrow.className = 'pill-arrow';
+        arrow.textContent = '›';
+        pills.appendChild(arrow);
+      }
+      const span = document.createElement('span');
+      span.className = 'pill';
+      span.innerHTML = `<span>${escHtml(it.name)}</span><button class="pill-x" data-level="${it.level}" aria-label="削除">×</button>`;
+      pills.appendChild(span);
+    });
+    pills.querySelectorAll('.pill-x').forEach(btn => {
+      btn.addEventListener('click', () => clearLevel(btn.dataset.level));
+    });
+  }
+
+  function clearLevel(level) {
+    if (level === 'univ') { selected = { univ: null, fac: null, course: null, question: null }; }
+    else if (level === 'fac') { selected.fac = null; selected.course = null; selected.question = null; }
+    else if (level === 'course') { selected.course = null; selected.question = null; }
+    document.querySelectorAll('.pick-card.selected').forEach(c => c.classList.remove('selected'));
+    collapseGrids(false);
+    if (selected.univ) {
+      const card = document.querySelector(`#univGrid .pick-card[data-id="${selected.univ}"]`);
+      if (card) card.classList.add('selected');
+      $('facRow').style.display = '';
+    } else {
+      $('facRow').style.display = 'none';
+      $('facGrid').innerHTML = '';
+    }
+    if (selected.fac) {
+      const card = document.querySelector(`#facGrid .pick-card[data-id="${selected.fac}"]`);
+      if (card) card.classList.add('selected');
+      $('courseRow').style.display = '';
+    } else {
+      $('courseRow').style.display = 'none';
+      $('courseGrid').innerHTML = '';
+    }
+    if (!selected.course) $('infoYellow').style.display = 'none';
+    updateSelectionPills();
+    refreshSteps();
+  }
+
+  function refreshSteps() {
+    const course = getCourse();
+    const card2 = $('step2Card');
+    const empty2 = $('step2Empty');
+    const content2 = $('step2Content');
+
+    if (course && course.items && course.items.length > 0) {
+      // Step 2 enabled
+      card2.classList.remove('disabled');
+      card2.classList.add('active');
+      empty2.style.display = 'none';
+      content2.style.display = '';
+      $('step2Note').textContent = `${course.active_year || '－'}年度${course.active_status === 'archived' ? '（参考）' : ''} の設問`;
+      renderQuestion(course);
+
+      // Step 3 enabled
+      $('step3Card').classList.remove('disabled');
+      $('step3Card').classList.add('active');
+      essayBody.disabled = false;
+      $('step3Note').textContent = '本文を貼り付けて、添削開始';
+      $('btnSubmit').disabled = essayBody.value.trim().length < 50;
+      updateCharLimit(course);
+
+      setProgress(3);
+    } else if (selected.univ || selected.fac) {
+      card2.classList.add('disabled');
+      card2.classList.remove('active');
+      empty2.style.display = '';
+      content2.style.display = 'none';
+      $('step3Card').classList.add('disabled');
+      $('step3Card').classList.remove('active');
+      essayBody.disabled = true;
+      $('btnSubmit').disabled = true;
+      setProgress(2);
+    } else {
+      card2.classList.add('disabled');
+      card2.classList.remove('active');
+      empty2.style.display = '';
+      content2.style.display = 'none';
+      $('step3Card').classList.add('disabled');
+      $('step3Card').classList.remove('active');
+      essayBody.disabled = true;
+      $('btnSubmit').disabled = true;
+      setProgress(1);
+    }
+  }
+
+  function renderQuestion(course) {
+    const items = course.items || [];
+    selected.question = items[0]?.id || null;
+
+    // 各 item の body をマークダウンとしてパース → 出願概要セクションは入試概要にマージ
+    const parsedItems = items.map(it => parseMarkdown(it.body || ''));
+    const aggregatedMeta = {};
+    parsedItems.forEach(p => Object.assign(aggregatedMeta, p.meta));
+    course._extractedMeta = aggregatedMeta;
+    if (Object.keys(aggregatedMeta).length > 0) renderInfoYellow();
+
+    let chips = '';
+    chips += `<span class="q-chip${course.active_status === 'archived' ? ' archived' : ''}">${course.active_year || '－'}年度${course.active_status === 'archived' ? '（参考）' : ''}</span>`;
+    if (items.length > 1) chips += `<span class="q-chip">設問 ${items.length}件</span>`;
+
+    // 複数設問の場合：タブ式セレクター
+    let tabsHtml = '';
+    if (items.length > 1) {
+      tabsHtml = `
+        <div class="q-tabs" role="tablist" aria-label="添削する設問を選択">
+          ${items.map((it, idx) => `
+            <button type="button" class="q-tab${idx === 0 ? ' active' : ''}" data-qid="${escHtml(it.id)}" role="tab" aria-selected="${idx === 0}">
+              <span class="q-tab-num">${idx + 1}</span>
+              <span class="q-tab-title">${escHtml(it.title)}</span>
+              ${it.char_limit ? `<span class="q-tab-limit">${it.char_limit}字</span>` : ''}
+            </button>
+          `).join('')}
+        </div>
+        <p class="q-tabs-note">添削するのは下記から1つを選びます。他の設問は添削後に再度選択して進めることができます。</p>
+      `;
+    }
+
+    // 各設問ボディ（複数の場合はアクティブのみ表示、1つだけならそのまま）
+    let bodiesHtml = items.map((it, idx) => {
+      const parsedHtml = parsedItems[idx].html || `<p>${escHtml(it.body || '')}</p>`;
+      const charLimit = it.char_limit ? `<span class="q-chip" style="margin-left:8px;">字数 ${it.char_limit}字</span>` : '';
+      return `
+        <div class="question-body${idx === 0 ? ' active' : ''}" data-qid="${escHtml(it.id)}">
+          <div class="q-body-title">${escHtml(it.title)}${charLimit}</div>
+          <div class="md-body">${parsedHtml}</div>
+        </div>
+      `;
+    }).join('');
+
+    $('step2Content').innerHTML = `
+      <div class="q-meta-row">${chips}</div>
+      ${tabsHtml}
+      ${bodiesHtml}
+    `;
+
+    if (items.length > 1) {
+      $('step2Content').querySelectorAll('.q-tab').forEach(tab => {
+        tab.addEventListener('click', () => switchQuestion(tab.dataset.qid, course));
+      });
+    }
+    // Step 3 に「現在添削中の設問」表示を更新
+    updateStep3QuestionRef(course);
+  }
+
+  function switchQuestion(qid, course) {
+    selected.question = qid;
+    document.querySelectorAll('.q-tab').forEach(t => {
+      const on = t.dataset.qid === qid;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('.question-body').forEach(b => {
+      b.classList.toggle('active', b.dataset.qid === qid);
+    });
+    updateCharLimit(course);
+    updateStep3QuestionRef(course);
+  }
+
+  function updateStep3QuestionRef(course) {
+    const ref = document.getElementById('step3QuestionRef');
+    if (!ref) return;
+    const item = (course.items || []).find(i => i.id === selected.question);
+    if (!item) { ref.style.display = 'none'; return; }
+    const items = course.items || [];
+    ref.style.display = '';
+    ref.innerHTML = `
+      <div class="s3q-label">いま添削する設問</div>
+      <div class="s3q-title">${escHtml(item.title)}${item.char_limit ? ` <span class="s3q-limit">${item.char_limit}字以内</span>` : ''}</div>
+      ${items.length > 1 ? `<div class="s3q-other">他の設問: ${items.filter(i => i.id !== item.id).map(i => `<button type="button" class="s3q-switch" data-qid="${escHtml(i.id)}">${escHtml(i.title)}</button>`).join('')}</div>` : ''}
+    `;
+    ref.querySelectorAll('.s3q-switch').forEach(b => {
+      b.addEventListener('click', () => {
+        switchQuestion(b.dataset.qid, course);
+        document.getElementById('step2Sec')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  function updateCharLimit(course) {
+    const item = (course.items || []).find(i => i.id === selected.question);
+    const limit = item?.char_limit;
+    const len = essayBody.value.length;
+    $('charLimit').textContent = limit ? `${limit}字以内` : '字数制限なし';
+    $('charCount').textContent = `${len}字`;
+    const bar = $('charBar');
+    if (limit) {
+      const pct = Math.min(100, (len / limit) * 100);
+      bar.style.width = pct + '%';
+      bar.classList.toggle('over', len > limit);
+      $('charCount').classList.toggle('over', len > limit);
+    } else {
+      bar.style.width = Math.min(100, len / 10) + '%';
+      bar.classList.remove('over');
+      $('charCount').classList.remove('over');
+    }
+    $('btnSubmit').disabled = len < 50;
+  }
+
+  // Char counter
+  essayBody.addEventListener('input', () => {
+    const course = getCourse();
+    if (course) updateCharLimit(course);
+    $('btnClear').style.display = essayBody.value.length > 0 ? '' : 'none';
+  });
+
+  $('btnClear').addEventListener('click', () => {
+    essayBody.value = '';
+    const course = getCourse();
+    if (course) updateCharLimit(course);
+    $('btnClear').style.display = 'none';
+    essayBody.focus();
+  });
+
+  // Smooth scroll
+  function smoothScrollTo(el) {
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  $('startCta').addEventListener('click', () => smoothScrollTo($('step1Sec')));
+  $('startCtaMobile') && $('startCtaMobile').addEventListener('click', () => smoothScrollTo($('step1Sec')));
+
+  // ── Submit ──
+  $('btnSubmit').addEventListener('click', async () => {
+    const body = essayBody.value.trim();
+    if (body.length < 50 || !selected.question) {
+      $('err3').classList.add('active');
+      return;
+    }
+    $('err3').classList.remove('active');
+    await submitCorrection(body);
+  });
+
+  async function submitCorrection(body) {
+    inputView.style.display = 'none';
+    articlesSection.style.display = 'none';
+    loadingScreen.classList.add('active');
+    setProgress(4);
+    animateLoading();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    try {
+      const payload = {
+        university_id: selected.univ,
+        faculty_id: selected.fac,
+        course_id: selected.course,
+        question_id: selected.question,
+        body: body,
+        output_format: 'docx'
+      };
+      const res = await fetch('/api/correct', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || `HTTP ${res.status}`);
+      }
+      const data = await res.json();
+      resultData = data;
+      resultToken = data.token;
+      // Wait a tiny bit for loading animation
+      await new Promise(r => setTimeout(r, 600));
+      finishLoading();
+      showResult(data, body);
+    } catch (e) {
+      finishLoading();
+      loadingScreen.classList.remove('active');
+      inputView.style.display = '';
+      articlesSection.style.display = '';
+      alert('添削中にエラーが発生しました。\n' + e.message);
+    }
+  }
+
+  // ローディング進行制御（経過時間・進捗バー・コツ・関連記事）
+  const LOADING_TIPS = [
+    '過去の経験 → 今の学び → 大学での学び → 卒業後の貢献。<br/>この4点を一本の線でつなげると、説得力が一気に増します。',
+    'アドミッションポリシーのキーワードを<strong>自分の言葉で言い換えて</strong>使うと、丸写し感がなく評価されやすいです。',
+    '具体的なエピソードは<strong>1つに絞って深掘り</strong>。複数を浅く並べるより、1つを丁寧に語る方が印象に残ります。',
+    '学部・学科の固有名詞（科目名・教員名・プログラム名）を<strong>3つ以上</strong>盛り込むと、本気度が伝わります。',
+    '提出前に<strong>家族や先生に音読してもらう</strong>と、自分では気付かないリズムや違和感を見つけられます。',
+    '「なぜこの大学・この学部か」を<strong>一文で</strong>説明できますか？できなければ志望理由がぼやけているサインです。',
+    '主語と述語の対応、敬体と常体の混在、文末の単調さ。<br/>提出直前に必ず読み返すと印象が変わります。',
+    '「将来◯◯したい」だけでは弱い。<br/><strong>その夢に大学のどの資源が必要か</strong>を具体的に書きましょう。',
+  ];
+  const LOADING_STAGES = [
+    { at: 0,  text: '本文を読み込んでいます…' },
+    { at: 7,  text: '評価観点ごとに分析しています…' },
+    { at: 16, text: '改善ポイントを抽出しています…' },
+    { at: 28, text: 'ハイライト・コメントを生成しています…' },
+    { at: 42, text: 'まとめのコメントを書いています…' },
+    { at: 55, text: 'もう少しで完了します…' },
+  ];
+  const LOADING_ARTICLES_BASE = [
+    { url: '/articles/writing/howto-basic/', cat: '志望理由書', title: '志望理由書の書き方｜合格者が実践した5つのコツ' },
+    { url: '/articles/writing/kosei-template/', cat: '志望理由書', title: '志望理由書の構成テンプレート' },
+    { url: '/articles/writing/ng-patterns/', cat: '志望理由書', title: '志望理由書でよくあるNGパターン' },
+    { url: '/articles/interview/', cat: '面接対策', title: '面接対策の基本' },
+    { url: '/articles/basics/', cat: '基礎知識', title: '総合型選抜とは？' },
+    { url: '/articles/activity/katsudou-houkoku/', cat: '活動実績', title: '活動報告書の書き方' },
+  ];
+
+  let loadingTimer = null;
+  let loadingTipTimer = null;
+
+  function animateLoading() {
+    const start = Date.now();
+    const fillEl = $('lsBarFill');
+    const elapsedEl = $('lsElapsed');
+    const stageEl = $('lsStage');
+    const tipEl = $('lsTipText');
+    const TOTAL_EST = 50; // 推定 50秒で 95%まで進める
+
+    // 関連記事（志望大学があればその大学固有のリンクを優先）
+    renderLoadingArticles();
+
+    // 進捗バー & 経過秒
+    const tick = () => {
+      const elapsed = Math.floor((Date.now() - start) / 1000);
+      const pct = Math.min(95, (elapsed / TOTAL_EST) * 100);
+      if (fillEl) fillEl.style.width = pct + '%';
+      if (elapsedEl) elapsedEl.textContent = elapsed;
+      let cur = LOADING_STAGES[0];
+      for (const s of LOADING_STAGES) if (elapsed >= s.at) cur = s;
+      if (stageEl && stageEl.dataset.text !== cur.text) {
+        stageEl.dataset.text = cur.text;
+        stageEl.textContent = cur.text;
+      }
+    };
+    tick();
+    if (loadingTimer) clearInterval(loadingTimer);
+    loadingTimer = setInterval(tick, 250);
+
+    // コツのローテータ
+    if (loadingTipTimer) clearInterval(loadingTipTimer);
+    let tipIdx = Math.floor(Math.random() * LOADING_TIPS.length);
+    if (tipEl) tipEl.innerHTML = LOADING_TIPS[tipIdx];
+    loadingTipTimer = setInterval(() => {
+      if (!tipEl) return;
+      tipIdx = (tipIdx + 1) % LOADING_TIPS.length;
+      tipEl.style.opacity = '0';
+      setTimeout(() => {
+        tipEl.innerHTML = LOADING_TIPS[tipIdx];
+        tipEl.style.opacity = '1';
+      }, 220);
+    }, 7000);
+  }
+
+  function finishLoading() {
+    const fillEl = $('lsBarFill');
+    if (fillEl) fillEl.style.width = '100%';
+    if (loadingTimer) { clearInterval(loadingTimer); loadingTimer = null; }
+    if (loadingTipTimer) { clearInterval(loadingTipTimer); loadingTipTimer = null; }
+  }
+
+  function renderLoadingArticles() {
+    const grid = $('lsArticlesGrid');
+    if (!grid) return;
+    // 大学指定があれば、その大学のハブ記事 + 共通の上位記事を混ぜる
+    const list = [];
+    if (selected.univ) {
+      const univ = masterData?.universities?.find(u => u.id === selected.univ);
+      const slug = selected.univ;
+      if (univ) {
+        list.push({
+          url: `/articles/${slug}/`,
+          cat: univ.name,
+          title: `${univ.name} の対策記事まとめ`,
+        });
+      }
+    }
+    // 残りを共通リストから補充（ランダムに2件）
+    const shuffled = [...LOADING_ARTICLES_BASE].sort(() => Math.random() - 0.5);
+    for (const a of shuffled) {
+      if (list.length >= 3) break;
+      if (!list.some(x => x.url === a.url)) list.push(a);
+    }
+    grid.innerHTML = list.map(a => `
+      <a class="ls-art-card" href="${escHtml(a.url)}" target="_blank" rel="noopener">
+        <span class="ls-art-cat">${escHtml(a.cat)}</span>
+        <div class="ls-art-title">${escHtml(a.title)}</div>
+      </a>
+    `).join('');
+  }
+
+  // ── Render result ──
+  function showResult(data, essayText) {
+    loadingScreen.classList.remove('active');
+    resultView.classList.add('active');
+    articlesSection.style.display = '';
+    setProgress(4);
+    $('sb4').classList.add('done');
+    $('sb4').classList.remove('active');
+
+    // Pills
+    const univ = masterData.universities.find(u => u.id === selected.univ);
+    const fac = univ?.faculties.find(f => f.id === selected.fac);
+    const course = fac?.courses.find(c => c.id === selected.course);
+    const item = course?.items.find(i => i.id === selected.question);
+    const pills = $('resultPills');
+    pills.innerHTML = '';
+    [univ?.name, fac?.name, course?.name, item?.title].filter(Boolean).forEach(name => {
+      const sp = document.createElement('span');
+      sp.className = 'pill';
+      sp.style.padding = '5px 12px';
+      sp.innerHTML = `<span>${escHtml(name)}</span>`;
+      pills.appendChild(sp);
+    });
+
+    // Mock notice
+    $('mockNotice').innerHTML = data.is_mock
+      ? `<div class="mock-notice">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        これはデモ添削です。ANTHROPIC_API_KEY を設定すると本番AIによる添削が返されます。
+      </div>` : '';
+
+    // Grade
+    const grade = data.summary?.grade || data.diagnosis?.grade || '－';
+    const headline = data.diagnosis?.headline || '添削が完了しました';
+    const opening = data.diagnosis?.opening || data.opening || '';
+    let totalCommentHtml = '';
+    if (data.section_summary && data.section_summary.length > 0) {
+      const ts = data.section_summary[0];
+      totalCommentHtml = `
+        <div class="total-comment">
+          <span class="total-comment-label">総合的所見</span>
+          <span>「${escHtml(ts.section)}」を意識することで、唯一第二の改善案になります。</span>
+        </div>
+      `;
+    }
+    // グレードからトーンクラスを決定
+    const gradeStr = String(grade).trim().toUpperCase();
+    let toneClass = 'tone-neutral';
+    if (/^(S|A\+|A)$/.test(gradeStr)) toneClass = 'tone-good';
+    else if (/^(B\+|B)$/.test(gradeStr)) toneClass = 'tone-ok';
+    else if (/^(C|D|E|F)$/.test(gradeStr)) toneClass = 'tone-warn';
+
+    // good/more 件数（観点バランス可視化）
+    const goodN = data.summary?.good_count ?? (data.comments || []).filter(c => c.type === 'good').length;
+    const moreN = data.summary?.more_count ?? (data.comments || []).filter(c => c.type === 'more').length;
+    const totalN = goodN + moreN || 1;
+    const goodPct = Math.round((goodN / totalN) * 100);
+    const morePct = 100 - goodPct;
+
+    $('gradeSection').innerHTML = `
+      <div class="grade-row">
+        <div class="grade-circle ${toneClass}">
+          <span class="gc-label">GRADE</span>
+          <span class="gc-val">${escHtml(grade)}</span>
+        </div>
+        <div class="grade-text">
+          <h3>${escHtml(headline)}</h3>
+          <p>${escHtml(opening)}</p>
+          ${(goodN + moreN) > 0 ? `
+            <div class="grade-breakdown" aria-label="コメント内訳">
+              <div class="gb-bar">
+                <span class="gb-good" style="width:${goodPct}%" title="良い点 ${goodN}"></span>
+                <span class="gb-more" style="width:${morePct}%" title="改善ポイント ${moreN}"></span>
+              </div>
+              <div class="gb-legend">
+                <span><i class="dot good"></i> 良い点 <strong>${goodN}</strong></span>
+                <span><i class="dot more"></i> 改善ポイント <strong>${moreN}</strong></span>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+      ${totalCommentHtml}
+    `;
+
+    // アクション行：Wordダウンロード以外は常に表示、Wordはトークンがある時のみ
+    const rhActions = $('rhActions');
+    const rhDownload = $('rhDownload');
+    if (rhActions) rhActions.hidden = false;
+    if (rhDownload) {
+      if (resultToken) {
+        rhDownload.href = `/api/download/${resultToken}`;
+        rhDownload.style.display = '';
+      } else {
+        rhDownload.style.display = 'none';
+      }
+    }
+
+    // Encouragement
+    $('encouragementWrap').innerHTML = data.encouragement
+      ? `<div class="encouragement-box">${escHtml(data.encouragement)}</div>`
+      : '';
+
+    // Annotations
+    renderAnnotations(data, essayText);
+
+    // Next actions
+    renderNextActions(data);
+
+    // Articles head
+    if (univ) {
+      $('articlesHeadTitle').textContent = `${univ.name} 受験者向け：迷ったらまず読む`;
+    }
+
+    // 「次は」ボタン文言を複数設問の有無で出し分け
+    if (course && (course.items || []).length > 1) {
+      const items = course.items;
+      const curIdx = items.findIndex(i => i.id === selected.question);
+      const nextItem = items[(curIdx + 1) % items.length];
+      $('ntSameTitle').textContent = `次の設問を添削する`;
+      $('ntSameDesc').textContent = `${nextItem ? nextItem.title : ''}に進む（同じ志望先のまま）`;
+    } else {
+      $('ntSameTitle').textContent = `同じ志望先で書き直す`;
+      $('ntSameDesc').textContent = `フィードバックを反映して、もう一度添削する`;
+    }
+
+    // 履歴に保存 + ストリーク更新
+    saveResultLocal({
+      ts: Date.now(),
+      univ: univ?.name || '',
+      univ_id: selected.univ,
+      fac: fac?.name || '',
+      fac_id: selected.fac,
+      course: course?.name || '',
+      course_id: selected.course,
+      question: item?.title || '',
+      question_id: selected.question,
+      grade: grade,
+      headline: headline,
+      good_count: data.summary?.good_count ?? (data.comments || []).filter(c => c.type === 'good').length,
+      more_count: data.summary?.more_count ?? (data.comments || []).filter(c => c.type === 'more').length,
+    });
+    renderHistoryStrip();
+    renderStreakBadge();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── 履歴永続化 ──
+  const HISTORY_KEY = 'corrHistoryV1';
+  const STREAK_KEY = 'corrStreakV1';
+  function loadHistory() {
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+  function saveResultLocal(entry) {
+    try {
+      const list = loadHistory();
+      list.unshift(entry);
+      const trimmed = list.slice(0, 5);
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
+      // ストリーク：日付別にカウント
+      const today = new Date().toISOString().slice(0, 10);
+      const streak = JSON.parse(localStorage.getItem(STREAK_KEY) || '{}');
+      streak[today] = (streak[today] || 0) + 1;
+      // 直近30日のみ保持
+      const cutoff = Date.now() - 30 * 86400_000;
+      const fresh = {};
+      Object.entries(streak).forEach(([d, c]) => {
+        if (new Date(d).getTime() >= cutoff) fresh[d] = c;
+      });
+      localStorage.setItem(STREAK_KEY, JSON.stringify(fresh));
+    } catch (e) {}
+  }
+  function renderHistoryStrip() {
+    const strip = $('historyStrip');
+    if (!strip) return;
+    const list = loadHistory();
+    if (list.length <= 1) { strip.style.display = 'none'; return; }
+    strip.style.display = '';
+    let html = '<span class="hs-label">📁 直近の添削</span>';
+    list.forEach((it, i) => {
+      const isCurrent = i === 0;
+      const label = `${escHtml(it.univ.replace(/大学$/, '') || '?')} / ${escHtml((it.course || '').slice(0, 12))}`;
+      html += `<span class="hs-item ${isCurrent ? 'current' : ''}" title="${escHtml(it.question)}"><span class="hs-grade">${escHtml(it.grade)}</span>${label}</span>`;
+    });
+    html += `<button type="button" class="hs-clear" id="hsClear">履歴を消す</button>`;
+    strip.innerHTML = html;
+    $('hsClear')?.addEventListener('click', () => {
+      try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+      strip.style.display = 'none';
+    });
+  }
+  function renderStreakBadge() {
+    const el = $('streakBadge');
+    if (!el) return;
+    try {
+      const streak = JSON.parse(localStorage.getItem(STREAK_KEY) || '{}');
+      const total = Object.values(streak).reduce((a, b) => a + b, 0);
+      const days = Object.keys(streak).length;
+      if (total >= 2) {
+        el.hidden = false;
+        el.innerHTML = `🔥 これまでに <strong>${total}</strong>本 添削（直近${days}日）`;
+      } else {
+        el.hidden = true;
+      }
+    } catch (e) { el.hidden = true; }
+  }
+
+  function renderAnnotations(data, essayText) {
+    const sec = $('annotSection');
+    const comments = data.comments || [];
+    if (comments.length === 0) {
+      sec.style.display = 'none';
+      return;
+    }
+    sec.style.display = '';
+
+    // Filter chips: type + 観点別カテゴリ
+    const goodCount = data.summary?.good_count || comments.filter(c => c.type === 'good').length;
+    const moreCount = data.summary?.more_count || comments.filter(c => c.type === 'more').length;
+    const cats = Array.from(new Set(comments.map(c => c.category).filter(Boolean)));
+    let chipsHtml = `
+      <button type="button" class="filter-chip active" data-filter-type="all">すべて ${comments.length}</button>
+      <button type="button" class="filter-chip good" data-filter-type="good">良い点 ${goodCount}</button>
+      <button type="button" class="filter-chip more" data-filter-type="more">改善ポイント ${moreCount}</button>
+    `;
+    if (cats.length > 1) {
+      chipsHtml += `<span class="filter-sep" aria-hidden="true"></span>`;
+      cats.forEach(cat => {
+        const cnt = comments.filter(c => c.category === cat).length;
+        chipsHtml += `<button type="button" class="filter-chip cat" data-filter-cat="${escHtml(cat)}">${escHtml(cat)} ${cnt}</button>`;
+      });
+    }
+    $('annotFilter').innerHTML = chipsHtml;
+
+    const filterState = { type: 'all', cat: 'all' };
+    function applyAnnotFilter() {
+      $('annotList').querySelectorAll('.annot-card').forEach(card => {
+        const t = card.dataset.type;
+        const c = card.dataset.cat || '';
+        const okType = filterState.type === 'all' || filterState.type === t;
+        const okCat  = filterState.cat === 'all' || filterState.cat === c;
+        card.style.display = (okType && okCat) ? '' : 'none';
+      });
+    }
+    $('annotFilter').querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const isCat = chip.hasAttribute('data-filter-cat');
+        if (isCat) {
+          // 観点クリック: トグル
+          if (filterState.cat === chip.dataset.filterCat) filterState.cat = 'all';
+          else filterState.cat = chip.dataset.filterCat;
+        } else {
+          filterState.type = chip.dataset.filterType;
+        }
+        $('annotFilter').querySelectorAll('.filter-chip').forEach(c => {
+          if (c.hasAttribute('data-filter-cat')) {
+            c.classList.toggle('active', filterState.cat === c.dataset.filterCat);
+          } else {
+            c.classList.toggle('active', filterState.type === c.dataset.filterType);
+          }
+        });
+        applyAnnotFilter();
+      });
+    });
+
+    // Build essay with inline highlights — comment ID 連携用に data-cmt-id を付与
+    const replaceList = [];
+    comments.forEach((c, i) => {
+      if (!c.target_text) return;
+      const idx = essayText.indexOf(c.target_text);
+      if (idx === -1) return;
+      replaceList.push({ idx, end: idx + c.target_text.length, num: i + 1, type: c.type, text: c.target_text });
+    });
+    let safe = '';
+    let last = 0;
+    const sortedAsc = [...replaceList].sort((a, b) => a.idx - b.idx);
+    sortedAsc.forEach(r => {
+      safe += escHtml(essayText.slice(last, r.idx));
+      safe += `<mark class="${r.type}" data-cmt-id="${r.num}" tabindex="0" role="button" aria-label="コメント${r.num}へ"><span class="hl-text">${escHtml(r.text)}</span><sup>[${r.num}]</sup></mark>`;
+      last = r.end;
+    });
+    safe += escHtml(essayText.slice(last));
+    $('annotEssay').innerHTML = safe || escHtml(essayText);
+
+    // Comment cards
+    let cardsHtml = '';
+    comments.forEach((c, i) => {
+      const num = i + 1;
+      cardsHtml += `
+        <div class="annot-card ${c.type}" data-type="${c.type}" data-cat="${escHtml(c.category || '')}" data-cmt-id="${num}" id="cmt-${num}" tabindex="0" role="button" aria-label="該当箇所へ">
+          <div class="annot-card-head">
+            <span class="annot-num">${num}</span>
+            <span class="annot-type ${c.type}">${c.type === 'good' ? '良い点' : '改善ポイント'}</span>
+            <span class="annot-cat">${escHtml(c.category || '－')}</span>
+          </div>
+          <div class="annot-body-text">${escHtml(c.comment)}</div>
+        </div>
+      `;
+    });
+    $('annotList').innerHTML = cardsHtml;
+
+    // 双方向ジャンプ
+    function flashEl(el) {
+      if (!el) return;
+      el.classList.add('flash');
+      setTimeout(() => el.classList.remove('flash'), 1100);
+    }
+    function scrollToEl(el) {
+      if (!el) return;
+      const offset = 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    $('annotEssay').querySelectorAll('mark[data-cmt-id]').forEach(m => {
+      m.addEventListener('click', () => {
+        const id = m.dataset.cmtId;
+        const card = document.getElementById(`cmt-${id}`);
+        scrollToEl(card);
+        flashEl(card);
+      });
+      m.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); m.click(); }
+      });
+    });
+    $('annotList').querySelectorAll('.annot-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.cmtId;
+        const m = $('annotEssay').querySelector(`mark[data-cmt-id="${id}"]`);
+        scrollToEl(m);
+        flashEl(m);
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+      });
+    });
+  }
+
+  function renderNextActions(data) {
+    const actions = data.next_actions || [];
+    if (actions.length === 0) {
+      $('nextActionsSection').style.display = 'none';
+      return;
+    }
+    $('nextActionsSection').style.display = '';
+    // 優先度ごとに2階層化（最優先1個、それ以外）
+    const top = actions.slice(0, 1);
+    const rest = actions.slice(1, 5);
+    let html = '';
+    top.forEach((a) => {
+      html += `
+        <div class="na-card p1 na-top">
+          <div class="na-priority"><span class="na-rank">最優先</span></div>
+          <div class="na-text">${escHtml(a.action)}</div>
+        </div>
+      `;
+    });
+    if (rest.length > 0) {
+      html += '<div class="na-rest">';
+      rest.forEach((a, i) => {
+        html += `
+          <div class="na-card p${Math.min(3, i + 2)} na-mini">
+            <div class="na-priority"><span class="na-rank-sm">${i + 2}</span></div>
+            <div class="na-text">${escHtml(a.action)}</div>
+          </div>
+        `;
+      });
+      html += '</div>';
+    }
+    $('nextActionsGrid').innerHTML = html;
+  }
+
+  // ── Result actions ──
+  $('ntSame').addEventListener('click', () => {
+    // 「書き直しモード」の前回データ
+    const lastData = resultData;
+    const lastEssay = essayBody.value;
+    resetToInput();
+    // 複数設問あり、かつ未添削の設問があるなら次の設問にスイッチ
+    const course = getCourse();
+    if (course && (course.items || []).length > 1) {
+      const items = course.items;
+      const curIdx = items.findIndex(i => i.id === selected.question);
+      const nextItem = items[(curIdx + 1) % items.length];
+      if (nextItem) {
+        switchQuestion(nextItem.id, course);
+        essayBody.value = '';
+        updateCharLimit(course);
+        smoothScrollTo($('step2Sec'));
+        return;
+      }
+    }
+    // 同じ設問で書き直し: 前回本文を残し、前回指摘をパネル表示
+    essayBody.value = lastEssay || '';
+    updateCharLimit(course);
+    populateRewriteHint(lastData);
+    essayBody.focus();
+    smoothScrollTo($('step3Sec'));
+  });
+
+  function populateRewriteHint(data) {
+    const panel = $('rewriteHint');
+    if (!panel || !data) return;
+    const comments = data.comments || [];
+    const moreCmts = comments.filter(c => c.type === 'more');
+    const goodCmts = comments.filter(c => c.type === 'good');
+    if (comments.length === 0) { panel.hidden = true; return; }
+    panel.hidden = false;
+    panel.open = true;
+    const meta = $('rewriteHintMeta');
+    if (meta) {
+      meta.textContent = `改善ポイント ${moreCmts.length} 件 ／ 良い点 ${goodCmts.length} 件 を反映して書き直し`;
+    }
+    const body = $('rewriteHintBody');
+    if (!body) return;
+    let html = '';
+    if (moreCmts.length > 0) {
+      html += `<div style="font-size:11px;font-weight:800;color:#78350f;margin:8px 0 2px;">▶ 改善ポイント（優先）</div>`;
+      moreCmts.slice(0, 5).forEach((c, i) => {
+        html += `<div class="rh-cmt"><span class="rh-cmt-cat">${escHtml(c.category || '－')}</span>${escHtml(c.comment)}</div>`;
+      });
+    }
+    if (goodCmts.length > 0) {
+      html += `<div style="font-size:11px;font-weight:800;color:#0f766e;margin:12px 0 2px;">▶ 良い点（維持したい）</div>`;
+      goodCmts.slice(0, 3).forEach((c, i) => {
+        html += `<div class="rh-cmt good"><span class="rh-cmt-cat">${escHtml(c.category || '－')}</span>${escHtml(c.comment)}</div>`;
+      });
+    }
+    if (!html) {
+      html = '<div class="rh-empty">前回の指摘はありません。</div>';
+    }
+    body.innerHTML = html;
+  }
+
+  function clearRewriteHint() {
+    const panel = $('rewriteHint');
+    if (panel) panel.hidden = true;
+  }
+  $('ntDiff').addEventListener('click', () => {
+    selected = { univ: null, fac: null, course: null, question: null };
+    document.querySelectorAll('.pick-card.selected').forEach(c => c.classList.remove('selected'));
+    $('facRow').style.display = 'none';
+    $('courseRow').style.display = 'none';
+    $('infoYellow').style.display = 'none';
+    updateSelectionPills();
+    refreshSteps();
+    resetToInput();
+    essayBody.value = '';
+    clearRewriteHint();
+    smoothScrollTo($('step1Sec'));
+  });
+
+  $('shareCopy').addEventListener('click', () => {
+    navigator.clipboard.writeText(location.href).then(() => alert('URLをコピーしました'));
+  });
+  $('shareMail').addEventListener('click', () => {
+    location.href = `mailto:?subject=オープン添削の添削結果&body=${encodeURIComponent('添削結果を確認してください: ' + location.href)}`;
+  });
+  $('sharePrint').addEventListener('click', () => window.print());
+
+  function resetToInput() {
+    resultView.classList.remove('active');
+    inputView.style.display = '';
+    articlesSection.style.display = '';
+    setProgress(3);
+  }
+
+  // ── Favorite button ──
+  document.getElementById('favBtn')?.addEventListener('click', () => {
+    const added = toggleFav();
+    refreshFavBtn();
+    showFavToast(added ? '★ お気に入りに追加しました' : 'お気に入りから削除しました');
+  });
+
+  // ── Init ──
+  loadMaster();
+  // 初期表示: 履歴ストリップとストリーク（結果が無くても表示してリピート促進）
+  try {
+    const hist = loadHistory();
+    if (hist.length > 0) {
+      // 結果ビューには移らないが、ストリークだけは入力画面でもうっすら表示
+      renderStreakBadge();
+    }
+  } catch (e) {}
+})();
+</script>
+
+</body>
+</html>

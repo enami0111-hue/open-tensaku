@@ -1,35 +1,59 @@
 ---
-import { SITE_TITLE, NAV_LINKS } from '../consts';
+import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import Icon from './icons/Icon.astro';
+
+const HEADER_NAV_LINKS = [
+	{ href: '/articles', label: '受験対策記事' },
+	{ href: '/match/', label: '総合型選抜診断' },
+];
+
+// 将来の追加ナビ項目（診断系など）をここで一元管理
+const FUTURE_NAV: { href: string; label: string; badge?: string }[] = [
+	// { href: '/diagnosis', label: '志望校診断', badge: '近日' },
+];
 ---
 
 <header>
 	<nav class="container">
+		<!-- ロゴ -->
 		<a href="/" class="brand" aria-label={SITE_TITLE}>
 			<img src="/brand/logo-full.png" alt={SITE_TITLE} class="brand-img" width="160" height="40" />
 		</a>
+
+		<!-- 中央ナビ -->
 		<div class="links">
-			{NAV_LINKS.map((link) => (
+			{HEADER_NAV_LINKS.map((link) => (
 				<HeaderLink href={link.href}>{link.label}</HeaderLink>
 			))}
+			{FUTURE_NAV.map((link) => (
+				<a href={link.href} class="nav-future">
+					{link.label}
+					{link.badge && <span class="nav-badge">{link.badge}</span>}
+				</a>
+			))}
 		</div>
-		<a href="/contact" class="cta-button">
-			<Icon name="mail" size={16} />
-			<span>無料相談</span>
+
+		<!-- 右CTA -->
+		<a href="/#step1Sec" class="cta-button">
+			<span>無料で添削する</span>
 		</a>
 
+		<!-- モバイルメニュー -->
 		<details class="mobile-nav" aria-label="メニュー">
 			<summary aria-label="メニューを開く">
-				<Icon name="menu" size={26} />
+				<Icon name="menu" size={24} />
 			</summary>
 			<div class="mobile-panel">
 				<ul>
-					{NAV_LINKS.map((link) => (
+					{HEADER_NAV_LINKS.map((link) => (
 						<li><a href={link.href}>{link.label}</a></li>
 					))}
+					{FUTURE_NAV.map((link) => (
+						<li><a href={link.href}>{link.label}{link.badge && <span class="mobile-badge">{link.badge}</span>}</a></li>
+					))}
 					<li class="divider"></li>
-					<li><a href="/contact" class="mobile-cta">無料相談する</a></li>
+					<li><a href="/#step1Sec" class="mobile-cta">無料で添削する</a></li>
 				</ul>
 			</div>
 		</details>
@@ -47,123 +71,146 @@ import Icon from './icons/Icon.astro';
 	nav {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: 0.75rem 1rem;
+		gap: 1.5rem;
+		padding: 0 1.5rem;
+		height: 64px;
 		max-width: 1200px;
 		margin: 0 auto;
 	}
+	/* ロゴとその他の間を広げる */
+	.brand { margin-right: auto; }
 	.brand {
 		display: flex;
 		align-items: center;
 		text-decoration: none;
+		flex-shrink: 0;
 	}
 	.brand-img {
-		height: 44px;
+		height: 40px;
 		width: auto;
 		display: block;
 	}
+
+	/* ナビ（CTA左隣） */
 	.links {
 		display: flex;
-		gap: 0.25rem;
-		flex: 1;
-		justify-content: center;
+		align-items: stretch;
+		gap: 0;
+		height: 100%;
 	}
+	.nav-future {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		text-decoration: none;
+		padding: 0 1rem;
+		color: #6b7280;
+		font-size: 0.95rem;
+		font-weight: 500;
+		white-space: nowrap;
+		transition: color 0.15s;
+	}
+	.nav-future:hover { color: #1a4d8f; }
+	.nav-badge {
+		font-size: 0.65rem;
+		font-weight: 700;
+		background: #fef3c7;
+		color: #92400e;
+		padding: 0.1rem 0.4rem;
+		border-radius: 999px;
+		border: 1px solid #fde68a;
+	}
+
+	/* CTA */
 	.cta-button {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
 		background: #ef4444;
 		color: white;
-		padding: 0.5rem 1.05rem;
+		padding: 0.5rem 1.1rem;
 		border-radius: 999px;
-		font-weight: 600;
+		font-weight: 700;
 		font-size: 0.875rem;
 		text-decoration: none;
 		white-space: nowrap;
-		transition: background 0.15s, transform 0.15s;
+		flex-shrink: 0;
+		transition: background 0.15s, transform 0.12s, box-shadow 0.12s;
+		box-shadow: 0 2px 8px rgba(239,68,68,0.3);
 	}
 	.cta-button:hover {
 		background: #dc2626;
 		transform: translateY(-1px);
+		box-shadow: 0 4px 14px rgba(239,68,68,0.4);
 	}
+
+	/* モバイル */
 	.mobile-nav {
 		display: none;
 		position: relative;
+		flex-shrink: 0;
 	}
 	.mobile-nav summary {
 		list-style: none;
 		cursor: pointer;
-		padding: 0.4rem;
-		border-radius: 6px;
+		padding: 0.45rem;
+		border-radius: 8px;
 		color: #1a4d8f;
 		display: flex;
 		align-items: center;
 	}
-	.mobile-nav summary::-webkit-details-marker {
-		display: none;
-	}
-	.mobile-nav summary:hover {
-		background: #f1f5f9;
-	}
+	.mobile-nav summary::-webkit-details-marker { display: none; }
+	.mobile-nav summary:hover { background: #f1f5f9; }
 	.mobile-panel {
 		position: absolute;
-		top: calc(100% + 6px);
+		top: calc(100% + 8px);
 		right: 0;
 		background: white;
 		border: 1px solid #e5e7eb;
-		border-radius: 12px;
-		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-		min-width: 200px;
+		border-radius: 14px;
+		box-shadow: 0 12px 32px rgba(15, 23, 42, 0.13);
+		min-width: 210px;
 		padding: 0.5rem;
 		z-index: 100;
 	}
-	.mobile-panel ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	.mobile-panel li {
-		margin: 0;
-	}
-	.mobile-panel li.divider {
-		height: 1px;
-		background: #e5e7eb;
-		margin: 0.4rem 0;
-	}
+	.mobile-panel ul { list-style: none; padding: 0; margin: 0; }
+	.mobile-panel li { margin: 0; }
+	.mobile-panel li.divider { height: 1px; background: #e5e7eb; margin: 0.5rem 0; }
 	.mobile-panel a {
-		display: block;
-		padding: 0.65rem 0.85rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.7rem 0.9rem;
 		color: #1f2937;
 		text-decoration: none;
 		font-size: 0.95rem;
 		border-radius: 8px;
 		font-weight: 500;
+		transition: background 0.12s;
 	}
-	.mobile-panel a:hover {
-		background: #f1f5f9;
+	.mobile-panel a:hover { background: #f1f5f9; }
+	.mobile-badge {
+		font-size: 0.65rem;
+		font-weight: 700;
+		background: #fef3c7;
+		color: #92400e;
+		padding: 0.1rem 0.4rem;
+		border-radius: 999px;
 	}
 	.mobile-panel a.mobile-cta {
 		background: #ef4444;
 		color: white;
 		text-align: center;
+		justify-content: center;
 		font-weight: 700;
+		margin-top: 0.25rem;
 	}
-	.mobile-panel a.mobile-cta:hover {
-		background: #dc2626;
-	}
+	.mobile-panel a.mobile-cta:hover { background: #dc2626; }
+
 	@media (max-width: 720px) {
-		.links {
-			display: none;
-		}
-		.cta-button {
-			display: none;
-		}
-		.mobile-nav {
-			display: block;
-		}
-		.brand-img {
-			height: 34px;
-		}
+		nav { padding: 0 1rem; height: 56px; }
+		.links, .cta-button { display: none; }
+		.mobile-nav { display: block; }
+		.brand-img { height: 34px; }
 	}
 </style>

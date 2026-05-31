@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="134" viewBox="0 0 1380 134">
+  <defs>
+    <linearGradient id="tealBtn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11afa9"/>
+      <stop offset="1" stop-color="#007e77"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#071b35" flood-opacity=".18"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#061b2c" flood-opacity=".15"/>
+    </filter>
+    <style>
+      .font { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; font-weight: 700; }
+      .body { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; font-weight: 700; }
+      .navy { fill: #061a4d; }
+      .teal { fill: #00958e; }
+      .white { fill: #ffffff; }
+      .stroke-teal { stroke: #00958e; }
+      .mid { stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="1380" height="134" rx="13" fill="#fff" stroke="#bfe4e8" stroke-width="1.5" filter="url(#softShadow)"/>
+  <g transform="translate(48 21)">
+    <circle cx="47" cy="48" r="47" fill="#f9fdfe" stroke="#b8c9cf" stroke-width="3"/>
+    <path d="M47 -4v12M47 88v12M-5 48H7M87 48h12" stroke="#b8c9cf" stroke-width="3"/>
+    <rect x="36" y="-3" width="21" height="9" fill="#5fb5ad" rx="1"/>
+    <text class="font teal" x="47" y="54" font-size="48" text-anchor="middle">1</text>
+    <text class="font teal" x="47" y="75" font-size="15" text-anchor="middle">min</text>
+    <path d="M77 4l6-13M89 13l12-9M97 28l15-2" stroke="#ffd52e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <text class="font navy" x="198" y="54" font-size="36">下書きを</text>
+  <text class="font teal" x="338" y="54" font-size="36">無料で添削。</text>
+  <text class="font navy" x="558" y="54" font-size="36">改善点がすぐわかる。</text>
+
+  <g transform="translate(198 73)">
+    <g>
+      <rect width="173" height="44" rx="22" fill="#fff" stroke="#cddde1" stroke-width="1.5"/>
+      <circle cx="33" cy="22" r="13" class="mid stroke-teal"/>
+      <path d="M26 22l5 5 10-11" class="mid stroke-teal"/>
+      <text class="body navy" x="65" y="30" font-size="18">完全無料</text>
+    </g>
+    <g transform="translate(190 0)">
+      <rect width="173" height="44" rx="22" fill="#fff" stroke="#cddde1" stroke-width="1.5"/>
+      <circle cx="33" cy="22" r="13" class="mid stroke-teal"/>
+      <path d="M26 22l5 5 10-11" class="mid stroke-teal"/>
+      <text class="body navy" x="65" y="30" font-size="18">登録不要</text>
+    </g>
+    <g transform="translate(380 0)">
+      <rect width="183" height="44" rx="22" fill="#fff" stroke="#cddde1" stroke-width="1.5"/>
+      <circle cx="34" cy="22" r="13" class="mid stroke-teal"/>
+      <path d="M27 22l5 5 10-11" class="mid stroke-teal"/>
+      <text class="body navy" x="66" y="30" font-size="18">すぐ試せる</text>
+    </g>
+  </g>
+
+  <rect x="940" y="33" width="380" height="73" rx="36.5" fill="url(#tealBtn)" filter="url(#shadow)"/>
+  <text class="font white" x="1134" y="80" font-size="26" text-anchor="middle">無料で添削を試す</text>
+  <path d="M1272 59l17 17-17 17M1249 76h39" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <circle cx="945" cy="67" r="46" fill="#ffdf35" filter="url(#softShadow)"/>
+  <text class="font navy" x="945" y="61" font-size="20" text-anchor="middle">最短</text>
+  <text class="font navy" x="945" y="87" font-size="20" text-anchor="middle">1分!</text>
+</svg>

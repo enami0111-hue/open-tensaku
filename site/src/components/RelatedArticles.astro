@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	slug: string;
+	category?: string;
+}
+
+const { slug, category } = Astro.props;
+
+const normalizeId = (id: string) => id.replace(/\/index$/, '');
+const currentId = normalizeId(slug);
+const univPrefix = currentId.split('/')[0];
+const currentParts = currentId.split('/');
+const currentType = currentParts.length === 1 ? 'hub' : currentParts.includes('admission-policy') ? 'policy' : 'detail';
+
+const all = await getCollection('articles');
+
+const getScore = (article: typeof all[number]) => {
+	const id = normalizeId(article.id);
+	const parts = id.split('/');
+	const sameUniv = parts[0] === univPrefix;
+	let score = 0;
+
+	if (sameUniv) score += 100;
+	if (sameUniv && parts.length === 1 && currentType !== 'hub') score += 45;
+	if (sameUniv && parts.includes('admission-policy') && currentType !== 'policy') score += 35;
+	if (sameUniv && currentType === 'hub' && parts.length > 1) score += 30;
+	if (article.data.parent_hub && normalizeId(article.data.parent_hub) === currentId) score += 35;
+	if (category && article.data.category === category) score += 18;
+	if (article.data.type === 'general' && /^(writing|interview|basics|schedule)\//.test(id)) score += 8;
+
+	return score;
+};
+
+const sorted = all
+	.filter((a) => normalizeId(a.id) !== currentId && !a.data.draft)
+	.map((a) => ({ article: a, score: getScore(a) }))
+	.filter(({ score }) => score > 0)
+	.sort((a, b) => {
+		if (a.score !== b.score) return b.score - a.score;
+		return new Date(b.article.data.date).getTime() - new Date(a.article.data.date).getTime();
+	})
+	.map(({ article }) => article)
+	.slice(0, 5);
+
+const articleHref = (id: string) => `/articles/${normalizeId(id)}/`;
+---
+
+{sorted.length > 0 && (
+<section class="related">
+	<h2 class="related-heading">関連記事</h2>
+	<ul class="related-list">
+		{sorted.map((a) => (
+			<li class="related-item">
+				<a href={articleHref(a.id)} class="related-link">
+					<div class="related-thumb">
+						{a.data.heroImage
+							? <img src={a.data.heroImage} alt={a.data.title} loading="lazy" />
+							: <div class="related-thumb-placeholder" aria-hidden="true"></div>
+						}
+					</div>
+					<div class="related-body">
+						<div class="related-meta">
+							<span class="related-cat">{a.data.category}</span>
+							<span class="related-date"><FormattedDate date={a.data.date} /></span>
+						</div>
+						<p class="related-title">{a.data.title}</p>
+						{a.data.description && (
+							<p class="related-desc">{a.data.description}</p>
+						)}
+					</div>
+				</a>
+			</li>
+		))}
+	</ul>
+</section>
+)}
+
+<style>
+	.related {
+		margin: 2.5rem 0 1rem;
+		border-top: 2px solid #e5e7eb;
+		padding-top: 1.75rem;
+	}
+	.related-heading {
+		font-size: 1.05rem;
+		font-weight: 700;
+		color: #0f172a;
+		margin: 0 0 1rem;
+		letter-spacing: -0.01em;
+	}
+	.related-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+	}
+	.related-item {
+		border-bottom: 1px solid #f1f5f9;
+	}
+	.related-item:last-child {
+		border-bottom: none;
+	}
+	.related-link {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+		padding: 0.85rem 0.25rem;
+		text-decoration: none;
+		color: inherit;
+		transition: background 0.12s;
+		border-radius: 6px;
+	}
+	.related-link:hover {
+		background: #f8fafc;
+	}
+
+	/* サムネイル */
+	.related-thumb {
+		flex-shrink: 0;
+		width: 120px;
+		aspect-ratio: 16 / 9;
+		border-radius: 6px;
+		overflow: hidden;
+		background: #f1f5f9;
+	}
+	.related-thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.related-thumb-placeholder {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+	}
+
+	/* テキスト */
+	.related-body {
+		flex: 1;
+		min-width: 0;
+	}
+	.related-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.25rem;
+	}
+	.related-cat {
+		font-size: 0.68rem;
+		font-weight: 600;
+		background: #f1f5f9;
+		color: #475569;
+		padding: 0.1rem 0.4rem;
+		border-radius: 3px;
+	}
+	.related-date {
+		font-size: 0.7rem;
+		color: #94a3b8;
+	}
+	.related-title {
+		margin: 0 0 0.2rem;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: #1e293b;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.related-link:hover .related-title {
+		color: #1a4d8f;
+	}
+	.related-desc {
+		margin: 0;
+		font-size: 0.78rem;
+		color: #64748b;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	@media (max-width: 480px) {
+		.related-thumb { width: 88px; }
+		.related-title { font-size: 0.85rem; }
+	}
+</style>

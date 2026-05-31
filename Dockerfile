@@ -17,6 +17,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Astro ビルド（correction-app/frontend/ に出力）
 RUN cd site && npm ci && npm run build
 
+# Astroがルートindex.htmlを上書きするので、添削SPAで復元
+RUN cp /app/correction-app/frontend-src/index.html /app/correction-app/frontend/index.html
+
 # FastAPI の起動
 WORKDIR /app/correction-app/backend
 EXPOSE 8000

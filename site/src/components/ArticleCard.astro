@@ -9,25 +9,32 @@ interface Props {
 	category: string;
 	date: Date;
 	slug?: string;
+	heroImage?: string;
 }
-const { href, title, description, category, date, slug } = Astro.props;
+const { href, title, description, category, date, slug, heroImage } = Astro.props;
 
-// href から大学スラッグを推定（slug propが優先）
 const slugForUniv = slug ?? href.replace(/^\/articles\//, '').replace(/\/$/, '');
 const univ = getUnivFromSlug(slugForUniv);
 const accent = univ?.color ?? '#1a4d8f';
 const accentBg = univ?.bg ?? '#eff6ff';
 ---
 
-<a class="card" href={href} style={`--accent: ${accent}; --accent-bg: ${accentBg};`}>
-	<div class="tags">
-		{univ && <span class="univ-chip">{univ.short}</span>}
-		<span class="category">{category}</span>
-	</div>
-	<h3>{title}</h3>
-	<p>{description}</p>
-	<div class="meta">
-		<FormattedDate date={date} />
+<a class:list={['card', { 'has-thumb': !!heroImage }]} href={href} style={`--accent: ${accent}; --accent-bg: ${accentBg};`}>
+	{heroImage && (
+		<div class="thumb">
+			<img src={heroImage} alt={title} loading="lazy" />
+		</div>
+	)}
+	<div class="body">
+		<div class="tags">
+			{univ && <span class="univ-chip">{univ.short}</span>}
+			<span class="category">{category}</span>
+		</div>
+		<h3>{title}</h3>
+		<p>{description}</p>
+		<div class="meta">
+			<FormattedDate date={date} />
+		</div>
 	</div>
 </a>
 
@@ -43,12 +50,42 @@ const accentBg = univ?.bg ?? '#eff6ff';
 		color: inherit;
 		transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 		position: relative;
+		overflow: hidden;
 	}
 	.card:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 		border-color: var(--accent);
 		border-left-color: var(--accent);
+	}
+	/* サムネありカードはpadding 0 にして画像をフル幅表示 */
+	.card.has-thumb {
+		padding: 0;
+		border-left-width: 0;
+		border-top: 3px solid var(--accent);
+	}
+	.thumb {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		background: #f1f5f9;
+	}
+	.thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.3s;
+	}
+	.card:hover .thumb img {
+		transform: scale(1.03);
+	}
+	.body {
+		padding: 1rem 1.25rem 1.25rem;
+	}
+	/* サムネなし時はbodyがカード直下 */
+	.card:not(.has-thumb) .body {
+		padding: 0;
 	}
 	.tags {
 		display: flex;
